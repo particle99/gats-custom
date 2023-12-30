@@ -1,0 +1,5 @@
+class DOM {
+
+}
+
+export { DOM }
