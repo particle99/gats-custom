@@ -123,31 +123,7 @@ class Entity {
 
     /** update method */
     public update(data: any): void {
-            /** collisions between players and objects */
-            for(const objectEntity of this.game.entities.objectEntities) {
-                const { x, y } = this.collisions.collidingRect(objectEntity, this);
-
-                console.log(x,y);
-
-                this.x = x;
-                this.y = y;
-            }
-
-            /** collisions between players */
-            for(const playerEntity of this.game.entities.players) {
-                if(playerEntity.state == 2) {
-                    const colliding = this.collisions.collidingCircle(playerEntity, this);
-                    if(colliding) {
-                        this.spdX = 0;
-                        this.spdY = 0;
-                    }
-                }
-            }
-        //};
-        /** mouse upates */
-        if(data.packet == "m") {
-            this.angle = data.mouseAngle;
-        }
+        /** */
     }
 
     /** set invincible */
