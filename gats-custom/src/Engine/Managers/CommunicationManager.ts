@@ -141,7 +141,6 @@ class CommunicationManager {
         };
 
         const entity: Entity = new Entity(this.game, parsedData.gun, parsedData.armor, parsedData.color);
-        this.game.entities.addEntity(entity);
         this.currentEntity = entity;
 
         const spawnPacket = `|a,${entity.id},${entity.class},${entity.color},${entity.x},${entity.y},${entity.radius},${entity.angle},${entity.armor},${entity.currentBullets},${entity.maxBullets},${entity.armorAmount},${entity.hp},${entity.viewX},${entity.viewY},${entity.hpMax},${entity.MAP_WIDTH},${entity.MAP_HEIGHT},${entity.username},${entity.invincible},${entity.isLeader},${0},${entity.teamcode},`
