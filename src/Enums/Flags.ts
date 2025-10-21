@@ -1,0 +1,45 @@
+/** Packets */
+enum Packets {
+    JOIN_ARENA_PACKET = 'a',
+    UPDATE_ENTITY_PACKET = 'b',
+    AUX_UPDATE_PACKET = 'c',
+    ACTIVATE_ENTITY_PACKET = 'd',
+    DEACTIVATE_ENTITY_PACKET = 'e',
+    FIRST_PERSON_UPDATE_PACKET = 'f',
+    ACTIVATE_BULLET_PACKET = 'g',
+    UPDATE_BULLET_PACKET = 'h',
+    DEACTIVATE_BULLET_PACKET = 'i',
+    LOAD_CRATES_PACKET = 'j',
+    UNLOAD_CRATES_PACKET = 'l',
+    ACTIVATE_EXPLOSIVE_PACKET = 'm',
+    UPDATE_EXPLOSIVE_PACKET = 'n',
+    UNLOAD_EXPLOSIVE_PACKET = 'o',
+    LEADERBOARD_UPDATE_PACKET = 'v',
+    PLAYER_DEAD_PACKET = 's',
+    OVERLAY_MESSAGES_PACKET = 'r',
+    HIT_MARKER_PACKET = 'q',
+    RESPAWN_PACKET = 're',
+    KILLER_INFO_PACKET = 'sta'
+}
+
+/** EntityStateFlags */
+enum EntityStateFlags {
+    PROTECTED,
+    AUX_UPDATE,
+    ACTIVATION_UPDATE,
+    UNLOAD_PLAYER,
+    FIRST_PERSON_UPDATE,
+    BULLET_ACTIVATION_UPDATE,
+    /** Persistent states */
+    PLAYER_DYING,
+    PLAYER_DEAD,
+    PLAYER_REGENERATING,
+    PLAYER_SHOOTING,
+    PLAYER_RELOADING,
+    /** Upgrade states */
+    PLAYER_DASHING,
+    PLAYER_INVISIBLE,
+    PLAYER_SHIELDING
+}
+
+export { Packets, EntityStateFlags }
