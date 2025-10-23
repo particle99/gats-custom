@@ -3,6 +3,7 @@ import PlayerEntity from "../../../Entities/PlayerEntity";
 import SecondaryUpgrade from "../../SecondaryUpgrade";
 import Game from "../../../Game";
 import { EntityStateFlags } from "../../../Enums/Flags";
+import { ObjectUpdateFields } from "../../../Enums/Fields";
 
 export default class UserCrate extends SecondaryUpgrade {
     private game: Game;
@@ -41,7 +42,19 @@ export default class UserCrate extends SecondaryUpgrade {
         this.userCrateObject.spawnTick = this.game.tick;
 
         this.game.crateManager.addObject(this.userCrateObject);
-        this.game.crateManager.broadcastObject(this.userCrateObject, ['uid', 'type', 'x', 'y', 'angle', 'parentId', 'hp', 'maxHp']);
+
+        let fields: Array<ObjectUpdateFields> = [];
+
+        switch(this.isPremium) {
+            case 0:
+                fields = ['uid', 'type', 'x', 'y', 'angle', 'parentId', 'hp', 'maxHp'];
+                break;
+            case 1:
+                fields = ['uid', 'type', 'x', 'y', 'angle', 'parentId', 'isPremium', 'hp', 'maxHp'];
+                break;
+        }
+
+        this.game.crateManager.broadcastObject(this.userCrateObject, fields);
     
         //might have to add PROTECTED if it gets cleared
         this.owner.fieldManager.safeUpdate({

@@ -276,13 +276,18 @@ export default class NetworkManager {
             }
 
             let upgrade: SecondaryUpgrade;
+            let crateIsPremium = 0;
+
+            if(this.game.config?.premiumCratesEnabled) {
+                if(this.game.config.premiumCratesEnabled === true) crateIsPremium = 1;
+            }
 
             switch(upgradeIndex) {
                 case 10: upgrade = new Shield(player, this.game); break;
                 case 11: upgrade = new MedKit(player, this.game); break;
                 case 12: upgrade = new Grendade(player, this.game); break;
                 case 13: upgrade = new Knife(player, this.game); break;
-                case 14: upgrade = new UserCrate(player, this.game, 0); break;
+                case 14: upgrade = new UserCrate(player, this.game, crateIsPremium); break;
                 case 16: upgrade = new Dashing(player, this.game); break;
                 case 17: upgrade = new Gas(player, this.game); break;
                 case 18: upgrade = new LandMine(player, this.game); break;

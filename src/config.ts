@@ -12,5 +12,6 @@ export const config: Config = {
     scoreSquareGain: 15,
     noMidPerkTimeout: false,
     bulletDamageEnabled: true, 
-    playerCollisionsEnabled: true
+    playerCollisionsEnabled: true,
+    premiumCratesEnabled: true
 }

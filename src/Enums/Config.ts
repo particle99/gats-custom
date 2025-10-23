@@ -27,4 +27,5 @@ export interface Config {
     customNamesEnabled?: boolean // Enable custom player names
     playerCollisionsEnabled?: boolean // Enable player collisions (done)
     bulletCollisionsEnabled?: boolean // Enable bullet collisions with players (done)
+    premiumCratesEnabled?: boolean // Enable premium crates for the game instance (done)
 }

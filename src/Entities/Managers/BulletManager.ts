@@ -203,12 +203,17 @@ export default class BulletManager {
                         this.unloadBullet(bullet);
                         const object = crate as UserCrateObject;
 
+                        //check usercrate state
                         if(object.hp - bullet.damage <= 0) {
                             this.game.crateManager.removeObject(object.uid);
                             this.game.crateManager.broadcastObjectUnload(object);
                         } else {
                             object.damage(bullet.damage);
                         }
+
+                        //update owner score
+                        const owner = this.game.playerManager.players.get(bullet.ownerId);
+                        if(owner) owner.updateScore(1);
                     }
                 } else { //regular crates
                     collision = rectRectCollision(

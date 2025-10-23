@@ -95,7 +95,10 @@ export default class CrateManager {
                         this.broadcastObjectUnload(object);
                     }
 
-                    this.broadcastObject(object, ['uid', 'type', 'x', 'y', 'angle', 'parentId', 'hp', 'maxHp'])
+                    //broadcast object based on premium 
+                    object.isPremium 
+                        ? this.broadcastObject(object, ['uid', 'type', 'x', 'y', 'angle', 'parentId', 'isPremium', 'hp', 'maxHp']) 
+                        : this.broadcastObject(object, ['uid', 'type', 'x', 'y', 'angle', 'parentId', 'hp', 'maxHp']);
                 }
 
                 //shields
