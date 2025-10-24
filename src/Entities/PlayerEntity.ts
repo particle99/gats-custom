@@ -381,16 +381,16 @@ export default class PlayerEntity extends Player {
 
             this.spdX += inputX * this.accel;
             this.spdY += inputY * this.accel;
-        }
 
-        this.spdX *= this.friction;
-        this.spdY *= this.friction;
+            this.spdX *= this.friction;
+            this.spdY *= this.friction;
 
-        const speed = Math.hypot(this.spdX, this.spdY);
-        if (speed > this.maxSpeed) {
-            const scale = this.maxSpeed / speed;
-            this.spdX *= scale;
-            this.spdY *= scale;
+            const speed = Math.hypot(this.spdX, this.spdY);
+            if (speed > this.maxSpeed) {
+                const scale = this.maxSpeed / speed;
+                this.spdX *= scale;
+                this.spdY *= scale;
+            }
         }
 
         if (Math.abs(this.spdX) < this.minVelocity) this.spdX = 0;

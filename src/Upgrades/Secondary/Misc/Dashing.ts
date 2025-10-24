@@ -6,7 +6,7 @@ import SecondaryUpgrade from '../../SecondaryUpgrade';
 export default class Dashing extends SecondaryUpgrade {
     private game: Game;
 
-    private dashSpeed: number = 200;
+    private dashSpeed: number = 25;
     private isDecelerating: boolean = false;
     private decelerationRate: number = 0.95;
 
