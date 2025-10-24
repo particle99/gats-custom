@@ -1,5 +1,6 @@
 import { EntityStateFlags } from '../../../Enums/Flags';
 import { AuxilaryUpdateFields } from '../../../Enums/Fields';
+import { ReloadSpeedInTicks } from '../../../Enums/Enums';
 
 import PlayerEntity from '../../PlayerEntity';
 
@@ -56,6 +57,8 @@ export default class PlayerInputManager {
             this.player.canShoot = false;
 
             this.player.reloadTick = this.player.game.tick;
+            //adjust shotgun reload speed based on bullets left
+            if(this.player.gunType === "SHOTGUN") this.player.reloadSpeed = ReloadSpeedInTicks[this.player.gunType] * (this.player.maxBullets - this.player.currentBullets);
             this.player.fieldManager.safeUpdate({
                 states: [EntityStateFlags.PLAYER_RELOADING, EntityStateFlags.AUX_UPDATE],
                 auxFields: ['uid', 'shooting', 'currentBullets', 'maxBullets', 'reloading']

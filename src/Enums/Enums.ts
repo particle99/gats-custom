@@ -125,7 +125,7 @@ export enum ReloadSpeed {
 export enum ReloadSpeedInTicks {
     SMG = 45,
     PISTOL = 40,
-    SHOTGUN = 20,
+    SHOTGUN = 18,
     ASSAULT = 60,
     SNIPER = 40,
     LMG = 120

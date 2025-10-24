@@ -12,7 +12,6 @@ export default class Bullet extends RectangularMapObject {
     public spdX: number = 0;
     public spdY: number = 0;
 
-    /** Invulnerable by default (2 ticks) */
     public invulnerable: boolean = true;
     public spawnTick: number = 0;
 
@@ -57,6 +56,8 @@ export default class Bullet extends RectangularMapObject {
             this.bulletType = this.owner.gun;
         }
 
+        if(this.bulletType == 0) this.invulnerable = false;
+
         //configs
         this.game.config?.bulletSpeedMultiplier && (this.speed *= this.game.config.bulletSpeedMultiplier);
         this.game.config?.damageMultplier && (this.damage *= this.game.config.damageMultplier);
@@ -75,11 +76,11 @@ export default class Bullet extends RectangularMapObject {
     public getOffset(id: number): [number, number] { //[forward, left]
         switch(id) {
             case 0: return [14, -12]; // pistol
-            case 1: return [30, -12]; // smg
-            case 2: return [28, -12]; // shotgun
-            case 3: return [40, -12]; // assault
-            case 4: return [42, -12]; // sniper
-            case 5: return [32, -12]; // lmg
+            case 1: return [34, -12]; // smg
+            case 2: return [32, -12]; // shotgun
+            case 3: return [44, -12]; // assault
+            case 4: return [48, -12]; // sniper
+            case 5: return [36, -12]; // lmg
             default: return [0, 0];
         }
     }
@@ -139,8 +140,10 @@ export default class Bullet extends RectangularMapObject {
         this.x += this.spdX;
         this.y += this.spdY;
 
-        if(game.tick - this.spawnTick > 1) this.invulnerable = false;
-        if(this.damage > this.maxDamageDropOff) this.damage -= this.damageDropoffPerTick;
+        if(this.bulletType !== 0) {
+            if(game.tick - this.spawnTick > 1) this.invulnerable = false;
+            if(this.damage > this.maxDamageDropOff) this.damage -= this.damageDropoffPerTick;
+        }
 
         this.totalDistanceTraveled += Math.hypot(this.spdX, this.spdY);
     }
