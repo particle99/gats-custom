@@ -18986,7 +18986,7 @@
 				}
 			}
 			this['invincible'] && ('pkaTv' === 'dRyCX' ? (_0x2873f7['id'] == _0x12aaf5 && (_0xa9686b = 6), this['beingHit'] = _0x52ce3c(_0x316ca6['beingHit'])) : _0x1ba6cb['globalAlpha'] = 0.3);
-			drawModel(_0x1ba6cb, _0x1a11b4, this['getAttr'](), this['playerAngle'], _0x14c767, 4, null, _0x671a6c), _0x1ba6cb['globalAlpha'] = 1;
+			drawModel(_0x1ba6cb, _0x1a11b4, this['getAttr'](), this['playerAngle'], _0x14c767, 4, null, _0x671a6c, this['radius'] / 20), _0x1ba6cb['globalAlpha'] = 1;
 			!this['shooting'] && (this['shootingFrame'] = 0);
 			if (!this['reloading']) {
 				if ('esRsC' === 'esRsC')
@@ -22814,7 +22814,7 @@
 		}
 	}
 
-	function drawModel(_0x392233, _0x3d08c7, _0x3da64b, _0x283cd3, _0x2344cb, _0xb48e5c, _0x4fb1e4, _0x2e5301) {
+	function drawModel(_0x392233, _0x3d08c7, _0x3da64b, _0x283cd3, _0x2344cb, _0xb48e5c, _0x4fb1e4, _0x2e5301, scale) {
 		var _0x134ded = _0x3b4c10;
 		if (_0xb48e5c === undefined) {
 			if ('dRKWc' === 'dRKWc')
@@ -22893,6 +22893,7 @@
 		}
 		_0x4fb1e4 === undefined && (_0x4fb1e4 = '#005c99');
 		_0x2e5301 === undefined && (_0x2e5301 = 0);
+        scale === undefined && (scale = 1);
 		if (_0x3d08c7) {
 			if ('cPJwj' !== 'cPJwj')
 				_0x4d9fa7 = !![], _0x276824('registerEmail');
@@ -22913,14 +22914,14 @@
 			if ('DkNRI' !== 'DTpiL') {
 				var _0x4babee = [];
 				for (let _0x3abe1c = 0; _0x3abe1c < _0x2344cb[_0x5e5c8f]['length']; _0x3abe1c++) {
-					var _0x50e8a7 = _0x2344cb[_0x5e5c8f][_0x3abe1c][1],
-						_0x2db0ab = _0x283cd3 * (Math['PI'] / 180) - Math['PI'] / 2,
-						_0x2dd439 = _0x2344cb[_0x5e5c8f][_0x3abe1c][0] + _0x2e5301,
-						_0x329fe2 = Math['cos'](_0x50e8a7 + _0x2db0ab) * _0x2dd439,
-						_0x4a3a10 = Math['sin'](_0x50e8a7 + _0x2db0ab) * _0x2dd439;
+					var angle = _0x2344cb[_0x5e5c8f][_0x3abe1c][1],
+						angleRad = _0x283cd3 * (Math['PI'] / 180) - Math['PI'] / 2 ,
+						diameter = (_0x2344cb[_0x5e5c8f][_0x3abe1c][0] + _0x2e5301) * scale,
+						xOffset = Math['cos'](angle + angleRad) * diameter,
+						yOffset = Math['sin'](angle + angleRad) * diameter;
 					_0x4babee['push']([
-						_0x438ca7['x'] + _0x329fe2,
-						_0x438ca7['y'] + _0x4a3a10,
+						_0x438ca7['x'] + xOffset,
+						_0x438ca7['y'] + yOffset,
 						_0x2344cb[_0x5e5c8f][_0x3abe1c][2],
 						_0x2344cb[_0x5e5c8f][_0x3abe1c][3]
 					]);
@@ -22967,12 +22968,16 @@
 							case 1:
 								_0x1cc0b7++;
 								if (_0x1cc0b7 == 1)
-									'ycIPW' === 'ycIPW' ? (ctx['font'] = '30px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('You Killed ' + message['content'] + '!', hudXPosition, hudYPosition * 0.7)) : _0x48abe2(3, 'thermal', 0.646 * _0x94318a, 0.759 * _0x95b453, 1.715 * _0x490edd, 1.915 * _0x4fded6, 0.6);
+									'ycIPW' === 'ycIPW' 
+                                        ? (ctx['font'] = '30px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('You Killed ' + message['content'] + '!', hudXPosition, hudYPosition * 0.7)) 
+                                        : _0x48abe2(3, 'thermal', 0.646 * _0x94318a, 0.759 * _0x95b453, 1.715 * _0x490edd, 1.915 * _0x4fded6, 0.6);
 								else {
 									if (_0x1cc0b7 == 2) {
-										if ('TyIDe' === 'TyIDe')
-											ctx['font'] = '24px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('You Killed ' + message['content'] + '!', hudXPosition, hudYPosition * 0.6);
-										else {
+										if ('TyIDe' === 'TyIDe') {
+											ctx['font'] = '24px Arial'; 
+                                            ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                                            ctx['fillText']('You Killed ' + message['content'] + '!', hudXPosition, hudYPosition * 0.6);
+                                        } else {
 											if (_0x1b357c['list'] === _0x53bcc2)
 												return ![];
 											var _0x37beb4 = _0x571040['list'][0];
@@ -22985,28 +22990,41 @@
 								}
 								break;
 							case 2:
-								selectionMade = ![], ctx['font'] = '30px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('You were killed by ' + message['content'], hudXPosition, hudYPosition);
+								selectionMade = false;
+                                ctx['font'] = '30px Arial';
+                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')'; 
+                                ctx['fillText']('You were killed by ' + message['content'], hudXPosition, hudYPosition);
 								break;
 							case 3:
-								var _0x18f893 = message['content']['toString']();
-								ctx['font'] = '15px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('Hit Damage ' + _0x18f893, hudXPosition, hudYPosition * 0.8);
+								var content = message['content']['toString']();
+								ctx['font'] = '15px Arial';
+                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                                ctx['fillText']('Hit Damage ' + content, hudXPosition, hudYPosition * 0.8);
 								break;
 							case 4:
-								ctx['font'] = '30px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('You were killed by the fog!', hudXPosition, hudYPosition * 0.5);
+								ctx['font'] = '30px Arial';
+                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                                ctx['fillText']('You were killed by the fog!', hudXPosition, hudYPosition * 0.5);
 								break;
 							case 5:
-								ctx['font'] = '24px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('You have been inactive for 1 minute, you\'ll be kicked in 60 seconds...', hudXPosition, hudYPosition * 0.8);
+								ctx['font'] = '24px Arial';
+                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')'; 
+                                ctx['fillText']('You have been inactive for 1 minute, you\'ll be kicked in 60 seconds...', hudXPosition, hudYPosition * 0.8);
 								break;
 							case 6:
 								break;
 							case 7:
-								ctx['font'] = '20px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('Stats aren\'t tracked for adblock users. Please consider disabling your adblocker.', hudXPosition, hudYPosition * 0.4);
+								ctx['font'] = '20px Arial';
+                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                                ctx['fillText']('Stats aren\'t tracked for adblock users. Please consider disabling your adblocker.', hudXPosition, hudYPosition * 0.4);
 								break;
 							case 8:
 								_0x1b9075++;
 								var _0x4672dd = 'hidden';
 								message['content'] && (_0x4672dd = 'shown');
-								_0x1b9075 == 1 && ('ZeXCX' === 'pGOtN' ? _0x4e2f93(1, 'thermal', 0.646 * _0x176053, 0.759 * _0x129642, 1.715 * _0x57961e, 1.915 * _0x3d5620, 0.6) : (ctx['font'] = '20px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('Chat messages and usernames ' + _0x4672dd + '. Press [n] to toggle.', hudXPosition, hudYPosition * 0.3)));
+								_0x1b9075 == 1 && ('ZeXCX' === 'pGOtN' 
+                                    ? _0x4e2f93(1, 'thermal', 0.646 * _0x176053, 0.759 * _0x129642, 1.715 * _0x57961e, 1.915 * _0x3d5620, 0.6) 
+                                    : (ctx['font'] = '20px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('Chat messages and usernames ' + _0x4672dd + '. Press [n] to toggle.', hudXPosition, hudYPosition * 0.3)));
 								break;
 							case 9:
 								ctx['font'] = '30px Arial';

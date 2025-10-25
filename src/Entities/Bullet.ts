@@ -119,11 +119,16 @@ export default class Bullet extends RectangularMapObject {
 
         const [forward, side] = this.getOffset(player.gun);
 
-        const forwardX = Math.cos(angleRad) * forward;
-        const forwardY = Math.sin(angleRad) * forward;
+        //scale for custom radius
+        const scale = player.radius / 20;
+        const scaledForward = forward * scale;
+        const scaledSide = side * scale;
 
-        const sideX = Math.cos(sideAngleRad) * side;
-        const sideY = Math.sin(sideAngleRad) * side;
+        const forwardX = Math.cos(angleRad) * scaledForward;
+        const forwardY = Math.sin(angleRad) * scaledForward;
+
+        const sideX = Math.cos(sideAngleRad) * scaledSide;
+        const sideY = Math.sin(sideAngleRad) * scaledSide;
 
         const radiusOffsetX = Math.cos(angleRad) * (player.radius / 2);
         const radiusOffsetY = Math.sin(angleRad) * (player.radius / 2);
