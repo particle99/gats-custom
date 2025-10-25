@@ -270,8 +270,12 @@ export default class Codec {
         return `${Packets.KILLER_INFO_PACKET},${killed.score},${killed.kills},${0 /** time */},${0 /** shots fired */},${0 /** shots hit */},${0 /** damage dealt */},${0 /** damage received */},${0 /** distance covered */},${killer.username},${killer.isPremiumMember},${killer.gun},${killer.armor},${killer.color},${killer.kills},${killer.score},${killer.hp},${killer.armorAmount},${-1 /** level 1 power up */},${-1 /** level 2 powerup */},${-1 /** level 3 powerup */}|`;
     }
 
-    public buildOverlayMessagePacket(killer: PlayerEntity): string {
+    public buildKillerOverlayPacket(killer: PlayerEntity): string {
         return `${Packets.OVERLAY_MESSAGES_PACKET},${2 /** type */},${killer.username}|`;
+    }
+
+    public buildCustomOverlayPacket(message: string): string {
+        return `${Packets.OVERLAY_MESSAGES_PACKET},${10 /** custom message type */},${message}|`;
     }
 
     public buildRespawnPacket(): string {

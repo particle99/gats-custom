@@ -134,7 +134,7 @@ export default class PlayerStateManager {
             const playerKillerPacket = this.networkManager.codec.buildKillerInfoPacket(player, player.killer);
             const playerDeadPacket = this.networkManager.codec.buildPlayerDeadPacket();
             const respawnPacket = this.networkManager.codec.buildRespawnPacket();
-            const overlayPacket = this.networkManager.codec.buildOverlayMessagePacket(player.killer);
+            const overlayPacket = this.networkManager.codec.buildKillerOverlayPacket(player.killer);
             
             //only send above packets to the killed player
             player.queueManager.addToQueue(overlayPacket + playerDeadPacket + playerKillerPacket + respawnPacket);
@@ -218,6 +218,10 @@ export default class PlayerStateManager {
             
             //max out bullets
             player.currentBullets = player.maxBullets;
+
+            //build custom overlay message packet for reloading complete
+            //const overlayPacket = this.networkManager.codec.buildCustomOverlayPacket("Reload Complete");
+            //player.queueManager.addToQueue(overlayPacket);
             
             //remove reloading state
             player.fieldManager.safeRemoveState([EntityStateFlags.PLAYER_RELOADING]);
