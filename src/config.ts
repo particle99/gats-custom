@@ -13,5 +13,6 @@ export const config: Config = {
     noMidPerkTimeout: false,
     bulletDamageEnabled: true, 
     playerCollisionsEnabled: true,
-    premiumCratesEnabled: true
+    premiumCratesEnabled: true,
+    bottomlessMags: true
 }

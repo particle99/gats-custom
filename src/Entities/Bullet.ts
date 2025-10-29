@@ -34,6 +34,8 @@ export default class Bullet extends RectangularMapObject {
     public totalDistanceTraveled: number = 0;
     public maxDistanceTraveled: number = 0;
 
+    public alive: boolean = true;
+
     constructor(game: Game, uid: number, owner: PlayerEntity, gunType: string, isShrapnel: number, isKnife: number) { 
         super(uid, -1, 0, 0, 0); //set width and height to 0 for now
 

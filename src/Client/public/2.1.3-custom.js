@@ -18818,7 +18818,48 @@
 	};
 	var Player = function(_0x1d4aa1) {
 		var _0x4ccf8d = _0x3b4c10;
-		this['id'] = _0x1d4aa1, this['class'] = '', this['color'] = '', this['x'] = 0, this['y'] = 0, this['spdX'] = 0, this['spdY'] = 0, this['radius'] = 0, this['playerAngle'] = 0, this['hp'] = 0, this['hpRadius'] = 0, this['armorAmount'] = 0, this['shootingAnimation'] = null, this['beingHit'] = 0, this['shooting'] = 0, this['shootingFrame'] = 0, this['reloading'] = 0, this['reloadingFrame'] = 0, this['ghillie'] = 0, this['currentBullets'] = 0, this['maxBullets'] = 0, this['invincible'] = 0, this['username'] = '', this['thermal'] = 0, this['dashing'] = 0, this['isLeader'] = 0, this['isPremiumMember'] = 0, this['chatBoxOpen'] = 0, this['chatMessage'] = '', this['chatMessageTimer'] = 0, this['currentBullets'] = 0, this['maxBullets'] = 0, this['armor'] = 0, this['camera'] = 0, this['hpMax'] = 0, this['kills'] = 0, this['deaths'] = 0, this['score'] = 0, this['teamCode'] = 0, this['numExplosivesLeft'] = 0, this['activated'] = 0;
+		this['id'] = _0x1d4aa1; 
+    this['class'] = ''; 
+    this['color'] = '';
+    this['x'] = 0;
+    this['y'] = 0; 
+    this['spdX'] = 0; 
+    this['spdY'] = 0; 
+    this['radius'] = 0;
+    this['playerAngle'] = 0; 
+    this['hp'] = 0; 
+    this['hpRadius'] = 0; 
+    this['armorAmount'] = 0; 
+    this['shootingAnimation'] = null; 
+    this['beingHit'] = 0; 
+    this['shooting'] = 0; 
+    this['shootingFrame'] = 0; 
+    this['reloading'] = 0; 
+    this['reloadingFrame'] = 0; 
+    this['ghillie'] = 0; 
+    this['currentBullets'] = 0; 
+    this['maxBullets'] = 0; 
+    this['invincible'] = 0;
+    this['username'] = ''; 
+    this['thermal'] = 0; 
+    this['dashing'] = 0; 
+    this['isLeader'] = 0; 
+    this['isBoss'] = 0;
+    this['isPremiumMember'] = 0; 
+    this['chatBoxOpen'] = 0; 
+    this['chatMessage'] = '';
+    this['chatMessageTimer'] = 0; 
+    this['currentBullets'] = 0; 
+    this['maxBullets'] = 0; 
+    this['armor'] = 0; 
+    this['camera'] = 0; 
+    this['hpMax'] = 0; 
+    this['kills'] = 0; 
+    this['deaths'] = 0; 
+    this['score'] = 0; 
+    this['teamCode'] = 0;
+    this['numExplosivesLeft'] = 0; 
+    this['activated'] = 0;
 	};
 	Player['prototype']['pool'] = {}, Player['prototype']['activate'] = function(_0x569d3d, _0x4a5c8d) {
 		var _0x4272e9 = _0x3b4c10;
@@ -18828,7 +18869,29 @@
 			else
 				return _0x3a9d8e(_0x245ba9);
 		}
-		this['class'] = _0x569d3d['class'], this['color'] = _0x569d3d['color'], this['x'] = parseFloat(_0x569d3d['x'] / 10), this['y'] = parseFloat(_0x569d3d['y'] / 10), this['radius'] = parseInt(_0x569d3d['radius'] / 10), this['playerAngle'] = parseInt(_0x569d3d['playerAngle']), this['hp'] = parseInt(_0x569d3d['hp']), this['hpRadius'] = this['hp'] * this['radius'] / 100, this['armorAmount'] = parseInt(_0x569d3d['armorAmount']), this['shootingAnimation'] = getAnimation('shooting', this['class']), this['ghillie'] = _0x569d3d['ghillie'], this['maxBullets'] = _0x569d3d['maxBullets'], this['invincible'] = _0x569d3d['invincible'], this['username'] = formatUserName(_0x569d3d['username']), this['isLeader'] = parseInt(_0x569d3d['isLeader']), this['isPremiumMember'] = parseInt(_0x569d3d['isPremiumMember']), this['teamCode'] = parseInt(_0x569d3d['teamCode']), this['chatBoxOpen'] = parseInt(_0x569d3d['chatBoxOpen']), !_0x4a5c8d && ('grwhf' === 'grwhf' ? (this['currentBullets'] = parseInt(_0x569d3d['currentBullets']), this['maxBullets'] = parseInt(_0x569d3d['maxBullets']), this['armor'] = _0x569d3d['armor'], this['camera'] = _0x569d3d['camera'], this['hpMax'] = _0x569d3d['hpMax'], this['numExplosivesLeft'] = 3, currentWidth = parseInt(_0x569d3d['mapWidth']) / 10, currentHeight = parseInt(_0x569d3d['mapHeight']) / 10) : _0x348dd7['className'] += ' selected-box'), this['activated'] = 1;
+    console.log(_0x569d3d);
+		this['class'] = _0x569d3d['class'];
+    this['color'] = _0x569d3d['color'];
+    this['x'] = parseFloat(_0x569d3d['x'] / 10);
+    this['y'] = parseFloat(_0x569d3d['y'] / 10);
+    this['radius'] = parseInt(_0x569d3d['radius'] / 10);
+    this['playerAngle'] = parseInt(_0x569d3d['playerAngle']);
+    this['hp'] = parseInt(_0x569d3d['hp']);
+    this['hpRadius'] = this['hp'] * this['radius'] / 100; 
+    this['armorAmount'] = parseInt(_0x569d3d['armorAmount']); 
+    this['shootingAnimation'] = getAnimation('shooting', this['class']);
+    this['ghillie'] = _0x569d3d['ghillie']; 
+    this['maxBullets'] = _0x569d3d['maxBullets']; 
+    this['invincible'] = _0x569d3d['invincible'];
+    this['username'] = formatUserName(_0x569d3d['username']);
+    this['isLeader'] = parseInt(_0x569d3d['isLeader']);
+    this['isBoss'] = parseInt(_0x569d3d['isBoss']);
+    this['isPremiumMember'] = parseInt(_0x569d3d['isPremiumMember']);
+    this['teamCode'] = parseInt(_0x569d3d['teamCode']);
+    this['chatBoxOpen'] = parseInt(_0x569d3d['chatBoxOpen']);
+    !_0x4a5c8d && ('grwhf' === 'grwhf' 
+      ? (this['currentBullets'] = parseInt(_0x569d3d['currentBullets']), this['maxBullets'] = parseInt(_0x569d3d['maxBullets']), this['armor'] = _0x569d3d['armor'], this['camera'] = _0x569d3d['camera'], this['hpMax'] = _0x569d3d['hpMax'], this['numExplosivesLeft'] = 3, currentWidth = parseInt(_0x569d3d['mapWidth']) / 10, currentHeight = parseInt(_0x569d3d['mapHeight']) / 10) 
+      : _0x348dd7['className'] += ' selected-box'), this['activated'] = 1;
 	}, Player['prototype']['deactivate'] = function() {
 		var _0x225bb8 = _0x3b4c10;
 		this['class'] = this['color'] = this['username'] = this['chatMessage'] = '', this['x'] = this['y'] = this['spdX'] = this['spdY'] = this['radius'] = this['playerAngle'] = this['hp'] = 0, this['hpRadius'] = this['armorAmount'] = this['beingHit'] = this['shooting'] = this['shootingFrame'] = 0, this['reloading'] = this['reloadingFrame'] = this['ghillie'] = this['currentBullets'] = 0, this['maxBullets'] = this['invincible'] = this['thermal'] = this['dashing'] = this['chatBoxOpen'] = 0, this['invincible'] = this['thermal'] = this['dashing'] = this['chatBoxOpen'] = this['chatMessageTimer'] = 0, this['currentBullets'] = this['maxBullets'] = this['armor'] = this['camera'] = this['hpMax'] = this['kills'] = 0, this['deaths'] = this['score'] = 0, this['isLeader'] = 0, this['teamCode'] = 0, this['isPremiumMember'] = 0, this['shootingAnimation'] = null, this['activated'] = 0;
@@ -18986,7 +19049,7 @@
 				}
 			}
 			this['invincible'] && ('pkaTv' === 'dRyCX' ? (_0x2873f7['id'] == _0x12aaf5 && (_0xa9686b = 6), this['beingHit'] = _0x52ce3c(_0x316ca6['beingHit'])) : _0x1ba6cb['globalAlpha'] = 0.3);
-			drawModel(_0x1ba6cb, _0x1a11b4, this['getAttr'](), this['playerAngle'], _0x14c767, 4, null, _0x671a6c, this['radius'] / 20), _0x1ba6cb['globalAlpha'] = 1;
+			drawModel(_0x1ba6cb, _0x1a11b4, this['getAttr'](), this['playerAngle'], _0x14c767, 4, null, _0x671a6c, this['radius'] / 20, this['isBoss']), _0x1ba6cb['globalAlpha'] = 1;
 			!this['shooting'] && (this['shootingFrame'] = 0);
 			if (!this['reloading']) {
 				if ('esRsC' === 'esRsC')
@@ -20010,9 +20073,10 @@
 						'username': _0x147ac5[18],
 						'invincible': _0x147ac5[19],
 						'isLeader': _0x147ac5[20],
-						'isPremiumMember': parseInt(_0x147ac5[21]),
-						'teamCode': parseInt(_0x147ac5[22]),
-						'isolatedUsername': _0x147ac5[23]
+            'isBoss': _0x147ac5[21],
+						'isPremiumMember': parseInt(_0x147ac5[22]),
+						'teamCode': parseInt(_0x147ac5[23]),
+						'isolatedUsername': _0x147ac5[24]
 				};
 			case 'b':
 				return {
@@ -20061,9 +20125,10 @@
 						'ghillie': _0x147ac5[12],
 						'invincible': _0x147ac5[13],
 						'isLeader': _0x147ac5[14],
-						'isPremiumMember': _0x147ac5[15],
-						'teamCode': _0x147ac5[16],
-						'chatBoxOpen': parseInt(_0x147ac5[17])
+            'isBoss': _0x147ac5[15],
+						'isPremiumMember': _0x147ac5[16],
+						'teamCode': _0x147ac5[17],
+						'chatBoxOpen': parseInt(_0x147ac5[18])
 				};
 			case 'e':
 				return {
@@ -22814,126 +22879,148 @@
 		}
 	}
 
-	function drawModel(_0x392233, _0x3d08c7, _0x3da64b, _0x283cd3, _0x2344cb, _0xb48e5c, _0x4fb1e4, _0x2e5301, scale) {
-		var _0x134ded = _0x3b4c10;
-		if (_0xb48e5c === undefined) {
-			if ('dRKWc' === 'dRKWc')
-				_0xb48e5c = 4;
-			else {
-				_0x1db354['preventDefault']();
-				if (_0x1750f2['keyCode'] == 65)
-					_0x246c47['list'][0]['send'](_0x2aff70('key-press', {
-						'inputId': 0,
-						'state': 0
-					}));
-				else {
-					if (_0x1985fd['keyCode'] == 68)
-						_0x2b61dc['list'][0]['send'](_0x312a7f('key-press', {
-							'inputId': 1,
-							'state': 0
-						}));
-					else {
-						if (_0x55fa80['keyCode'] == 87)
-							_0x46ae82['list'][0]['send'](_0x595215('key-press', {
-								'inputId': 2,
-								'state': 0
-							}));
-						else {
-							if (_0x1b7a56['keyCode'] == 83)
-								_0x48207c['list'][0]['send'](_0x3a8be0('key-press', {
-									'inputId': 3,
-									'state': 0
-								}));
-							else {
-								if (_0x155816['keyCode'] == 37)
-									_0x3709de['list'][0]['send'](_0x436af3('key-press', {
-										'inputId': 0,
-										'state': 0
-									}));
-								else {
-									if (_0x5440e2['keyCode'] == 39)
-										_0x3d805e['list'][0]['send'](_0x101864('key-press', {
-											'inputId': 1,
-											'state': 0
-										}));
-									else {
-										if (_0x1d1bca['keyCode'] == 38)
-											_0xe3ce08['list'][0]['send'](_0x35214a('key-press', {
-												'inputId': 2,
-												'state': 0
-											}));
-										else {
-											if (_0x16df31['keyCode'] == 40)
-												_0x1ef437['list'][0]['send'](_0x5a75ed('key-press', {
-													'inputId': 3,
-													'state': 0
-												}));
-											else {
-												if (_0xbf3393['keyCode'] == 82)
-													_0x47ec4b['list'][0]['send'](_0x25e2be('key-press', {
-														'inputId': 4,
-														'state': 0
-													}));
-												else {
-													if (_0x521b79['keyCode'] == 32)
-														_0x4d1154['list'][0]['send'](_0x4efdbe('key-press', {
-															'inputId': 5,
-															'state': 0
-														}));
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		_0x4fb1e4 === undefined && (_0x4fb1e4 = '#005c99');
-		_0x2e5301 === undefined && (_0x2e5301 = 0);
-        scale === undefined && (scale = 1);
-		if (_0x3d08c7) {
-			if ('cPJwj' !== 'cPJwj')
-				_0x4d9fa7 = !![], _0x276824('registerEmail');
-			else
-				var _0x438ca7 = _0x3d08c7['getRelPos'](_0x3da64b);
-		} else {
-			if ('VbyQn' !== 'nRdma')
-				var _0x438ca7 = {
-					'x': _0x3da64b['x'],
-					'y': _0x3da64b['y']
-				};
-			else
-				this['maxBullets'] = _0x3f873d(_0x1199fb['maxBullets']);
-		}
-		_0x392233['strokeStyle'] = _0x4fb1e4, _0x392233['lineWidth'] = _0xb48e5c;
-		var _0x39566d = [];
-		for (let _0x5e5c8f = 0; _0x5e5c8f < _0x2344cb['length']; _0x5e5c8f++) {
-			if ('DkNRI' !== 'DTpiL') {
-				var _0x4babee = [];
-				for (let _0x3abe1c = 0; _0x3abe1c < _0x2344cb[_0x5e5c8f]['length']; _0x3abe1c++) {
-					var angle = _0x2344cb[_0x5e5c8f][_0x3abe1c][1],
-						angleRad = _0x283cd3 * (Math['PI'] / 180) - Math['PI'] / 2 ,
-						diameter = (_0x2344cb[_0x5e5c8f][_0x3abe1c][0] + _0x2e5301) * scale,
-						xOffset = Math['cos'](angle + angleRad) * diameter,
-						yOffset = Math['sin'](angle + angleRad) * diameter;
-					_0x4babee['push']([
-						_0x438ca7['x'] + xOffset,
-						_0x438ca7['y'] + yOffset,
-						_0x2344cb[_0x5e5c8f][_0x3abe1c][2],
-						_0x2344cb[_0x5e5c8f][_0x3abe1c][3]
-					]);
-				}
-				_0x39566d['push'](_0x4babee);
-			} else {
-				var _0x2aac18 = _0x318087(_0xfc8494);
-				return _0x12bea3(_0x2aac18);
-			}
-		}
-		draw(_0x392233, _0x39566d), _0x392233['strokeStyle'] = '#FFF', _0x392233['lineWidth'] = 1;
-	}
+  function drawModel(ctx, _0x3d08c7, _0x3da64b, mouseAngle, playerModel, lineWidth, strokeStyle, _0x2e5301, scale, isBoss) {
+    var _0x134ded = _0x3b4c10;
+    if (lineWidth === undefined) {
+      if ('dRKWc' === 'dRKWc')
+        lineWidth = 4;
+      else {
+        _0x1db354['preventDefault']();
+        if (_0x1750f2['keyCode'] == 65)
+          _0x246c47['list'][0]['send'](_0x2aff70('key-press', {
+            'inputId': 0,
+            'state': 0
+          }));
+        else {
+          if (_0x1985fd['keyCode'] == 68)
+            _0x2b61dc['list'][0]['send'](_0x312a7f('key-press', {
+              'inputId': 1,
+              'state': 0
+            }));
+          else {
+            if (_0x55fa80['keyCode'] == 87)
+              _0x46ae82['list'][0]['send'](_0x595215('key-press', {
+                'inputId': 2,
+                'state': 0
+              }));
+            else {
+              if (_0x1b7a56['keyCode'] == 83)
+                _0x48207c['list'][0]['send'](_0x3a8be0('key-press', {
+                  'inputId': 3,
+                  'state': 0
+                }));
+              else {
+                if (_0x155816['keyCode'] == 37)
+                  _0x3709de['list'][0]['send'](_0x436af3('key-press', {
+                    'inputId': 0,
+                    'state': 0
+                  }));
+                else {
+                  if (_0x5440e2['keyCode'] == 39)
+                    _0x3d805e['list'][0]['send'](_0x101864('key-press', {
+                      'inputId': 1,
+                      'state': 0
+                    }));
+                  else {
+                    if (_0x1d1bca['keyCode'] == 38)
+                      _0xe3ce08['list'][0]['send'](_0x35214a('key-press', {
+                        'inputId': 2,
+                        'state': 0
+                      }));
+                    else {
+                      if (_0x16df31['keyCode'] == 40)
+                        _0x1ef437['list'][0]['send'](_0x5a75ed('key-press', {
+                          'inputId': 3,
+                          'state': 0
+                        }));
+                      else {
+                        if (_0xbf3393['keyCode'] == 82)
+                          _0x47ec4b['list'][0]['send'](_0x25e2be('key-press', {
+                            'inputId': 4,
+                            'state': 0
+                          }));
+                        else {
+                          if (_0x521b79['keyCode'] == 32)
+                            _0x4d1154['list'][0]['send'](_0x4efdbe('key-press', {
+                              'inputId': 5,
+                              'state': 0
+                            }));
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    strokeStyle === undefined && (strokeStyle = '#005c99');
+    _0x2e5301 === undefined && (_0x2e5301 = 0);
+    scale === undefined && (scale = 1);
+    isBoss === undefined && (isBoss = 0);
+    if (_0x3d08c7) {
+      if ('cPJwj' !== 'cPJwj')
+        _0x4d9fa7 = !![], _0x276824('registerEmail');
+      else
+        var relativePos = _0x3d08c7['getRelPos'](_0x3da64b);
+    } else {
+      if ('VbyQn' !== 'nRdma')
+        var relativePos = {
+          'x': _0x3da64b['x'],
+          'y': _0x3da64b['y']
+        };
+      else
+        this['maxBullets'] = _0x3f873d(_0x1199fb['maxBullets']);
+    }
+    ctx['strokeStyle'] = strokeStyle;
+    ctx['lineWidth'] = lineWidth;
+    var models = [];
+
+    var mouseAngleRadians;
+    var baseOffset = (scale - 1) * 20;
+    var offsetX = Math.cos(mouseAngleRadians) * baseOffset;
+    var offsetY = Math.sin(mouseAngleRadians) * baseOffset;
+
+    for (let _0x5e5c8f = 0; _0x5e5c8f < playerModel['length']; _0x5e5c8f++) {
+      if ('DkNRI' !== 'DTpiL') {
+        var translatedModel = [];
+        for (let _0x3abe1c = 0; _0x3abe1c < playerModel[_0x5e5c8f]['length']; _0x3abe1c++) {
+          var angle = playerModel[_0x5e5c8f][_0x3abe1c][1];
+          var diameter = (playerModel[_0x5e5c8f][_0x3abe1c][0] + _0x2e5301);
+          
+          var xOffset, yOffset;
+          if (isBoss) {
+            // For boss: project gun points onto the centerline (mouseAngle direction only)
+            // This makes the gun perfectly centered like a tank barrel
+            mouseAngleRadians = mouseAngle * (Math.PI / 180);
+            xOffset = Math['cos'](mouseAngleRadians) * diameter + offsetX;
+            yOffset = Math['sin'](mouseAngleRadians) * diameter + offsetY;
+          } else {
+            // Normal: use both angle and radius
+            mouseAngleRadians = mouseAngle * (Math.PI / 180) - (Math.PI)/2;
+            xOffset = Math['cos'](angle + mouseAngleRadians) * diameter + offsetX;
+            yOffset = Math['sin'](angle + mouseAngleRadians) * diameter + offsetY;
+          }
+          
+          translatedModel['push']([
+            relativePos['x'] + xOffset,
+            relativePos['y'] + yOffset,
+            playerModel[_0x5e5c8f][_0x3abe1c][2],
+            playerModel[_0x5e5c8f][_0x3abe1c][3]
+          ]);
+        }
+        models['push'](translatedModel);
+      } else {
+        var _0x2aac18 = _0x318087(_0xfc8494);
+        return _0x12bea3(_0x2aac18);
+      }
+    }
+    draw(ctx, models);
+    ctx['strokeStyle'] = '#FFF';
+    ctx['lineWidth'] = 1;
+  }
 
 	function draw(_0x56c3b2, _0x3eec47) {
 		var _0x2f611b = _0x3b4c10;
