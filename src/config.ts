@@ -14,5 +14,8 @@ export const config: Config = {
     bulletDamageEnabled: true, 
     playerCollisionsEnabled: true,
     premiumCratesEnabled: true,
-    bottomlessMags: true
+    //bottomlessMags: true,
+    //generateMaze: {
+    //    organic: true
+    //}
 }

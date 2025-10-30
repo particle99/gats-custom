@@ -8,6 +8,8 @@ import ExplosiveManager from './Entities/Managers/ExplosiveManager';
 import SpawnManager from './Entities/Managers/SpawnManager';
 import Codec from './Network/Codec';
 
+import MazeGenerator from './Crate/MazeGenerator';
+
 import crateData from './Crate/crateData.json';
 
 import { Config } from './Enums/Config';
@@ -76,10 +78,25 @@ export default class Game {
         this.socketToIp = new Map(); //container for socket to IP mapping
         this.ips = new Map(); //container for IPs and their connections
 
+        /** Maze */
+        if(config?.generateMaze) {
+            const mazeGenerator = new MazeGenerator(7000, 100, 500, 3500, 3500);
+            let mazeData;
+
+            /** Maze generation type */
+            if(config.generateMaze?.open) mazeData = mazeGenerator.generateOpen();
+            if(config.generateMaze?.organic) mazeData = mazeGenerator.generateOrganic();
+            if(config.generateMaze?.backtrack) mazeData = mazeGenerator.generate();
+
+            this.crateManager = new CrateManager(this, mazeData);
+        } else {
+            /** Default crate values */
+            this.crateManager = new CrateManager(this, this.crateData);
+        }
+
         /** Managers */
         this.codec = new Codec(this);
         this.networkManager = new NetworkManager(this, this.codec);
-        this.crateManager = new CrateManager(this, this.crateData);
         this.spawnManager = new SpawnManager(this, 10); //10 valid spawn positions per chunk
         this.playerManager = new PlayerManager(this);
         this.bulletManager = new BulletManager(this, this.playerManager.spatialGrid);

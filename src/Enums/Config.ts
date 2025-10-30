@@ -28,4 +28,9 @@ export interface Config {
     playerCollisionsEnabled?: boolean // Enable player collisions (done)
     bulletCollisionsEnabled?: boolean // Enable bullet collisions with players (done)
     premiumCratesEnabled?: boolean // Enable premium crates for the game instance (done)
+    generateMaze?: { // Maze gamemode (done)
+        open?: boolean, // More open maze; less dead ends, less challenging
+        organic?: boolean, // More dead ends; less open, more challenging 
+        backtrack?: boolean // Only one path; many dead ends, very challenging
+    }
 }
