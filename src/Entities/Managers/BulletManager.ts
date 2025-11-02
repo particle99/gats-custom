@@ -1,11 +1,11 @@
-import { rectCircleCollision, rectRectCollision } from '../../Collision/BulletCollisions';
+import { rectCircleCollision, rectRectCollision } from '../../Util/Collision/BulletCollisions';
 
 import Game from '../../Game';
 import Bullet from './../Bullet';
 import { RectangularMapObject, UserCrateObject } from '../MapObject';
 
 import PlayerEntity from './../PlayerEntity';
-import SpatialGrid from '../../Collision/SpatialGrid'
+import SpatialGrid from '../../Util/SpatialGrid'
 
 export default class BulletManager {
     public game: Game;

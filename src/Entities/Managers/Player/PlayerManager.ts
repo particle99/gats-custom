@@ -2,7 +2,7 @@ import { EntityStateFlags } from "../../../Enums/Flags";
 
 import Game from "../../../Game";
 import PlayerEntity from '../../PlayerEntity';
-import SpatialGrid from '../../../Collision/SpatialGrid';
+import SpatialGrid from '../../../Util/SpatialGrid';
 import { MedKitObject, RectangularMapObject } from '../../MapObject';
 
 export default class PlayerManager {

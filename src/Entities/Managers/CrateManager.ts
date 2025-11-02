@@ -1,4 +1,4 @@
-import SpatialGrid from '../../Collision/SpatialGrid';
+import SpatialGrid from '../../Util/SpatialGrid';
 import { ObjectUpdateFields } from '../../Enums/Fields';
 import Game from '../../Game';
 import MedKit from '../../Upgrades/Secondary/Misc/MedKit';
