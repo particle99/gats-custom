@@ -286,6 +286,9 @@ export default class PlayerEntity extends Player {
         const owner = this.game.playerManager.players.get(ownerId);
         if(!owner) return;
 
+        //check this first
+        if(this.fieldManager.state.includes(EntityStateFlags.PLAYER_REGENERATING)) this.fieldManager.safeRemoveState([EntityStateFlags.PLAYER_REGENERATING]);
+
         this.beingHit = 1;
 
         let leftoverDamage: number = damage;

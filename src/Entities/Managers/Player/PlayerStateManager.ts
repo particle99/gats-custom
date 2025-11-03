@@ -28,6 +28,7 @@ export default class PlayerStateManager {
 
         for (const player of this.networkManager.game.playerManager.players.values()) {
             const playerPacket = [];
+
             //always include player update packet
             playerPacket.push(this.networkManager.codec.buildPlayerUpdatePacket(player));
             
@@ -151,7 +152,10 @@ export default class PlayerStateManager {
         const lastRegenTick = player.lastRegenTick;
 
         //because regen is only appened after being hit, make sure to remove the field
-        if(player.fieldManager.fields.AUX_UPDATE_FIELDS.includes('beingHit') && !player.isInFog) {
+        if(player.fieldManager.fields.AUX_UPDATE_FIELDS.includes('beingHit') 
+            && !player.isInFog
+            && player.beingHit
+        ) {
             player.fieldManager.fields.AUX_UPDATE_FIELDS = player.fieldManager.fields.AUX_UPDATE_FIELDS.filter(field => field !== 'beingHit');
             player.beingHit = 0;
         }
