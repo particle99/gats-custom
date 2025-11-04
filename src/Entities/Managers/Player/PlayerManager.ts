@@ -100,8 +100,8 @@ export default class PlayerManager {
     private isInFog(player: PlayerEntity): boolean {
         const fogSize = this.game.fogSize / 2;
 
-        const mapCenterX = this.game.mapWidth / 2;
-        const mapCenterY = this.game.mapHeight / 2;
+        const mapCenterX = this.game.arenaSize / 2;
+        const mapCenterY = this.game.arenaSize / 2;
 
         return (
             player.x < mapCenterX - fogSize ||
@@ -134,8 +134,8 @@ export default class PlayerManager {
         const maxAttempts = 100;
         
         do {
-            player.x = Math.floor(Math.random() * this.game.mapWidth);
-            player.y = Math.floor(Math.random() * this.game.mapHeight);
+            player.x = Math.floor(Math.random() * this.game.arenaSize);
+            player.y = Math.floor(Math.random() * this.game.arenaSize);
             attempts++;
         } while(this.isCollidingWithCrates(player) && attempts < maxAttempts);
     }
@@ -303,8 +303,8 @@ export default class PlayerManager {
 
         this.handlePlayerPlayerCollisions(player, crateCollisionData);
 
-        player.x = Math.max(player.radius, Math.min(player.x, this.game.mapWidth - player.radius));
-        player.y = Math.max(player.radius, Math.min(player.y, this.game.mapHeight - player.radius));
+        player.x = Math.max(player.radius, Math.min(player.x, this.game.arenaSize - player.radius));
+        player.y = Math.max(player.radius, Math.min(player.y, this.game.arenaSize - player.radius));
     }
 
     private handlePlayerPlayerCollisions(player: PlayerEntity, nearbyCrates?: Array<{ x: number, y: number, width: number, height: number }>): void {

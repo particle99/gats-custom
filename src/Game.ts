@@ -41,9 +41,8 @@ export default class Game {
     /** Crate data */
     public crateData: Array<any> = crateData;
 
-    /** Map width and height */
-    public mapWidth: number = 7000;
-    public mapHeight: number = 7000;
+    /** Arena size */
+    public arenaSize: number = 7000;
     
     /** Room fog size */
     public baseFogSize: number = 2000;
@@ -80,7 +79,14 @@ export default class Game {
 
         /** Maze */
         if(config?.generateMaze) {
-            const mazeGenerator = new MazeGenerator(7000, 100, 500, 3500, 3500);
+            /** Constants */
+            const mapSize = this.arenaSize,
+                cellSize = this.arenaSize / 100, //100 cells
+                centerRadius = this.arenaSize / 14, //center radius scales with arena size
+                centerX = this.arenaSize / 2,
+                centerY = this.arenaSize / 2;
+
+            const mazeGenerator = new MazeGenerator(mapSize, cellSize, centerRadius, centerX, centerY);
             let mazeData;
 
             /** Maze generation type */

@@ -37,8 +37,8 @@ export default class SpawnManager {
 
         this.validPositionsPerChunk = validPositionsPerChunk;
 
-        this.mapCenterX = game.mapWidth / 2;
-        this.mapCenterY = game.mapHeight / 2;
+        this.mapCenterX = game.arenaSize / 2;
+        this.mapCenterY = game.arenaSize / 2;
 
         this.chunkWidth = game.fogSize / this.rows;
         this.chunkHeight = game.fogSize / this.cols;
