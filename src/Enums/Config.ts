@@ -32,5 +32,6 @@ export interface Config {
         open?: boolean, // More open maze; less dead ends, less challenging
         organic?: boolean, // More dead ends; less open, more challenging 
         backtrack?: boolean // Only one path; many dead ends, very challenging
-    }
+    },
+    customClient?: boolean, // Custom client enabled (done)
 }

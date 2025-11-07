@@ -139,6 +139,13 @@ export default class NetworkManager {
         console.log("player joined with uid:", player.uid);
     }
 
+    public loadScoreSquares(player: PlayerEntity): void {
+        //if there are no custom score squares, loop will not run
+        for(const square of this.game.gameClass.scoreSquares) {
+            player.queueManager.addToQueue(this.codec.buildCustomScoreSquarePacket(square.x, square.y, square.width, square.height, square.team));
+        }
+    }
+
     public onJoin(packet: PacketType, ws: WebSocket): void {
         //respawn
         if(this.socketToPlayer.has(ws)) {
@@ -166,10 +173,21 @@ export default class NetworkManager {
 
             this.addPlayer(ws, player);
 
+            //join packet
             player.queueManager.addToQueue(this.codec.buildJoinPacket(player));
+            //gamemode packet
+            player.queueManager.addToQueue(this.codec.buildGamemodePacket(this.game.gameMode));
+
+            //load score squares
+            this.loadScoreSquares(player);
             
             this.codec.loadPrerequisites(player);
             this.broadcast(this.codec.buildLeaderboardPacket());
+
+            //display custom join message
+            if(this.game.config?.customClient !== undefined) {
+                if(this.game.config.customClient) this.broadcast(this.codec.buildCustomOverlayPacket(`Player ${player.username} has joined the arena!`));
+            }
 
             player.fieldManager.safeUpdate({
                 states: [EntityStateFlags.ACTIVATION_UPDATE, EntityStateFlags.FIRST_PERSON_UPDATE],
@@ -232,11 +250,11 @@ export default class NetworkManager {
         const upgradeLevel = parseInt(packet.parts[2]);
 
         if(upgradeLevel == 1 || upgradeLevel == 3) {
-            if(this.game.config?.allowLevelOneUpgrades) {
+            if(this.game.config?.allowLevelOneUpgrades !== undefined) {
                 if(this.game.config.allowLevelOneUpgrades !== true && upgradeLevel == 1) return;
             }
 
-            if(this.game.config?.allowLevelThreeUpgrades) {
+            if(this.game.config?.allowLevelThreeUpgrades !== undefined) {
                 if(this.game.config.allowLevelThreeUpgrades !== true && upgradeLevel == 3) return;
             }
 
@@ -266,7 +284,7 @@ export default class NetworkManager {
             //apply the upgrade
             upgrade.applyUpgrade();
         } else if(upgradeLevel == 2) {
-            if(this.game.config?.allowLevelTwoUpgrades) {
+            if(this.game.config?.allowLevelTwoUpgrades !== undefined) {
                 if(this.game.config.allowLevelTwoUpgrades !== true) return;
             }
 
@@ -278,7 +296,7 @@ export default class NetworkManager {
             let upgrade: SecondaryUpgrade;
             let crateIsPremium = 0;
 
-            if(this.game.config?.premiumCratesEnabled) {
+            if(this.game.config?.premiumCratesEnabled !== undefined) {
                 if(this.game.config.premiumCratesEnabled === true) crateIsPremium = 1;
             }
 

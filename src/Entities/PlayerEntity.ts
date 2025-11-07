@@ -143,21 +143,21 @@ export default class PlayerEntity extends Player {
         this.maxSpeed = this.maxSpeed - ArmorWeights[this.armor];
 
         // config dependent attributes
-        this.game.config?.maxHealth && (this.hpMax = this.game.config.maxHealth);
-        this.game.config?.maxSpeed && (this.maxSpeed = this.game.config.maxSpeed);
-        this.game.config?.startingScore ? this.score = this.game.config.startingScore : this.score = 0;
-        this.game.config?.scoreSquareGain && (this.scoreSquareGain = this.game.config.scoreSquareGain);
-        this.game.config?.healthRegenPerTick && (this.healthRegenPerTick = this.game.config.healthRegenPerTick);
-        this.game.config?.armorRegenPerTick && (this.armorRegenPerTick = this.game.config.armorRegenPerTick);
+        this.game.config?.maxHealth !== undefined && (this.hpMax = this.game.config.maxHealth);
+        this.game.config?.maxSpeed !== undefined && (this.maxSpeed = this.game.config.maxSpeed);
+        this.game.config?.startingScore !== undefined ? this.score = this.game.config.startingScore : this.score = 0;
+        this.game.config?.scoreSquareGain !== undefined && (this.scoreSquareGain = this.game.config.scoreSquareGain);
+        this.game.config?.healthRegenPerTick !== undefined && (this.healthRegenPerTick = this.game.config.healthRegenPerTick);
+        this.game.config?.armorRegenPerTick !== undefined && (this.armorRegenPerTick = this.game.config.armorRegenPerTick);
 
         // armor config
-        if(this.game.config?.allowLevelOneArmor) {
+        if(this.game.config?.allowLevelOneArmor !== undefined) {
             if(!this.game.config.allowLevelOneArmor && this.armor == 1) this.armor = 0;
         }
-        if(this.game.config?.allowLevelTwoArmor) {
+        if(this.game.config?.allowLevelTwoArmor !== undefined) {
             if(!this.game.config.allowLevelTwoArmor && this.armor == 2) this.armor = 0;
         }
-        if(this.game.config?.allowLevelThreeArmor) {
+        if(this.game.config?.allowLevelThreeArmor !== undefined) {
             if(!this.game.config.allowLevelThreeArmor && this.armor == 3) this.armor = 0;
         }
 
@@ -200,7 +200,7 @@ export default class PlayerEntity extends Player {
         //reset all player attributes
         this.radius = 20;
         this.hp = this.hpMax;
-        this.game.config?.startingScore ? this.score = this.game.config.startingScore : this.score = 0;
+        this.game.config?.startingScore !== undefined ? this.score = this.game.config.startingScore : this.score = 0;
         this.level = 0;
         this.currentBullets = this.maxBullets;
         this.reloading = 0;
@@ -246,7 +246,7 @@ export default class PlayerEntity extends Player {
             for(let i = 0; i < 8; i++) this.currentBullet.push(this.game.bulletManager.createBullet(this, 0, 0));
         } else this.currentBullet.push(this.game.bulletManager.createBullet(this, 0, 0));
 
-        this.game.config?.bottomlessMags ? 0 : this.currentBullets--;
+        this.game.config?.bottomlessMags !== undefined ? 0 : this.currentBullets--;
 
         //recoil
         const angle = (this.playerAngle * Math.PI / 180) + Math.PI;
@@ -267,8 +267,13 @@ export default class PlayerEntity extends Player {
         //using powerups only applies to level two powerups
         if(!this.levelTwoUpgrade) return;
 
-        if(this.game.config?.noMidPerkTimeout) {
-            if(this.game.config.noMidPerkTimeout == true) {
+        if(this.game.config?.noMidPerkTimeout !== undefined) {
+            if(this.game.config.noMidPerkTimeout) {
+                this.levelTwoUpgrade.activate();
+                this.activationTick = this.game.tick;
+            } else if(!this.game.config.noMidPerkTimeout) {
+                if(this.game.tick - this.activationTick <= this.levelTwoUpgrade.cooldown) return;
+                
                 this.levelTwoUpgrade.activate();
                 this.activationTick = this.game.tick;
             }

@@ -158,7 +158,7 @@ export default class BulletManager {
 
     public checkCollisions(bullet: Bullet): void {
         //skip collision checks if bullet collisions are disabled
-        if(this.game.config?.bulletCollisionsEnabled) {
+        if(this.game.config?.bulletCollisionsEnabled !== undefined) {
             if(this.game.config.bulletCollisionsEnabled !== true) return;
         }
 
@@ -260,7 +260,7 @@ export default class BulletManager {
 
                     if (hit) {
                         //do not damage player if bullet damage is disabled
-                        if(this.game.config?.bulletDamageEnabled) {
+                        if(this.game.config?.bulletDamageEnabled !== undefined) {
                             if(this.game.config.bulletDamageEnabled !== true) return;
                         }
                         
@@ -288,7 +288,7 @@ export default class BulletManager {
             }
 
             //bullet collision config
-            if(this.game.config?.bulletCollisionsEnabled) {
+            if(this.game.config?.bulletCollisionsEnabled !== undefined) {
                 if(this.game.config.bulletCollisionsEnabled) this.checkCollisions(bullet);
             } else {
                 //check collisions before updating position

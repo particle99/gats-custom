@@ -61,9 +61,9 @@ export default class Bullet extends RectangularMapObject {
         if(this.bulletType == 0) this.invulnerable = false;
 
         //configs
-        this.game.config?.bulletSpeedMultiplier && (this.speed *= this.game.config.bulletSpeedMultiplier);
-        this.game.config?.damageMultplier && (this.damage *= this.game.config.damageMultplier);
-        this.game.config?.rangeMultiplier && (this.maxDistanceTraveled *= this.game.config.rangeMultiplier);
+        this.game.config?.bulletSpeedMultiplier !== undefined && (this.speed *= this.game.config.bulletSpeedMultiplier);
+        this.game.config?.damageMultplier !== undefined && (this.damage *= this.game.config.damageMultplier);
+        this.game.config?.rangeMultiplier !== undefined && (this.maxDistanceTraveled *= this.game.config.rangeMultiplier);
     }
 
     private toRadians(degrees: number): number {

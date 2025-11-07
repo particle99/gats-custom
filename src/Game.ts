@@ -13,6 +13,12 @@ import MazeGenerator from './Crate/MazeGenerator';
 import crateData from './Crate/crateData.json';
 
 import { Config } from './Enums/Config';
+import { Gamemode } from './Gamemodes/Gamemode';
+
+import FFA from './Gamemodes/Native/FFA';
+import DOM from './Gamemodes/Native/DOM';
+import TDM from './Gamemodes/Native/TDM';
+import CaptureTheFlag from './Gamemodes/Custom/CTF';
 
 export default class Game {
     /** Game server */
@@ -32,6 +38,7 @@ export default class Game {
     /** Game server config */
     public gamePort: number = 443; //for https/wss
     public gameMode: string;
+    public gameClass: Gamemode;
 
     /** Socket container */
     public sockets: Set<WebSocket>
@@ -72,13 +79,16 @@ export default class Game {
         /** Server */
         this.gameServer = new WebSocketServer({ port: this.gamePort });
 
+        /** Gamemode class */
+        this.gameClass = this.getGamemodeClass(this.gameMode);
+
         /** Sockets */
         this.sockets = new Set(); //container for sockets
         this.socketToIp = new Map(); //container for socket to IP mapping
         this.ips = new Map(); //container for IPs and their connections
 
         /** Maze */
-        if(config?.generateMaze) {
+        if(config?.generateMaze !== undefined) {
             /** Constants */
             const mapSize = this.arenaSize,
                 cellSize = this.arenaSize / 100, //100 cells
@@ -109,13 +119,13 @@ export default class Game {
         this.explosiveManager = new ExplosiveManager(this);
 
         /** Fog */
-        if(config?.fogEnabled) {
+        if(config?.fogEnabled !== undefined) {
             if(!config.fogEnabled) this.fogSize = 7000;
         }
-        if(config?.fogDamagePerTick) {
+        if(config?.fogDamagePerTick !== undefined) {
             this.fogDamagePerTick = config.fogDamagePerTick;
         }
-        if(config?.fogSize) {
+        if(config?.fogSize !== undefined) {
             if(config.fogSize > this.maxFogSize) {
                 console.log(`Error: Configured fog size is greater than the max fog size of ${this.maxFogSize}`);
                 return;
@@ -130,7 +140,30 @@ export default class Game {
         /** Handle server events */
         this.handleServerEvents();
 
-        console.log(`Game initialized in ${Date.now() - gameStartTime}ms`);
+        console.log(`New ${this.gameMode} game initialized in ${Date.now() - gameStartTime}ms`);
+    }
+
+    private getGamemodeClass(gamemode: string): Gamemode {
+        let gameClass: Gamemode;
+
+        switch(gamemode) {
+            case "FFA":
+                gameClass = new FFA(this);
+                break;
+            case "DOM":
+                gameClass = new DOM(this)
+                break;
+            case "TDM":
+                gameClass = new TDM(this);
+                break;
+            case "CTF":
+                gameClass = new CaptureTheFlag(this);
+                break;
+            default:
+                throw new Error(`Error: unknown gamemode: ${gamemode}`);
+        }
+
+        return gameClass;
     }
 
     private handleServerEvents(): void {

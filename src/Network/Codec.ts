@@ -310,6 +310,14 @@ export default class Codec {
         return `${Packets.UNLOAD_EXPLOSIVE_PACKET},${uid}|`;
     }
 
+    public buildGamemodePacket(gamemode: string): string {
+        return `gameType,${gamemode}|`;
+    }
+
+    public buildCustomScoreSquarePacket(x: number, y: number, width: number, height: number, team: number): string {
+        return `scoreSquare,${x},${y},${width},${height},${team}|`;
+    }
+
     public buildPingPacket(): string {
         return '.|';
     }

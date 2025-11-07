@@ -18818,48 +18818,7 @@
 	};
 	var Player = function(_0x1d4aa1) {
 		var _0x4ccf8d = _0x3b4c10;
-		this['id'] = _0x1d4aa1; 
-    this['class'] = ''; 
-    this['color'] = '';
-    this['x'] = 0;
-    this['y'] = 0; 
-    this['spdX'] = 0; 
-    this['spdY'] = 0; 
-    this['radius'] = 0;
-    this['playerAngle'] = 0; 
-    this['hp'] = 0; 
-    this['hpRadius'] = 0; 
-    this['armorAmount'] = 0; 
-    this['shootingAnimation'] = null; 
-    this['beingHit'] = 0; 
-    this['shooting'] = 0; 
-    this['shootingFrame'] = 0; 
-    this['reloading'] = 0; 
-    this['reloadingFrame'] = 0; 
-    this['ghillie'] = 0; 
-    this['currentBullets'] = 0; 
-    this['maxBullets'] = 0; 
-    this['invincible'] = 0;
-    this['username'] = ''; 
-    this['thermal'] = 0; 
-    this['dashing'] = 0; 
-    this['isLeader'] = 0; 
-    this['isBoss'] = 0;
-    this['isPremiumMember'] = 0; 
-    this['chatBoxOpen'] = 0; 
-    this['chatMessage'] = '';
-    this['chatMessageTimer'] = 0; 
-    this['currentBullets'] = 0; 
-    this['maxBullets'] = 0; 
-    this['armor'] = 0; 
-    this['camera'] = 0; 
-    this['hpMax'] = 0; 
-    this['kills'] = 0; 
-    this['deaths'] = 0; 
-    this['score'] = 0; 
-    this['teamCode'] = 0;
-    this['numExplosivesLeft'] = 0; 
-    this['activated'] = 0;
+		this['id'] = _0x1d4aa1, this['class'] = '', this['color'] = '', this['x'] = 0, this['y'] = 0, this['spdX'] = 0, this['spdY'] = 0, this['radius'] = 0, this['playerAngle'] = 0, this['hp'] = 0, this['hpRadius'] = 0, this['armorAmount'] = 0, this['shootingAnimation'] = null, this['beingHit'] = 0, this['shooting'] = 0, this['shootingFrame'] = 0, this['reloading'] = 0, this['reloadingFrame'] = 0, this['ghillie'] = 0, this['currentBullets'] = 0, this['maxBullets'] = 0, this['invincible'] = 0, this['username'] = '', this['thermal'] = 0, this['dashing'] = 0, this['isLeader'] = 0, this['isPremiumMember'] = 0, this['chatBoxOpen'] = 0, this['chatMessage'] = '', this['chatMessageTimer'] = 0, this['currentBullets'] = 0, this['maxBullets'] = 0, this['armor'] = 0, this['camera'] = 0, this['hpMax'] = 0, this['kills'] = 0, this['deaths'] = 0, this['score'] = 0, this['teamCode'] = 0, this['numExplosivesLeft'] = 0, this['activated'] = 0;
 	};
 	Player['prototype']['pool'] = {}, Player['prototype']['activate'] = function(_0x569d3d, _0x4a5c8d) {
 		var _0x4272e9 = _0x3b4c10;
@@ -18869,29 +18828,7 @@
 			else
 				return _0x3a9d8e(_0x245ba9);
 		}
-    console.log(_0x569d3d);
-		this['class'] = _0x569d3d['class'];
-    this['color'] = _0x569d3d['color'];
-    this['x'] = parseFloat(_0x569d3d['x'] / 10);
-    this['y'] = parseFloat(_0x569d3d['y'] / 10);
-    this['radius'] = parseInt(_0x569d3d['radius'] / 10);
-    this['playerAngle'] = parseInt(_0x569d3d['playerAngle']);
-    this['hp'] = parseInt(_0x569d3d['hp']);
-    this['hpRadius'] = this['hp'] * this['radius'] / 100; 
-    this['armorAmount'] = parseInt(_0x569d3d['armorAmount']); 
-    this['shootingAnimation'] = getAnimation('shooting', this['class']);
-    this['ghillie'] = _0x569d3d['ghillie']; 
-    this['maxBullets'] = _0x569d3d['maxBullets']; 
-    this['invincible'] = _0x569d3d['invincible'];
-    this['username'] = formatUserName(_0x569d3d['username']);
-    this['isLeader'] = parseInt(_0x569d3d['isLeader']);
-    this['isBoss'] = parseInt(_0x569d3d['isBoss']);
-    this['isPremiumMember'] = parseInt(_0x569d3d['isPremiumMember']);
-    this['teamCode'] = parseInt(_0x569d3d['teamCode']);
-    this['chatBoxOpen'] = parseInt(_0x569d3d['chatBoxOpen']);
-    !_0x4a5c8d && ('grwhf' === 'grwhf' 
-      ? (this['currentBullets'] = parseInt(_0x569d3d['currentBullets']), this['maxBullets'] = parseInt(_0x569d3d['maxBullets']), this['armor'] = _0x569d3d['armor'], this['camera'] = _0x569d3d['camera'], this['hpMax'] = _0x569d3d['hpMax'], this['numExplosivesLeft'] = 3, currentWidth = parseInt(_0x569d3d['mapWidth']) / 10, currentHeight = parseInt(_0x569d3d['mapHeight']) / 10) 
-      : _0x348dd7['className'] += ' selected-box'), this['activated'] = 1;
+		this['class'] = _0x569d3d['class'], this['color'] = _0x569d3d['color'], this['x'] = parseFloat(_0x569d3d['x'] / 10), this['y'] = parseFloat(_0x569d3d['y'] / 10), this['radius'] = parseInt(_0x569d3d['radius'] / 10), this['playerAngle'] = parseInt(_0x569d3d['playerAngle']), this['hp'] = parseInt(_0x569d3d['hp']), this['hpRadius'] = this['hp'] * this['radius'] / 100, this['armorAmount'] = parseInt(_0x569d3d['armorAmount']), this['shootingAnimation'] = getAnimation('shooting', this['class']), this['ghillie'] = _0x569d3d['ghillie'], this['maxBullets'] = _0x569d3d['maxBullets'], this['invincible'] = _0x569d3d['invincible'], this['username'] = formatUserName(_0x569d3d['username']), this['isLeader'] = parseInt(_0x569d3d['isLeader']), this['isPremiumMember'] = parseInt(_0x569d3d['isPremiumMember']), this['teamCode'] = parseInt(_0x569d3d['teamCode']), this['chatBoxOpen'] = parseInt(_0x569d3d['chatBoxOpen']), !_0x4a5c8d && ('grwhf' === 'grwhf' ? (this['currentBullets'] = parseInt(_0x569d3d['currentBullets']), this['maxBullets'] = parseInt(_0x569d3d['maxBullets']), this['armor'] = _0x569d3d['armor'], this['camera'] = _0x569d3d['camera'], this['hpMax'] = _0x569d3d['hpMax'], this['numExplosivesLeft'] = 3, currentWidth = parseInt(_0x569d3d['mapWidth']) / 10, currentHeight = parseInt(_0x569d3d['mapHeight']) / 10) : _0x348dd7['className'] += ' selected-box'), this['activated'] = 1;
 	}, Player['prototype']['deactivate'] = function() {
 		var _0x225bb8 = _0x3b4c10;
 		this['class'] = this['color'] = this['username'] = this['chatMessage'] = '', this['x'] = this['y'] = this['spdX'] = this['spdY'] = this['radius'] = this['playerAngle'] = this['hp'] = 0, this['hpRadius'] = this['armorAmount'] = this['beingHit'] = this['shooting'] = this['shootingFrame'] = 0, this['reloading'] = this['reloadingFrame'] = this['ghillie'] = this['currentBullets'] = 0, this['maxBullets'] = this['invincible'] = this['thermal'] = this['dashing'] = this['chatBoxOpen'] = 0, this['invincible'] = this['thermal'] = this['dashing'] = this['chatBoxOpen'] = this['chatMessageTimer'] = 0, this['currentBullets'] = this['maxBullets'] = this['armor'] = this['camera'] = this['hpMax'] = this['kills'] = 0, this['deaths'] = this['score'] = 0, this['isLeader'] = 0, this['teamCode'] = 0, this['isPremiumMember'] = 0, this['shootingAnimation'] = null, this['activated'] = 0;
@@ -19049,7 +18986,7 @@
 				}
 			}
 			this['invincible'] && ('pkaTv' === 'dRyCX' ? (_0x2873f7['id'] == _0x12aaf5 && (_0xa9686b = 6), this['beingHit'] = _0x52ce3c(_0x316ca6['beingHit'])) : _0x1ba6cb['globalAlpha'] = 0.3);
-			drawModel(_0x1ba6cb, _0x1a11b4, this['getAttr'](), this['playerAngle'], _0x14c767, 4, null, _0x671a6c, this['radius'] / 20, this['isBoss']), _0x1ba6cb['globalAlpha'] = 1;
+			drawModel(_0x1ba6cb, _0x1a11b4, this['getAttr'](), this['playerAngle'], _0x14c767, 4, null, _0x671a6c), _0x1ba6cb['globalAlpha'] = 1;
 			!this['shooting'] && (this['shootingFrame'] = 0);
 			if (!this['reloading']) {
 				if ('esRsC' === 'esRsC')
@@ -19133,6 +19070,7 @@
 		GAME_WIDTH = 7000,
 		GAME_HEIGHT = 7000,
 		currentWidth, currentHeight, SCORE_SQUARE_SIDE = 200,
+    CUSTOM_SCORE_SQUARES = [],
 		SCORE_FOR_LEVEL_ONE = 100,
 		SCORE_FOR_LEVEL_TWO = 300,
 		SCORE_FOR_LEVEL_THREE = 600,
@@ -19155,6 +19093,7 @@
 			3: 0,
 			4: 0
 		},
+    customTeamScoreSquares = [],
 		postDeathStats = {
 			'score': 0,
 			'kills': 0,
@@ -20073,10 +20012,9 @@
 						'username': _0x147ac5[18],
 						'invincible': _0x147ac5[19],
 						'isLeader': _0x147ac5[20],
-            'isBoss': _0x147ac5[21],
-						'isPremiumMember': parseInt(_0x147ac5[22]),
-						'teamCode': parseInt(_0x147ac5[23]),
-						'isolatedUsername': _0x147ac5[24]
+						'isPremiumMember': parseInt(_0x147ac5[21]),
+						'teamCode': parseInt(_0x147ac5[22]),
+						'isolatedUsername': _0x147ac5[23]
 				};
 			case 'b':
 				return {
@@ -20125,10 +20063,9 @@
 						'ghillie': _0x147ac5[12],
 						'invincible': _0x147ac5[13],
 						'isLeader': _0x147ac5[14],
-            'isBoss': _0x147ac5[15],
-						'isPremiumMember': _0x147ac5[16],
-						'teamCode': _0x147ac5[17],
-						'chatBoxOpen': parseInt(_0x147ac5[18])
+						'isPremiumMember': _0x147ac5[15],
+						'teamCode': _0x147ac5[16],
+						'chatBoxOpen': parseInt(_0x147ac5[17])
 				};
 			case 'e':
 				return {
@@ -20366,6 +20303,21 @@
 				return {
 					'code': _0x147ac5[0]
 				};
+      case 'scoreSquare':
+        return {
+          'code': _0x147ac5[0],
+          'x': _0x147ac5[1],
+          'y': _0x147ac5[2],
+          'width': _0x147ac5[3],
+          'height': _0x147ac5[4],
+          'team': _0x147ac5[5]
+        }
+      case 'scoreSquareColor':
+        return {
+          'code': _0x147ac5[0],
+          'squareIndex': _0x147ac5[1],
+          'teamcode': _0x147ac5[2]
+        }
 		}
 	}
 
@@ -20581,18 +20533,30 @@
 		cookieGameType = getCookie('gameType');
 	setGameType(cookieGameType);
 
+  //changed function to support custom gamemodes
 	function setGameType(_0x186a24) {
+    console.log(gameType, _0x186a24);
 		var _0x3a687e = _0x3b4c10;
-		_0x186a24 != 'FFA' && _0x186a24 != 'TDM' && _0x186a24 != 'DOM' && (_0x186a24 = 'FFA');
-		gameType = _0x186a24, setCookie('gameType', gameType, 365);
-		if (gameType == '2TEAM' || gameType == 'DOM')
-			document['getElementById']('colorSelectionContainer')['style']['display'] = 'none', document['getElementById']('armorSelectionContainer')['style']['marginLeft'] = '0px';
-		else {
-			if (gameType == 'TDM')
-				'NVEsW' === 'NVEsW' ? (document['getElementById']('colorSelectionContainer')['style']['display'] = 'none', document['getElementById']('armorSelectionContainer')['style']['marginLeft'] = '0px') : (this['width'] = 50, this['height'] = 100, this['bulletCollisions'] = !![]);
-			else
-				gameType == 'FFA' && (document['getElementById']('colorSelectionContainer')['style']['display'] = 'inline', document['getElementById']('armorSelectionContainer')['style']['marginLeft'] = '10px');
-		}
+		//_0x186a24 != 'FFA' && _0x186a24 != 'TDM' && _0x186a24 != 'DOM' && (_0x186a24 = 'FFA');
+		
+    gameType = _0x186a24;
+    setCookie('gameType', gameType, 365);
+
+    console.log(gameType, _0x186a24);
+		
+    if (gameType == '2TEAM' || gameType == 'DOM') {
+			document['getElementById']('colorSelectionContainer')['style']['display'] = 'none';
+      document['getElementById']('armorSelectionContainer')['style']['marginLeft'] = '0px';
+    } else {
+			if (gameType == 'TDM') {
+			  document['getElementById']('colorSelectionContainer')['style']['display'] = 'none';
+        document['getElementById']('armorSelectionContainer')['style']['marginLeft'] = '0px';
+      } else {
+        //for all other game types (custom/FFA)
+				document['getElementById']('colorSelectionContainer')['style']['display'] = 'inline';
+        document['getElementById']('armorSelectionContainer')['style']['marginLeft'] = '10px';
+      }
+    }
 		$('#gametypeDropdown')['val'](gameType);
 	}
 
@@ -21181,7 +21145,10 @@
 			});
 			return;
 		}
-		switchingServers = !![], $('#playButton')['hide'](), setGameType(_0x15fb20), servers = [];
+		switchingServers = !![];
+    $('#playButton')['hide']();
+    setGameType(_0x15fb20);
+    servers = [];
 		Connection['list'][0] !== undefined && Connection['list'][0]['reset']();
 		if (_0x598b89 != '') {
 			if ('LYKcS' === 'uzpea')
@@ -21371,19 +21338,16 @@
 		}
 	}
 
+  //modified to support custom gamemodes
 	function buildTestSockets() {
 		var _0x124ac2 = _0x3b4c10;
 		console['log']('Building test sockets...'), communityPopulation = 0;
 		for (var _0xb0c8f0 in servers) {
-			if ('XOQtX' === 'AxshW')
-				_0x5c2725['fillText'](_0x3940f0['score'], 0.6105 * _0x426d81, 1.655 * _0x2acf77);
-			else {
-				if (servers[_0xb0c8f0]['game_type'] == gameType && servers[_0xb0c8f0]['players'] < servers[_0xb0c8f0]['capacity']) {
-					var _0x3f3cf4 = new Connection(servers[_0xb0c8f0]['url']);
-					_0x3f3cf4['createPingSocket'](), Connection['list']['push'](_0x3f3cf4);
-				}
-				communityPopulation += parseInt(servers[_0xb0c8f0]['players']);
-			}
+      if (servers[_0xb0c8f0]['players'] < servers[_0xb0c8f0]['capacity']) {
+        var _0x3f3cf4 = new Connection(servers[_0xb0c8f0]['url']);
+        _0x3f3cf4['createPingSocket'](), Connection['list']['push'](_0x3f3cf4);
+      }
+      communityPopulation += parseInt(servers[_0xb0c8f0]['players']);
 		}
 		document['getElementById']('cpl')['innerHTML'] = 'Players Online: ' + communityPopulation;
 	}
@@ -21586,7 +21550,10 @@
 							showAuthLabels(), resetAuthFormStates();
 							break;
 						case 'sq':
-							teamScoreSquares[1] = parseInt(_0x2a9994['squareOneTeam']), teamScoreSquares[2] = parseInt(_0x2a9994['squareTwoTeam']), teamScoreSquares[3] = parseInt(_0x2a9994['squareThreeTeam']), teamScoreSquares[4] = parseInt(_0x2a9994['squareFourTeam']);
+							teamScoreSquares[1] = parseInt(_0x2a9994['squareOneTeam']);
+              teamScoreSquares[2] = parseInt(_0x2a9994['squareTwoTeam']);
+              teamScoreSquares[3] = parseInt(_0x2a9994['squareThreeTeam']);
+              teamScoreSquares[4] = parseInt(_0x2a9994['squareFourTeam']);
 							break;
 						case 'sz':
 							currentWidth = parseInt(_0x2a9994['newSize']), currentHeight = parseInt(_0x2a9994['newSize']);
@@ -21605,6 +21572,19 @@
 						case 'reco':
 							console['log']('Full detected'), cookieAuthAttempted = ![], authenticating = ![], servers = [], clientInactive = ![], inGame = ![], retryConnection();
 							break;
+            case 'gameType':
+              setGameType(_0x2a9994['serverGameType']);
+              console.log(_0x2a9994);
+              break;
+            case 'scoreSquare':
+              CUSTOM_SCORE_SQUARES.push({ 
+                x: parseInt(_0x2a9994['x']),
+                y: parseInt(_0x2a9994['y']),
+                width: parseInt(_0x2a9994['width']),
+                height: parseInt(_0x2a9994['height']),
+                team: parseInt(_0x2a9994['team'])
+              });
+              break;
 					}
 				} else
 					_0x450550 = !![], _0x33deaf = 0, _0x1c0ae0 = 0, _0x135429 = 0, _0x4352aa = {
@@ -21680,7 +21660,8 @@
 					} else {
 						if (_0x1f1c44['substring'](0, 8) == 'gameType') {
 							var _0xeb525e = decompressMessage(_0x1f1c44)['serverGameType'];
-							setGameType(_0xeb525e), console['log']('Game type set to: ' + gameType + ' from server');
+							setGameType(_0xeb525e);
+              console['log']('Game type set to: ' + gameType + ' from server');
 						}
 					}
 				}
@@ -22698,167 +22679,146 @@
 		}
 	}
 
-	function drawGrid(_0x1ae691, _0x1170d5) {
-		var _0x5dbaf1 = _0x3b4c10,
-			_0x22a1eb = _0x1170d5['getRelPos']({
+  //changed function to support custom score square positions
+	function drawGrid(ctx, _0x1170d5) {
+		var origin = _0x1170d5['getRelPos']({
 				'x': 0,
 				'y': 0
-			}),
-			_0x42c702 = _0x1170d5['getRelPos']({
+		});
+		var bounds = _0x1170d5['getRelPos']({
 				'x': GAME_WIDTH,
 				'y': GAME_HEIGHT
-			});
-		_0x1ae691['fillStyle'] = '#efeff5', _0x1ae691['fillRect'](0, 0, _0x42c702['x'] + 5000, _0x42c702['y'] + 5000);
+		});
+
+		ctx['fillStyle'] = '#efeff5';
+    ctx['fillRect'](0, 0, bounds['x'] + 5000, bounds['y'] + 5000);
+
+    //for FFA and TDM, draw score square in the middle
 		if (gameType == 'FFA' || gameType == 'TDM') {
-			if ('BNMkF' === 'QLkfN') {
-				if ([
-						68,
-						83,
-						65,
-						87,
-						82,
-						32,
-						45,
-						37,
-						38,
-						39,
-						40
-					]['indexOf'](_0x2ec519['keyCode']) != -1) {
-					_0x47876b['preventDefault']();
-					if (_0xed8917['keyCode'] == 65)
-						_0x555452['list'][0]['send'](_0xe56bee('key-press', {
-							'inputId': 0,
-							'state': 0
-						}));
-					else {
-						if (_0x5d63a2['keyCode'] == 68)
-							_0x3c8ca0['list'][0]['send'](_0x4d36f1('key-press', {
-								'inputId': 1,
-								'state': 0
-							}));
-						else {
-							if (_0x365c5a['keyCode'] == 87)
-								_0x3e09c0['list'][0]['send'](_0x41d0c6('key-press', {
-									'inputId': 2,
-									'state': 0
-								}));
-							else {
-								if (_0x2a59bc['keyCode'] == 83)
-									_0x52c0f8['list'][0]['send'](_0x2454c4('key-press', {
-										'inputId': 3,
-										'state': 0
-									}));
-								else {
-									if (_0x19eb96['keyCode'] == 37)
-										_0x3fa8a5['list'][0]['send'](_0x38a620('key-press', {
-											'inputId': 0,
-											'state': 0
-										}));
-									else {
-										if (_0x262147['keyCode'] == 39)
-											_0x9e8d05['list'][0]['send'](_0x5b6acc('key-press', {
-												'inputId': 1,
-												'state': 0
-											}));
-										else {
-											if (_0x5b33a8['keyCode'] == 38)
-												_0x19cc6f['list'][0]['send'](_0x253109('key-press', {
-													'inputId': 2,
-													'state': 0
-												}));
-											else {
-												if (_0x585b88['keyCode'] == 40)
-													_0xe6bf7b['list'][0]['send'](_0x4dcd7e('key-press', {
-														'inputId': 3,
-														'state': 0
-													}));
-												else {
-													if (_0xa09630['keyCode'] == 82)
-														_0x6adc74['list'][0]['send'](_0x195384('key-press', {
-															'inputId': 4,
-															'state': 0
-														}));
-													else {
-														if (_0x558596['keyCode'] == 32)
-															_0x8f05ce['list'][0]['send'](_0xcf948('key-press', {
-																'inputId': 5,
-																'state': 0
-															}));
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			} else {
-				var _0x40078c = {
-					'x': _0x22a1eb['x'] + GAME_WIDTH / 2 - SCORE_SQUARE_SIDE / 2,
-					'y': _0x22a1eb['y'] + GAME_HEIGHT / 2 - SCORE_SQUARE_SIDE / 2
-				};
-				_0x1ae691['fillStyle'] = '#f9f9f9', _0x1ae691['fillRect'](_0x40078c['x'], _0x40078c['y'], SCORE_SQUARE_SIDE, SCORE_SQUARE_SIDE);
-			}
-		} else {
-			if (gameType == '2TEAM' || gameType == 'DOM') {
-				var _0x2d1861 = [{
-						'x': _0x22a1eb['x'] + GAME_WIDTH / 2 - 1000,
-						'y': _0x22a1eb['y'] + GAME_HEIGHT / 2 - 1000
-					},
-					{
-						'x': _0x22a1eb['x'] + GAME_WIDTH / 2 + 1000 - SCORE_SQUARE_SIDE,
-						'y': _0x22a1eb['y'] + GAME_HEIGHT / 2 - 1000
-					},
-					{
-						'x': _0x22a1eb['x'] + GAME_WIDTH / 2 - 1000,
-						'y': _0x22a1eb['y'] + GAME_HEIGHT / 2 + 1000 - SCORE_SQUARE_SIDE
-					},
-					{
-						'x': _0x22a1eb['x'] + GAME_WIDTH / 2 + 1000 - SCORE_SQUARE_SIDE,
-						'y': _0x22a1eb['y'] + GAME_HEIGHT / 2 + 1000 - SCORE_SQUARE_SIDE
-					}
-				];
-				_0x1ae691['fillStyle'] = '#f9f9f9';
-				for (var _0x112365 = 0; _0x112365 < _0x2d1861['length']; _0x112365++) {
-					'RTcxy' === 'rbKyL' ? _0x9f6949('registerPassword', 'The <strong>Password</strong> may not be greater than 128 characters.'): _0x1ae691['fillRect'](_0x2d1861[_0x112365]['x'], _0x2d1861[_0x112365]['y'], SCORE_SQUARE_SIDE, SCORE_SQUARE_SIDE);
-				}
-			}
-		}
+      var squarePosOne = {
+        'x': origin['x'] + GAME_WIDTH / 2 - SCORE_SQUARE_SIDE / 2,
+        'y': origin['y'] + GAME_HEIGHT / 2 - SCORE_SQUARE_SIDE / 2
+      };
+      ctx['fillStyle'] = '#f9f9f9';
+      ctx['fillRect'](squarePosOne['x'], squarePosOne['y'], SCORE_SQUARE_SIDE, SCORE_SQUARE_SIDE);
+    } else if (gameType == '2TEAM' || gameType == 'DOM') {
+      var _0x2d1861 = [{
+          'x': origin['x'] + GAME_WIDTH / 2 - 1000,
+          'y': origin['y'] + GAME_HEIGHT / 2 - 1000
+        },
+        {
+          'x': origin['x'] + GAME_WIDTH / 2 + 1000 - SCORE_SQUARE_SIDE,
+          'y': origin['y'] + GAME_HEIGHT / 2 - 1000
+        },
+        {
+          'x': origin['x'] + GAME_WIDTH / 2 - 1000,
+          'y': origin['y'] + GAME_HEIGHT / 2 + 1000 - SCORE_SQUARE_SIDE
+        },
+        {
+          'x': origin['x'] + GAME_WIDTH / 2 + 1000 - SCORE_SQUARE_SIDE,
+          'y': origin['y'] + GAME_HEIGHT / 2 + 1000 - SCORE_SQUARE_SIDE
+        }
+      ];
+
+      ctx['fillStyle'] = '#f9f9f9';
+      for (var _0x112365 = 0; _0x112365 < _0x2d1861['length']; _0x112365++) 
+        ctx['fillRect'](_0x2d1861[_0x112365]['x'], _0x2d1861[_0x112365]['y'], SCORE_SQUARE_SIDE, SCORE_SQUARE_SIDE);
+		} else { //custom gamemodes
+      ctx['fillStyle'] = '#f9f9f9';
+      for(var i = 0; i < CUSTOM_SCORE_SQUARES.length; i++) {
+        //custom width and height for custom score squares
+        //make sure to draw the squares relative to the player's pos
+        var customSquarePos = {
+          x: origin['x'] + CUSTOM_SCORE_SQUARES[i].x,
+          y: origin['y'] + CUSTOM_SCORE_SQUARES[i].y
+        };
+        ctx.fillRect(customSquarePos.x, customSquarePos.y, CUSTOM_SCORE_SQUARES[i].width, CUSTOM_SCORE_SQUARES[i].height);
+      }
+    }
+
 		var _0x2991b3 = 20,
 			_0x50189d = 60,
 			_0x3edaee = 1;
-		_0x1ae691['strokeStyle'] = '#e3e3e8';
+
+		ctx['strokeStyle'] = '#e3e3e8';
+
+    //height
 		for (_0x112365 = 0; _0x112365 <= GAME_HEIGHT; _0x112365 += _0x2991b3) {
-			'CJgfk' === 'oSBGX' ? this['dashing'] = _0x3c5cbc(_0x4c779e['dashing']): _0x22a1eb['y'] + _0x112365 > -_0x50189d && _0x22a1eb['y'] + _0x112365 <= _0x42c702['y'] + _0x50189d && ('vETXs' !== 'vETXs' ? (_0x50bbb0['font'] = '14px Arial', _0x33ab45['fillStyle'] = '#167c12', _0x38633f ? (_0x17a372['globalAlpha'] = 0.75, _0x393c65(_0x5a97c2['vip'], 5, 3, 26, 15), _0x4f4261['globalAlpha'] = 1, _0x1cc05c['fillText']('Logged in as ' + _0x5e4dec, 35, 15)) : _0x8af36['fillText']('Logged in as ' + _0x6cfc9d, 5, 15)) : drawLine(_0x1ae691, _0x22a1eb['x'], _0x22a1eb['y'] + _0x112365, _0x42c702['x'], _0x22a1eb['y'] + _0x112365, _0x3edaee));
+      if(origin['y'] + _0x112365 > -_0x50189d && origin['y'] + _0x112365 <= bounds['y'] + _0x50189d) {
+        drawLine(ctx, origin['x'], origin['y'] + _0x112365, bounds['x'], origin['y'] + _0x112365, _0x3edaee);
+      }
 		}
+
+    //width
 		for (_0x112365 = 0; _0x112365 <= GAME_WIDTH; _0x112365 += _0x2991b3) {
-			_0x22a1eb['x'] + _0x112365 > -_0x50189d && _0x22a1eb['x'] + _0x112365 <= _0x42c702['x'] + _0x50189d && ('YxdOe' === 'XKrnB' ? (_0x222e07['content'] += _0x227985(_0x45ea4b['content']), _0x1510c4['initTime'] = new _0xf20c3d()['getTime']()) : drawLine(_0x1ae691, _0x22a1eb['x'] + _0x112365, _0x22a1eb['y'], _0x22a1eb['x'] + _0x112365, _0x42c702['y'], _0x3edaee));
-		}
-		_0x1ae691['strokeStyle'] = '#aaa', _0x1ae691['lineWidth'] = 10, _0x1ae691['strokeRect'](_0x22a1eb['x'], _0x22a1eb['y'], GAME_WIDTH, GAME_HEIGHT);
+			if(origin['x'] + _0x112365 > -_0x50189d && origin['x'] + _0x112365 <= bounds['x'] + _0x50189d) {
+        drawLine(ctx, origin['x'] + _0x112365, origin['y'], origin['x'] + _0x112365, bounds['y'], _0x3edaee);
+		  }
+    }
+
+		ctx['strokeStyle'] = '#aaa';
+    ctx['lineWidth'] = 10;
+    ctx['strokeRect'](origin['x'], origin['y'], GAME_WIDTH, GAME_HEIGHT);
+
 		if (gameType == 'FFA' || gameType == 'TDM') {
-			var _0x208315 = {
+			var squarePos = {
 					'x': GAME_WIDTH / 2 - SCORE_SQUARE_SIDE / 2,
 					'y': GAME_HEIGHT / 2 - SCORE_SQUARE_SIDE / 2
-				},
-				_0x703a7 = {
+				};
+      
+			var playerPos = {
 					'x': Player['pool'][selfId]['x'],
 					'y': Player['pool'][selfId]['y']
-				};
-			_0x703a7['x'] > _0x208315['x'] && _0x703a7['x'] < _0x208315['x'] + SCORE_SQUARE_SIDE && _0x703a7['y'] > _0x208315['y'] && _0x703a7['y'] < _0x208315['y'] + SCORE_SQUARE_SIDE ? 'ExgIJ' !== 'zUzOs' ? scoreRectColor = '#00cc66' : _0x32460c['fillText'](_0x10d0b7['current'][_0x4a5734]['userId'] + ': ' + _0x18ba57['current'][_0x38ba82]['score'], 1.735 * _0x4e1b59, (0.0787 + _0x401fd7) * _0xf67b3b) : scoreRectColor = '#aaa', _0x1ae691['strokeStyle'] = scoreRectColor, _0x1ae691['lineWidth'] = 4, _0x1ae691['strokeRect'](_0x40078c['x'], _0x40078c['y'], SCORE_SQUARE_SIDE, SCORE_SQUARE_SIDE);
+      };
+
+      //if the player is in the score square, highlight the border
+			if(
+        playerPos['x'] > squarePos['x'] && 
+        playerPos['x'] < squarePos['x'] + SCORE_SQUARE_SIDE && 
+        playerPos['y'] > squarePos['y'] && 
+        playerPos['y'] < squarePos['y'] + SCORE_SQUARE_SIDE
+      ) {
+        scoreRectColor = '#00cc66' 
+      } else { 
+        //if they're not, regular border color
+        scoreRectColor = '#aaa' 
+      } 
+      
+      ctx['strokeStyle'] = scoreRectColor;
+      ctx['lineWidth'] = 4;
+      ctx['strokeRect'](squarePosOne['x'], squarePosOne['y'], SCORE_SQUARE_SIDE, SCORE_SQUARE_SIDE);
 		} else {
+      ctx['lineWidth'] = 4;
+
+      var _0x4d4b91 = '#aaa';
+
 			if (gameType == '2TEAM' || gameType == 'DOM') {
-				_0x1ae691['lineWidth'] = 4;
-				for (var _0x112365 = 0; _0x112365 < _0x2d1861['length']; _0x112365++) {
-					var _0x4d4b91 = '#aaa';
-					if (teamScoreSquares[_0x112365 + 1] == 1)
+        for (var _0x112365 = 0; _0x112365 < _0x2d1861['length']; _0x112365++) {
+					if (teamScoreSquares[_0x112365 + 1] == 1) {
 						_0x4d4b91 = '#f26740';
-					else
-						teamScoreSquares[_0x112365 + 1] == 2 && ('oLMlm' !== 'UTuVe' ? _0x4d4b91 = '#8dd8f8' : _0x327692['style']['backgroundColor'] = _0x4d39e0(_0x56a26d['color']));
-					_0x1ae691['strokeStyle'] = _0x4d4b91, _0x1ae691['strokeRect'](_0x2d1861[_0x112365]['x'], _0x2d1861[_0x112365]['y'], SCORE_SQUARE_SIDE, SCORE_SQUARE_SIDE);
+          } else {
+						if(teamScoreSquares[_0x112365 + 1] == 2) _0x327692['style']['backgroundColor'] = _0x4d39e0(_0x56a26d['color']);
+          }
+
+          ctx['strokeStyle'] = _0x4d4b91;
+          ctx['strokeRect'](_0x2d1861[_0x112365]['x'], _0x2d1861[_0x112365]['y'], SCORE_SQUARE_SIDE, SCORE_SQUARE_SIDE);
 				}
-			}
+			} else { //custom score square
+        for(var i = 0; i < CUSTOM_SCORE_SQUARES.length; i++) {
+          //color of the border
+          if(CUSTOM_SCORE_SQUARES[i].team == 1) _0x4d4b91 = '#f26740';
+          else if(CUSTOM_SCORE_SQUARES[i].team == 2) _0x4d4b91 = '#8dd8f8';
+
+          //draw the border relative to the player's pos
+          var customSquarePos = {
+            x: origin['x'] + CUSTOM_SCORE_SQUARES[i].x,
+            y: origin['y'] + CUSTOM_SCORE_SQUARES[i].y
+          };
+
+          ctx['strokeStyle'] = _0x4d4b91;
+          ctx['strokeRect'](customSquarePos.x, customSquarePos.y, CUSTOM_SCORE_SQUARES[i].width, CUSTOM_SCORE_SQUARES[i].height);
+        }
+      }
 		}
 	}
 
@@ -22879,148 +22839,53 @@
 		}
 	}
 
-  function drawModel(ctx, _0x3d08c7, _0x3da64b, mouseAngle, playerModel, lineWidth, strokeStyle, _0x2e5301, scale, isBoss) {
-    var _0x134ded = _0x3b4c10;
-    if (lineWidth === undefined) {
-      if ('dRKWc' === 'dRKWc')
-        lineWidth = 4;
-      else {
-        _0x1db354['preventDefault']();
-        if (_0x1750f2['keyCode'] == 65)
-          _0x246c47['list'][0]['send'](_0x2aff70('key-press', {
-            'inputId': 0,
-            'state': 0
-          }));
-        else {
-          if (_0x1985fd['keyCode'] == 68)
-            _0x2b61dc['list'][0]['send'](_0x312a7f('key-press', {
-              'inputId': 1,
-              'state': 0
-            }));
-          else {
-            if (_0x55fa80['keyCode'] == 87)
-              _0x46ae82['list'][0]['send'](_0x595215('key-press', {
-                'inputId': 2,
-                'state': 0
-              }));
-            else {
-              if (_0x1b7a56['keyCode'] == 83)
-                _0x48207c['list'][0]['send'](_0x3a8be0('key-press', {
-                  'inputId': 3,
-                  'state': 0
-                }));
-              else {
-                if (_0x155816['keyCode'] == 37)
-                  _0x3709de['list'][0]['send'](_0x436af3('key-press', {
-                    'inputId': 0,
-                    'state': 0
-                  }));
-                else {
-                  if (_0x5440e2['keyCode'] == 39)
-                    _0x3d805e['list'][0]['send'](_0x101864('key-press', {
-                      'inputId': 1,
-                      'state': 0
-                    }));
-                  else {
-                    if (_0x1d1bca['keyCode'] == 38)
-                      _0xe3ce08['list'][0]['send'](_0x35214a('key-press', {
-                        'inputId': 2,
-                        'state': 0
-                      }));
-                    else {
-                      if (_0x16df31['keyCode'] == 40)
-                        _0x1ef437['list'][0]['send'](_0x5a75ed('key-press', {
-                          'inputId': 3,
-                          'state': 0
-                        }));
-                      else {
-                        if (_0xbf3393['keyCode'] == 82)
-                          _0x47ec4b['list'][0]['send'](_0x25e2be('key-press', {
-                            'inputId': 4,
-                            'state': 0
-                          }));
-                        else {
-                          if (_0x521b79['keyCode'] == 32)
-                            _0x4d1154['list'][0]['send'](_0x4efdbe('key-press', {
-                              'inputId': 5,
-                              'state': 0
-                            }));
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    strokeStyle === undefined && (strokeStyle = '#005c99');
-    _0x2e5301 === undefined && (_0x2e5301 = 0);
-    scale === undefined && (scale = 1);
-    isBoss === undefined && (isBoss = 0);
-    if (_0x3d08c7) {
-      if ('cPJwj' !== 'cPJwj')
-        _0x4d9fa7 = !![], _0x276824('registerEmail');
-      else
-        var relativePos = _0x3d08c7['getRelPos'](_0x3da64b);
-    } else {
-      if ('VbyQn' !== 'nRdma')
-        var relativePos = {
-          'x': _0x3da64b['x'],
-          'y': _0x3da64b['y']
-        };
-      else
-        this['maxBullets'] = _0x3f873d(_0x1199fb['maxBullets']);
-    }
-    ctx['strokeStyle'] = strokeStyle;
-    ctx['lineWidth'] = lineWidth;
-    var models = [];
-
-    var mouseAngleRadians;
-    var baseOffset = (scale - 1) * 20;
-    var offsetX = Math.cos(mouseAngleRadians) * baseOffset;
-    var offsetY = Math.sin(mouseAngleRadians) * baseOffset;
-
-    for (let _0x5e5c8f = 0; _0x5e5c8f < playerModel['length']; _0x5e5c8f++) {
-      if ('DkNRI' !== 'DTpiL') {
-        var translatedModel = [];
-        for (let _0x3abe1c = 0; _0x3abe1c < playerModel[_0x5e5c8f]['length']; _0x3abe1c++) {
-          var angle = playerModel[_0x5e5c8f][_0x3abe1c][1];
-          var diameter = (playerModel[_0x5e5c8f][_0x3abe1c][0] + _0x2e5301);
-          
-          var xOffset, yOffset;
-          if (isBoss) {
-            // For boss: project gun points onto the centerline (mouseAngle direction only)
-            // This makes the gun perfectly centered like a tank barrel
-            mouseAngleRadians = mouseAngle * (Math.PI / 180);
-            xOffset = Math['cos'](mouseAngleRadians) * diameter + offsetX;
-            yOffset = Math['sin'](mouseAngleRadians) * diameter + offsetY;
-          } else {
-            // Normal: use both angle and radius
-            mouseAngleRadians = mouseAngle * (Math.PI / 180) - (Math.PI)/2;
-            xOffset = Math['cos'](angle + mouseAngleRadians) * diameter + offsetX;
-            yOffset = Math['sin'](angle + mouseAngleRadians) * diameter + offsetY;
-          }
-          
-          translatedModel['push']([
-            relativePos['x'] + xOffset,
-            relativePos['y'] + yOffset,
-            playerModel[_0x5e5c8f][_0x3abe1c][2],
-            playerModel[_0x5e5c8f][_0x3abe1c][3]
-          ]);
-        }
-        models['push'](translatedModel);
-      } else {
-        var _0x2aac18 = _0x318087(_0xfc8494);
-        return _0x12bea3(_0x2aac18);
-      }
-    }
-    draw(ctx, models);
-    ctx['strokeStyle'] = '#FFF';
-    ctx['lineWidth'] = 1;
-  }
+	function drawModel(_0x392233, _0x3d08c7, _0x3da64b, _0x283cd3, _0x2344cb, _0xb48e5c, _0x4fb1e4, _0x2e5301) {
+		var _0x134ded = _0x3b4c10;
+		if (_0xb48e5c === undefined) {
+			_0xb48e5c = 4;
+		}
+		_0x4fb1e4 === undefined && (_0x4fb1e4 = '#005c99');
+		_0x2e5301 === undefined && (_0x2e5301 = 0);
+		if (_0x3d08c7) {
+			if ('cPJwj' !== 'cPJwj')
+				_0x4d9fa7 = !![], _0x276824('registerEmail');
+			else
+				var _0x438ca7 = _0x3d08c7['getRelPos'](_0x3da64b);
+		} else {
+			if ('VbyQn' !== 'nRdma')
+				var _0x438ca7 = {
+					'x': _0x3da64b['x'],
+					'y': _0x3da64b['y']
+				};
+			else
+				this['maxBullets'] = _0x3f873d(_0x1199fb['maxBullets']);
+		}
+		_0x392233['strokeStyle'] = _0x4fb1e4, _0x392233['lineWidth'] = _0xb48e5c;
+		var _0x39566d = [];
+		for (let _0x5e5c8f = 0; _0x5e5c8f < _0x2344cb['length']; _0x5e5c8f++) {
+			if ('DkNRI' !== 'DTpiL') {
+				var _0x4babee = [];
+				for (let _0x3abe1c = 0; _0x3abe1c < _0x2344cb[_0x5e5c8f]['length']; _0x3abe1c++) {
+					var _0x50e8a7 = _0x2344cb[_0x5e5c8f][_0x3abe1c][1],
+						_0x2db0ab = _0x283cd3 * (Math['PI'] / 180) - Math['PI'] / 2,
+						_0x2dd439 = _0x2344cb[_0x5e5c8f][_0x3abe1c][0] + _0x2e5301,
+						_0x329fe2 = Math['cos'](_0x50e8a7 + _0x2db0ab) * _0x2dd439,
+						_0x4a3a10 = Math['sin'](_0x50e8a7 + _0x2db0ab) * _0x2dd439;
+					_0x4babee['push']([
+						_0x438ca7['x'] + _0x329fe2,
+						_0x438ca7['y'] + _0x4a3a10,
+						_0x2344cb[_0x5e5c8f][_0x3abe1c][2],
+						_0x2344cb[_0x5e5c8f][_0x3abe1c][3]
+					]);
+				}
+				_0x39566d['push'](_0x4babee);
+			} else {
+				var _0x2aac18 = _0x318087(_0xfc8494);
+				return _0x12bea3(_0x2aac18);
+			}
+		}
+		draw(_0x392233, _0x39566d), _0x392233['strokeStyle'] = '#FFF', _0x392233['lineWidth'] = 1;
+	}
 
 	function draw(_0x56c3b2, _0x3eec47) {
 		var _0x2f611b = _0x3b4c10;
@@ -23038,6 +22903,7 @@
 		}
 	}
 
+  //changed function to support custom message overlays
 	function drawNotifications() {
 		var _0x25537b = _0x3b4c10,
 			_0x1cc0b7 = 0,
@@ -23056,15 +22922,15 @@
 								_0x1cc0b7++;
 								if (_0x1cc0b7 == 1)
 									'ycIPW' === 'ycIPW' 
-                                        ? (ctx['font'] = '30px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('You Killed ' + message['content'] + '!', hudXPosition, hudYPosition * 0.7)) 
-                                        : _0x48abe2(3, 'thermal', 0.646 * _0x94318a, 0.759 * _0x95b453, 1.715 * _0x490edd, 1.915 * _0x4fded6, 0.6);
+                    ? (ctx['font'] = '30px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('You Killed ' + message['content'] + '!', hudXPosition, hudYPosition * 0.7)) 
+                    : _0x48abe2(3, 'thermal', 0.646 * _0x94318a, 0.759 * _0x95b453, 1.715 * _0x490edd, 1.915 * _0x4fded6, 0.6);
 								else {
 									if (_0x1cc0b7 == 2) {
 										if ('TyIDe' === 'TyIDe') {
 											ctx['font'] = '24px Arial'; 
-                                            ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
-                                            ctx['fillText']('You Killed ' + message['content'] + '!', hudXPosition, hudYPosition * 0.6);
-                                        } else {
+                      ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                      ctx['fillText']('You Killed ' + message['content'] + '!', hudXPosition, hudYPosition * 0.6);
+                    } else {
 											if (_0x1b357c['list'] === _0x53bcc2)
 												return ![];
 											var _0x37beb4 = _0x571040['list'][0];
@@ -23078,51 +22944,51 @@
 								break;
 							case 2:
 								selectionMade = false;
-                                ctx['font'] = '30px Arial';
-                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')'; 
-                                ctx['fillText']('You were killed by ' + message['content'], hudXPosition, hudYPosition);
+                ctx['font'] = '30px Arial';
+                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')'; 
+                ctx['fillText']('You were killed by ' + message['content'], hudXPosition, hudYPosition);
 								break;
 							case 3:
 								var content = message['content']['toString']();
 								ctx['font'] = '15px Arial';
-                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
-                                ctx['fillText']('Hit Damage ' + content, hudXPosition, hudYPosition * 0.8);
+                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                ctx['fillText']('Hit Damage ' + content, hudXPosition, hudYPosition * 0.8);
 								break;
 							case 4:
 								ctx['font'] = '30px Arial';
-                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
-                                ctx['fillText']('You were killed by the fog!', hudXPosition, hudYPosition * 0.5);
+                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                ctx['fillText']('You were killed by the fog!', hudXPosition, hudYPosition * 0.5);
 								break;
 							case 5:
 								ctx['font'] = '24px Arial';
-                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')'; 
-                                ctx['fillText']('You have been inactive for 1 minute, you\'ll be kicked in 60 seconds...', hudXPosition, hudYPosition * 0.8);
+                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')'; 
+                ctx['fillText']('You have been inactive for 1 minute, you\'ll be kicked in 60 seconds...', hudXPosition, hudYPosition * 0.8);
 								break;
 							case 6:
 								break;
 							case 7:
 								ctx['font'] = '20px Arial';
-                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
-                                ctx['fillText']('Stats aren\'t tracked for adblock users. Please consider disabling your adblocker.', hudXPosition, hudYPosition * 0.4);
+                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                ctx['fillText']('Stats aren\'t tracked for adblock users. Please consider disabling your adblocker.', hudXPosition, hudYPosition * 0.4);
 								break;
 							case 8:
 								_0x1b9075++;
 								var _0x4672dd = 'hidden';
 								message['content'] && (_0x4672dd = 'shown');
 								_0x1b9075 == 1 && ('ZeXCX' === 'pGOtN' 
-                                    ? _0x4e2f93(1, 'thermal', 0.646 * _0x176053, 0.759 * _0x129642, 1.715 * _0x57961e, 1.915 * _0x3d5620, 0.6) 
-                                    : (ctx['font'] = '20px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('Chat messages and usernames ' + _0x4672dd + '. Press [n] to toggle.', hudXPosition, hudYPosition * 0.3)));
+                  ? _0x4e2f93(1, 'thermal', 0.646 * _0x176053, 0.759 * _0x129642, 1.715 * _0x57961e, 1.915 * _0x3d5620, 0.6) 
+                  : (ctx['font'] = '20px Arial', ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')', ctx['fillText']('Chat messages and usernames ' + _0x4672dd + '. Press [n] to toggle.', hudXPosition, hudYPosition * 0.3)));
 								break;
 							case 9:
 								ctx['font'] = '30px Arial';
-                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
-                                ctx['fillText']('You were killed by ' + message['content'], hudXPosition, hudYPosition);
+                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                ctx['fillText']('You were killed by ' + message['content'], hudXPosition, hudYPosition);
 								break;
-                            case 10: //custom overlay message
-                            	ctx['font'] = '20px Arial';
-                                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
-                                ctx['fillText'](message['content'], hudXPosition, hudYPosition * 0.3);
-                                break;
+              case 10: //custom overlay message
+                ctx['font'] = '20px Arial';
+                ctx['fillStyle'] = 'rgba(0, 0, 0, ' + _0x121af8 + ')';
+                ctx['fillText'](message['content'], hudXPosition, hudYPosition * 0.3);
+                break;
 						}
 						ctx['textAlign'] = 'start';
 					} else
@@ -23414,1200 +23280,7 @@
 	];
 
 	function _0x2764() {
-		var _0x58e1cb = [
-			'WqTKP',
-			'model',
-			'49500wHyLCg',
-			'charAt',
-			'The <strong>Confirm Password</strong> may not be greater than 128 characters.',
-			'parent',
-			'wHQax',
-			'AxshW',
-			'instanceShortId',
-			'1.75vw',
-			'Guest Wolf',
-			'setRequestHeader',
-			'aacby',
-			'bipod',
-			'KQrqp',
-			'Guest Zebra',
-			'Respawn',
-			'thickSkin',
-			'Guest Rabbit',
-			'unselectable',
-			'TewFe',
-			'connected',
-			'Loading custom servers',
-			'selected-box',
-			'oBliv',
-			'knktl',
-			'CgWdg',
-			'grip',
-			'FpeNj',
-			'qUhuN',
-			'UBqui',
-			'a,1,',
-			'WeYSO',
-			'code',
-			'#7a7a7a',
-			'hostAllowedArmor',
-			'execCommand',
-			'REojU',
-			'sniper',
-			'length',
-			'applyFirstPersonUpdateData',
-			'inProgress',
-			'The <strong>Confirm Password</strong> field is required.',
-			'GMeLu',
-			'Starting custom server, please wait...',
-			'#hostServerInfo',
-			'span',
-			'#000',
-			'gametype',
-			'cPJwj',
-			'136jeRudG',
-			'sPukp',
-			'/custom/gats.io/host_instance',
-			'bnlhW',
-			'vbSTZ',
-			'Guest Fly',
-			'beginPath',
-			'className',
-			'loggingInState',
-			'OKsAU',
-			'The <strong>Passwords</strong> provided do not match.',
-			'featuredYoutuberName',
-			'copy',
-			'players',
-			'aRBoz',
-			'tPTtn',
-			'Closing connection to ',
-			'YPfwe',
-			'#hostServerTabLi',
-			'JXDzz',
-			'#fff',
-			'sacw',
-			'The <strong>Password</strong> may not be greater than 128 characters.',
-			'#167c12',
-			'VBnBi',
-			'Guest Bee',
-			'highScores',
-			'TBgcs',
-			'GHfJi',
-			'numSuccessfulPings',
-			'shootingAnimation',
-			'armor',
-			'Guest Spermwhale',
-			'block',
-			'Last Updated<br>',
-			'Guest NakedMoleRat',
-			'fillText',
-			'prop',
-			'Guest Viper',
-			'logoutButton',
-			'armorSelectionContainer',
-			'squareTwoTeam',
-			'Kills: ',
-			'The <strong>Email Address</strong> field is required.',
-			'Guest Squirrel',
-			'#a4df9f',
-			'64326vBIXzw',
-			'round',
-			'ZeXCX',
-			'Guest Cow',
-			'apple',
-			'login',
-			'test',
-			'RZAbV',
-			'pool',
-			'alert-',
-			'isMobile',
-			'#connectToHostedServerButton',
-			'top',
-			'Guest Porcupine',
-			'numExplosivesLeft',
-			'\', \'custom\')">Connect</button>',
-			'Disconnect Called!',
-			'check',
-			'shooterLevel3Powerup',
-			'The <strong>Email</strong> may not be greater than 255 characters.',
-			'innerHTML',
-			'but javascript says these are different',
-			'jrgNC',
-			'iVZtK',
-			'diORC',
-			'shUjd',
-			'ctx',
-			'zJFZh',
-			'XOQtX',
-			'#737373',
-			'mapWidth',
-			'748788yYiyNV',
-			'LukLi',
-			'onopen',
-			'display',
-			'You were killed by the fog!',
-			'start',
-			'Now Connected!',
-			'chatMessage',
-			'cover',
-			'15px Arial',
-			'kUshw',
-			'Guest Bull',
-			'chatBoxOpen',
-			'silenced',
-			'disabled',
-			'assault',
-			'rememberMe',
-			'location',
-			'Guest Panther',
-			'register',
-			'timeAlive',
-			'nSEen',
-			'highScoresHeading',
-			'onbeforeunload',
-			'height',
-			'value',
-			'Kills',
-			'debu',
-			'Guest Gorilla',
-			'draggable',
-			'Prnod',
-			'play',
-			'status',
-			'Guest Whale',
-			'VpKGb',
-			'shotgun',
-			'Guest Monkey',
-			'culeX',
-			'machine-gun-outline',
-			'high-score-row',
-			'blue',
-			'remove',
-			'Guest Snail',
-			'newSize',
-			'hostHealthRecharge',
-			'direction',
-			'zyxzN',
-			'init',
-			'#e8e8ed',
-			'href',
-			'#009933',
-			'GahtF',
-			'bold 20px Arial',
-			'onmousemove',
-			' with ping ',
-			'#f5e1b3',
-			'src',
-			'loadCustomServers',
-			'none',
-			'charCodeAt',
-			'pingHistory',
-			'getRelPos',
-			'initTime',
-			'Guest Wolverine',
-			'#4d4d4d',
-			'cookie',
-			'reconnecting',
-			'TIpsl',
-			'onmousedown',
-			'search',
-			'isPremium',
-			'kaITU',
-			'strokeStyle',
-			'#e0d7ce',
-			'isKnife',
-			'adTopLeft',
-			'knife',
-			'FFA',
-			'mouseAngle',
-			'#000000',
-			'angle',
-			'lgc',
-			'Guest Crab',
-			'#4C4C4C',
-			'LYKcS',
-			'Object pools filled',
-			'xqxhg',
-			'show',
-			'shooterScore',
-			'/model',
-			'reconnectButton',
-			'loginButton',
-			'silencer',
-			'orientation',
-			'clientX',
-			'The <strong>Password</strong> must be at least 6 characters.',
-			'IQekT',
-			'Current display hostname: ',
-			'Guest Taurus',
-			'oSBGX',
-			'#cbcbcd',
-			'img/',
-			'other',
-			'amazon',
-			'right',
-			'Your final stats',
-			'Guest Bat',
-			'hostBlockDensity',
-			'clientY',
-			'#f0ba37',
-			'transform',
-			'shooterClass',
-			'14px Arial',
-			'vLYUW',
-			'ehdzA',
-			'hostedServerShareUrl',
-			'substr',
-			'wzgrH',
-			'XiKJK',
-			'Use the WASD or arrow keys to move',
-			'deactivate',
-			'Guest Otter',
-			'#efeff5',
-			'YxdOe',
-			'Guest Dingo',
-			'BcVMW',
-			'reloadingAnimation',
-			'oIMFq',
-			'error',
-			'tSxNP',
-			'aCgeG',
-			'scale',
-			'sqrt',
-			'32px Arial',
-			'CXxPC',
-			'bold 14px Arial',
-			'resize',
-			'bulletCollisions',
-			'firstAid',
-			'Guest Frog',
-			'applyAuxUpdate',
-			'JANwq',
-			'rshhL',
-			'SFKbI',
-			'rememberCookie',
-			'armorAmount',
-			'tXQIG',
-			'DIDnD',
-			'Guest Civet',
-			'rbKyL',
-			'kTVSZ',
-			'fill',
-			'false',
-			'setConnectHostname',
-			'ZPEIL',
-			'LNTwz',
-			'#b5b5b5',
-			'#dadae0',
-			'yLPYg',
-			'Guest Penguin',
-			'Guest Buffalo',
-			'Guest Octopus',
-			'shotsHit',
-			'Guest Tortoise',
-			'dtSGB',
-			'password',
-			'seven_inch',
-			'DkNRI',
-			'moveTo',
-			'hrs',
-			'wxVmz',
-			'IIsjg',
-			'cwdYz',
-			'formLoginButton',
-			'ZLQpl',
-			'MsaqG',
-			'vip-image-div',
-			'Guest Camel',
-			'Guest Seal',
-			'rHIcg',
-			'://',
-			'lineWidth',
-			'userId',
-			'#007649',
-			'send',
-			'iQQHn',
-			'#b3b300',
-			'key-press',
-			'2TEAM',
-			'orange',
-			'XKrnB',
-			'shooterColor',
-			'#playButton',
-			'qSHtG',
-			'phone',
-			'extended',
-			'dcqwm',
-			'Guest Eagle',
-			'OlfsA',
-			'oNVTm',
-			'innerWidth',
-			'POST',
-			'mouseY',
-			'LYkjO',
-			'Cevlw',
-			'#79d2a6',
-			'\', \'public\')">Connect</button>',
-			'shooterLevel2Powerup',
-			'strokeRect',
-			'Guest Fox',
-			'Guest Beaver',
-			'serverModal',
-			'olJbi',
-			'Armor ',
-			'content',
-			'Guest Leaf Cutter Ant',
-			'parse',
-			'sendPing',
-			'#connectToPrivateServerButton',
-			'bold 12px Arial',
-			'tnNZK',
-			'moreGamesFooter',
-			'min',
-			'yKumV',
-			'SyEIY',
-			'RYmuA',
-			'#92cd8b',
-			'adblocker',
-			'createTextNode',
-			'constructor',
-			'dRKWc',
-			'Guest Rhino',
-			'Guest Pony',
-			'oOsFM',
-			'createElement',
-			'HeYaY',
-			'UTdMh',
-			'assault-outline',
-			'shooterKills',
-			'loginPassword',
-			'UTuVe',
-			'serverGameType',
-			'#privateServerAlert',
-			'UyTQh',
-			'lightweight',
-			'reco',
-			'HIjxk',
-			'fYbOD',
-			'function *\\( *\\)',
-			'emitting',
-			'select',
-			'innerHeight',
-			'#f26740',
-			'You were killed by ',
-			'beingHit',
-			'hnZLH',
-			'druEO',
-			'YUmyi',
-			'heavyArmor',
-			'NgLmX',
-			'shooterUsername',
-			'VbyQn',
-			'fgc',
-			'LdTtG',
-			'squareOneTeam',
-			'changeLog',
-			'leaderboard',
-			'registerEmail',
-			'JxXGb',
-			'Guest Emu',
-			'changeLogLastUpdatedText',
-			'uOckH',
-			'Colnk',
-			'agiDU',
-			'city',
-			'action',
-			'Guest Predator',
-			'CMveS',
-			'IxEqD',
-			'upgrade',
-			'margin-left',
-			'WhDPw',
-			'Guest Platypus',
-			'input',
-			'KiydV',
-			'UaVwZ',
-			'#alreadyConnectedAlert',
-			'longCrate',
-			'hide',
-			'AgwLQ',
-			'ellipse',
-			'udLjR',
-			'DacIy',
-			'div',
-			'kkPaO',
-			'medium-armor',
-			'down',
-			'byXOz',
-			'#shareServerDiv',
-			'click',
-			'Shots',
-			'gTQVL',
-			'applyPrimaryUpdate',
-			'registerModal',
-			'TXoiT',
-			'kewsV',
-			'globalAlpha',
-			'Guest Anaconda',
-			'None',
-			'receivePing',
-			'XtkqI',
-			'VgLZL',
-			'color',
-			'Guest Zombie',
-			'rDScO',
-			'yyAiV',
-			'-outline',
-			'Guest Axolotl',
-			'lDIuZ',
-			'AUqpt',
-			'#privateServerInfo',
-			'hostRegion',
-			'spdY',
-			'android',
-			'Guest Fish',
-			'lxqsN',
-			'Guest Chicken',
-			'kpFaK',
-			'VPByf',
-			'Guest Vulture',
-			'#faf2de',
-			'ZFXaW',
-			'CTrWF',
-			'#107a24',
-			'font',
-			'10px',
-			'Damage',
-			'shooting',
-			'NAWrD',
-			'prototype',
-			'reload',
-			'#a6a6a6',
-			'YwQrC',
-			'#FFF',
-			'RORGB',
-			'#bababa',
-			'squareThreeTeam',
-			'replace',
-			'rpsJP',
-			'total',
-			'BLzXH',
-			'#f48466',
-			'PKDhe',
-			'Tecyj',
-			'getTime',
-			'Ynkla',
-			'sta',
-			'classList',
-			'teamCode',
-			'fGCoh',
-			'Guest 1v5',
-			'inline',
-			'hash',
-			'device',
-			'CmCwd',
-			'Armor',
-			'vKbbg',
-			'njOJK',
-			'zzmZh',
-			'nbIvj',
-			'clv',
-			'Game connection closed',
-			'/custom/gats.io/find_instance',
-			'new',
-			'Xliaq',
-			'shooterLevel1Powerup',
-			'dHlBZ',
-			'customServerTableBody',
-			'zUEVu',
-			'#aboutModal',
-			'#fff133',
-			'#008000',
-			'XylmK',
-			'url',
-			'uqDvs',
-			'LsNXW',
-			'#808080',
-			'travelTime',
-			'Mxbng',
-			'zlVRG',
-			'modal',
-			'Guest Coyote',
-			'width',
-			'Guest Bear',
-			'tCpnb',
-			'#ffffff',
-			'ISCoJ',
-			'#609b68',
-			'No Description',
-			'MRhOK',
-			'isShrapnel',
-			'29600ARNdjn',
-			'reloadingFrame',
-			'updateHpRadius',
-			'#ff0000',
-			'SaiWb',
-			'KYHGX',
-			'keypress',
-			'spdX',
-			'machine-gun',
-			'dash',
-			'#b6ba1a',
-			'AWcAo',
-			'#cc6600',
-			'dZWWA',
-			'puIhr',
-			'Guest Wombat',
-			'deaths',
-			'The <strong>Username</strong> field is required.',
-			'hsd',
-			'Guest Llama',
-			'hostPSpeed',
-			'type',
-			'30px Arial',
-			'true',
-			'duration',
-			'NyTEk',
-			'#bec8dd',
-			'a,2,',
-			'https://www.youtube.com/watch?v=4YORdbPSIdY',
-			'TwLbH',
-			'Guest Human',
-			'white',
-			'green',
-			'#ddf0db',
-			'Guest Raccoon',
-			'ping',
-			'KdhmH',
-			'AfGOs',
-			'Guest Manatee',
-			'wss',
-			'smg',
-			'Finding custom server: ',
-			'squareFourTeam',
-			'hidden',
-			'loadPublicServers',
-			'camera',
-			'gameType',
-			'registerButton',
-			'The <strong>Username/Email</strong> field is required.',
-			'adRespawnRight',
-			'chain',
-			'azMCM',
-			'toFixed',
-			'pat',
-			'backgroundColor',
-			'Guest Bluewhale',
-			'Guest Pig',
-			'#ffcc00',
-			'16px Arial',
-			'preventDefault',
-			'rechargeTimer',
-			'ryDQq',
-			'vCGBz',
-			'Guest Scorpion',
-			'hpMax',
-			'Retrying connection',
-			'medKit',
-			'fillRect',
-			'getPos',
-			'rgba(0, 0, 0, ',
-			'hMbvn',
-			'drawImage',
-			'reloading',
-			'wRhEq',
-			'isPremiumMember',
-			'You\'re still logged in. Are you sure you want to leave?',
-			'vip',
-			'setHostnames',
-			'DiCOu',
-			'adRespawnLeft',
-			'selection',
-			'nzivY',
-			'gger',
-			'#53c68c',
-			'hpRadius',
-			'Guest Jackal',
-			'#545a38',
-			'home',
-			'\',\'',
-			'pow',
-			'#endServerError',
-			'The <strong>Email Address</strong> must be a valid email address.',
-			'MgTbT',
-			'FTkRd',
-			'getElementById',
-			'Guest Mongoose',
-			'getWsProtocol',
-			'lastUpdated',
-			'eMPis',
-			'longRange',
-			'onclose',
-			'#666',
-			'expires=',
-			'time',
-			'hostMaxPlayers',
-			'which',
-			'/api/find_instances',
-			'pistol',
-			'toString',
-			'Gqcxs',
-			'4px',
-			'DZVpj',
-			'userAgent',
-			'indexOf',
-			'cos',
-			'Finding instances',
-			'tablet',
-			'invincible',
-			'UvNCY',
-			'Time',
-			'Wkndh',
-			'hostBottomlessMags',
-			'damageReceived',
-			'margin-bottom',
-			'grenade',
-			'engineer',
-			'substring',
-			'#hostedServerShareUrl',
-			'while (true) {}',
-			'email',
-			'#shortIdInput',
-			'setSelection',
-			'hud-hit',
-			'Guest Orangutan',
-			'lgState',
-			'AyGTu',
-			'xezBM',
-			'dashing',
-			'binaryType',
-			'fromCharCode',
-			'IFyrN',
-			'#262626',
-			'10px Arial',
-			'score',
-			'border',
-			'eurwL',
-			'The <strong>Username</strong> must be at least 3 characters.',
-			'ZTOnZ',
-			'Full detected',
-			'focus',
-			'ODNzn',
-			'Guest Snake',
-			'nerTI',
-			'createGameSocket',
-			'match',
-			' selected-box',
-			'Guest Orca',
-			'Guest Werewolf',
-			'userMedKit',
-			'#005c99',
-			'#ecf9f2',
-			'high-scores-text',
-			'LLGRk',
-			'HP ',
-			'getContext',
-			'list',
-			'class',
-			'Guest Hawk',
-			'NVEsW',
-			'rRQhX',
-			'uVJgm',
-			'JWSOm',
-			'fillStyle',
-			'smg-outline',
-			'Guest Lemur',
-			'keyCode',
-			'shotsFired',
-			'VkBbf',
-			'eEQVw',
-			'rFqYa',
-			'qYtgQ',
-			'call',
-			'fgRiB',
-			'Guest Skunk',
-			'Guest Lizard',
-			'Guest Deer',
-			'html',
-			'puvCw',
-			'3 successful ping attempts on ',
-			'game_type',
-			'wFKFa',
-			'center',
-			'#00cc66',
-			'bolt-action-rifle',
-			'#ffff00',
-			'fadeTo',
-			'hwLHe',
-			'maCJE',
-			'rEHDT',
-			'includes',
-			'iMrOP',
-			'Guest Crocodile',
-			'. Press [n] to toggle.',
-			'DafWB',
-			'hscrs',
-			'chatboxContainer',
-			'reloadCount',
-			' selectable.',
-			'Shots Hit',
-			'CCKKf',
-			'localhost',
-			'pingSentTime',
-			'oLMlm',
-			'#fde8ed',
-			':visible',
-			'Xtykc',
-			'10 October 2024 ;)',
-			'username',
-			'data',
-			'lJKoP',
-			'capacity',
-			'#deb34c',
-			'setTime',
-			'addClass',
-			'shown',
-			'private',
-			'loginUsernameEmail',
-			'SzYUi',
-			'style',
-			'manual hostname set: ',
-			' no need to switch',
-			'QLkfN',
-			'infoFooter',
-			'Dealt',
-			' onclick="switchServer(\'',
-			'UJETN',
-			'Guest Lion',
-			'update',
-			'VxHah',
-			'loginViaCookie',
-			'UmIcu',
-			'55874wWYLIT',
-			'Guest Kangaroo',
-			'Guest Goat',
-			'setDefaultBackgroundColor',
-			'#f2f2f2',
-			';path=/',
-			'#gametypeDropdown',
-			'socket',
-			'Guest Plant',
-			'zoxbC',
-			'Guest Koala',
-			'Guest Rat',
-			'TGNYT',
-			'change',
-			'You Killed ',
-			'24px Arial',
-			'bind',
-			'Guest',
-			'gBgPV',
-			'#8c8c8c',
-			'JViyY',
-			'The <strong>Password</strong> field is required.',
-			'Zsaav',
-			'registerConfirmPassword',
-			'fERsz',
-			'fragGrenade',
-			'Game type set to: ',
-			'#f89f6d',
-			'#ecd9c6',
-			'qgEry',
-			'hostDisableScoreSquares',
-			'daJoD',
-			'pingHostname',
-			'Switching to server: ',
-			'psgdE',
-			'activate',
-			'createPingSocket',
-			'parentId',
-			'asin',
-			'heavy-armor',
-			'host',
-			'label',
-			'state',
-			'(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)',
-			'stDyo',
-			'CgxNI',
-			'tHVRs',
-			'Guest Elephant',
-			'rect',
-			'QMuVC',
-			'getAttr',
-			'xUFNI',
-			'AXJrq',
-			'ylhgP',
-			'QOuEZ',
-			'apply',
-			'Killed by ',
-			'textAlign',
-			'Received',
-			'QbIuC',
-			'gasGrenade',
-			'hostToken',
-			'Guest Lobster',
-			'BNMkF',
-			'pathname',
-			'Guest Walrus',
-			'Guest Stork',
-			'radius',
-			'currentPlayers',
-			'submit',
-			'open',
-			'sin',
-			'bold 28px Arial',
-			'setDisplayHostname',
-			'Guest Beetle',
-			'inputId',
-			'applyUpdate',
-			'[FBAN',
-			'#hostServerForm',
-			'animationFrame',
-			'loginModal',
-			'Guest Boe Constrictor',
-			'#d9d9d9',
-			'emissionRadius',
-			'measureText',
-			'mBgFj',
-			'zOpGW',
-			'hostCollisionDamage',
-			'getSize',
-			'Guest Tardigrade',
-			'stroke',
-			'#666666',
-			'grwhf',
-			'removeChild',
-			'Guest Pelican',
-			'HwxUB',
-			'drawBody',
-			'#9fdfbf',
-			'MtgTT',
-			'OagVb',
-			'Health',
-			'bold 16px Arial',
-			'optics',
-			'pZLiT',
-			'drawGun',
-			'yellow',
-			'isLeader',
-			'GNiMx',
-			'lQkPg',
-			'windows',
-			'Total Players Online: ',
-			'totalLifeTime',
-			'Guest Husky',
-			'draw',
-			'Guest Goldfish',
-			'gametypeDropdown',
-			'level',
-			'HFyjs',
-			'upgradeLevel',
-			'AbbqU',
-			'css',
-			'NzZHQ',
-			'Mystery Creature',
-			'zMkUU',
-			'detect',
-			'You are logged in as ',
-			'TfoCl',
-			'212570LBAzdy',
-			'bold 11px Arial',
-			'CyIXt',
-			'hZsXt',
-			'#aaa',
-			'bWfqx',
-			'isolatedUsername',
-			'VFrRJ',
-			'jWgzW',
-			'playerAngle',
-			'cbfbY',
-			'mouse-move',
-			'lightArmor',
-			'HEBNr',
-			'isMember',
-			'lineTo',
-			'loaded',
-			'mqzLi',
-			'hasChildNodes',
-			'red',
-			'arc',
-			'kGRUU',
-			'#ff9933',
-			'Twitter',
-			'onload',
-			'SgZXt',
-			'CJoOZ',
-			'qwlBL',
-			'Guest Iguana',
-			'Created game connection to: ',
-			'stringify',
-			'VAOQa',
-			'purple',
-			'#f0d492',
-			'SrAZC',
-			'#999999',
-			'#8dd8f8',
-			'Hit Damage ',
-			'nNUEd',
-			'#D3D3DA',
-			'is_member',
-			' unselectable.',
-			'Guest Goanna',
-			'mouseX',
-			'EfckJ',
-			'krDmM',
-			'userCrate',
-			'dragstart',
-			'onmessage',
-			'application/json',
-			'The <strong>Password</strong> field must be at least 6 characters.',
-			'slideUp',
-			'mediumArmor',
-			'#77b300',
-			'toUTCString',
-			'currentBullets',
-			'Guest Armadillo',
-			'kills',
-			'concat',
-			'remember_cookie',
-			'pingReceivedTime',
-			'HzOSd',
-			'zKVtd',
-			'1px solid #ccc',
-			'Ktksd',
-			'weapon',
-			'off',
-			'GXwsA',
-			'MbVql',
-			'no-armor',
-			'PklQc',
-			'adRespawnTop',
-			'shift',
-			'Press Spacebar to use powerups',
-			'Eyxym',
-			'atan2',
-			'#c6ecd9',
-			'Guest Sloth',
-			'OsHNT',
-			'The <strong>Email</strong> must be at least 7 characters.',
-			'jVJGA',
-			'footer',
-			'Guest Giraffe',
-			'registeringState',
-			'tab',
-			'crate',
-			'registerPassword',
-			'XPszJ',
-			'a,0,',
-			'MiEGG',
-			'canvas',
-			'#hostServerError',
-			'lmg',
-			'Guest Dog',
-			'shooterHp',
-			'pkaTv',
-			'val',
-			'hostAllowedWeapons',
-			'marginLeft',
-			'avgPing',
-			'You have been inactive for 1 minute, you\'ll be kicked in 60 seconds...',
-			'IXnBb',
-			'#alreadyConnectedAlert-',
-			'Guest BlobFish',
-			'UbLib',
-			'Guest Heron',
-			'#endHostedServerButton',
-			'#f2dede',
-			'#fffccc',
-			'iespE',
-			'maxHp',
-			'Guest Pangolin',
-			'shield',
-			'ULxgo',
-			'OkjLL',
-			'Press ENTER to open the chat box',
-			'close',
-			'bold 24px Arial',
-			'version',
-			'You are not logged in.',
-			'split',
-			'xFUyc',
-			'YeYLK',
-			'dpEda',
-			'onmouseup',
-			'#ff3300',
-			'push',
-			'No self player specified',
-			'znybQ',
-			'xhaDU',
-			'Guest Cat',
-			'#404040',
-			'PYAlH',
-			'Guest Squid',
-			'A Crate',
-			'short_id',
-			'Guest Shark',
-			'actrls',
-			'find',
-			'fmAnN',
-			'XlXSb',
-			'inline-block',
-			'loginUsernameOrEmail',
-			'RTcxy',
-			'rnfJI',
-			'responseText',
-			'respawn',
-			'fDFYg',
-			'colorSelectionContainer',
-			'armorPiercing',
-			'maxBullets',
-			'Guest Nymph ',
-			'Guest Bison',
-			'Guest Tree',
-			'LRGlb',
-			'damageDealt',
-			'#a01919',
-			'checked',
-			'arraybuffer',
-			'Guest Red-Headed Woodpecker',
-			'tekdA',
-			'Could not make ',
-			'Guest Okapi',
-			'chatMessageTimer',
-			'setSelectionRange',
-			'Content-Type',
-			'DOM',
-			'name',
-			'rkhBR',
-			'hostStartingUpgrades',
-			'20px Arial',
-			'#registerModal',
-			'reset',
-			'#f6f7e3',
-			'ghillie',
-			'Logging in...',
-			'noArmor',
-			'displayHostname',
-			'nbIih',
-			'drawEmission',
-			'pcRtv',
-			'Score',
-			'spQWO',
-			'forgotPassword',
-			'mins',
-			'(((.+)+)+)+$',
-			'chatbox',
-			'onblur',
-			'EbMtZ',
-			'fvhUg',
-			'left',
-			'Guest Horse',
-			'playButton',
-			'#f9f9f9',
-			'#f5cd6e',
-			'#bfbfbf',
-			'0px',
-			'trackingId',
-			'region',
-			'Guest Baboon',
-			'hostDisableFog',
-			'pzdMD',
-			'rBEEW',
-			'return',
-			'Guest Moose',
-			'#5cb85c',
-			'#hostGameType',
-			'attr',
-			'#C30000',
-			'slct',
-			'floor',
-			'/custom/gats.io/find_hosted_instance',
-			'activated',
-			'UMvFo',
-			'Logged in as ',
-			'#dfbf9f',
-			'fdygy',
-			'Guest Sheep',
-			'transparency',
-			'GWzEl',
-			'dArtd',
-			'#loginModal',
-			'ySmmA',
-			'oNPwE',
-			'ImFirstFr',
-			'#b3b3b3',
-			'wnjik',
-			'WTJiS',
-			'landMine',
-			'dgqcE',
-			'eiZhB',
-			'VUthR',
-			'shootingFrame',
-			'\\+\\+ *(?:[a-zA-Z_$][0-9a-zA-Z_$]*)',
-			'yrBra',
-			'Building test sockets...',
-			'Playing as ',
-			'shooterArmorAmount',
-			'acSww',
-			'armorBtn',
-			'setPingHostname',
-			'log',
-			'message',
-			'Failed to show ',
-			'thermal',
-			'Guest Tiger',
-			'gTeNY',
-			'ownerId',
-			'#f7b0c2',
-			'ycIPW',
-			'Reloading',
-			'qhgoY',
-			'#cccc00',
-			'RilHy',
-			'updateChatMessage',
-			'192848dsitjl',
-			'logout',
-			'Guest Reindeer',
-			'connectHostname',
-			'GVCDR',
-			'fengA',
-			'pJLOf',
-			'DGMpe',
-			'appendChild',
-			'host_token',
-			'IDSxI',
-			'#4d9d4d',
-			'hostGameType',
-			'readyState',
-			'any',
-			'Created test connection to: ',
-			'TyIDe',
-			'<button class=\'btn btn-success\' ',
-			'exploding',
-			'Stats aren\'t tracked for adblock users. Please consider disabling your adblocker.',
-			'JQdXi',
-			'Guest Weasel',
-			'AbdDr',
-			'maj',
-			'owner',
-			'reduce',
-			'img',
-			'#595959',
-			'current',
-			'VLMEC',
-			'PibWf',
-			'#searchForPrivateServer',
-			'CJgfk',
-			'lastChild',
-			'ziScX',
-			'XVVxn',
-			'TDM',
-			'uzpea',
-			'zJeJD',
-			'LyUfI',
-			'nRdma'
-		];
+		var _0x58e1cb = [];
 		_0x2764 = function() {
 			return _0x58e1cb;
 		};
@@ -24899,7 +23572,19 @@
 	}, document['onkeyup'] = function(_0x2dc468) {
 		var _0x57e7dc = _0x3b4c10;
 		if (inGame && !chatboxOpen) {
-			if ([68, 83, 65, 87, 82, 32, 45, 37, 38, 39, 40]['indexOf'](_0x2dc468['keyCode']) != -1) {
+			if ([
+					68,
+					83,
+					65,
+					87,
+					82,
+					32,
+					45,
+					37,
+					38,
+					39,
+					40
+				]['indexOf'](_0x2dc468['keyCode']) != -1) {
 				_0x2dc468['preventDefault']();
 				if (_0x2dc468['keyCode'] == 65)
 					Connection['list'][0]['send'](prepareMessage('key-press', {
@@ -25123,8 +23808,8 @@
 	}
 
 	resizeAds();
-    showAds('home'); 
-    drawBackground();
+  showAds('home'); 
+  drawBackground();
 
 	let ssd = (_0x473d2d, _0x45745f) => {
 		try {
@@ -25135,24 +23820,24 @@
 	}
 
 	let MAX_PLAYERS = 82;
-    let MAX_BULLETS = 350;
-    let MAX_MAP_OBJECTS = 2000;
-    let MAX_EXPLOSIVES = 500;
+  let MAX_BULLETS = 350;
+  let MAX_MAP_OBJECTS = 2000;
+  let MAX_EXPLOSIVES = 500;
 
 	Player['pool'] = {};
-    Bullet['pool'] = {};
-    MapObject['pool'] = {};
-    Explosive['pool'] = {};
-    Connection['list'] = [];
+  Bullet['pool'] = {};
+  MapObject['pool'] = {};
+  Explosive['pool'] = {};
+  Connection['list'] = [];
 
 	let hitMarkers = [];
-    let gameStarted = false;
+  let gameStarted = false;
 
 	fillObjectPools();
-    launchNetworking();
+  launchNetworking();
 
-    ssd('loading', 'none');
-    ssd('cover', 'none');
-    ssd('fgc', 'block');
-    ssd('changeLog', 'block');
-}());
+  ssd('loading', 'none');
+  ssd('cover', 'none');
+  ssd('fgc', 'block');
+  ssd('changeLog', 'block');
+})();

@@ -308,7 +308,7 @@ export default class PlayerManager {
     }
 
     private handlePlayerPlayerCollisions(player: PlayerEntity, nearbyCrates?: Array<{ x: number, y: number, width: number, height: number }>): void {
-        if(this.game.config?.playerCollisionsEnabled) {
+        if(this.game.config?.playerCollisionsEnabled !== undefined) {
             if(!this.game.config.playerCollisionsEnabled) return;
         }
 
@@ -374,7 +374,7 @@ export default class PlayerManager {
             this.checkCollisions(player);
 
             if(this.isInScoreSquare(player) && (performance.now() - player.lastScoreSquareGain) > player.scoreSquareGainCooldown) {
-                if(this.game.config?.scoreSquareEnabled) {
+                if(this.game.config?.scoreSquareEnabled !== undefined) {
                     if(this.game.config.scoreSquareEnabled !== true) {
                         continue;
                     }
@@ -389,11 +389,13 @@ export default class PlayerManager {
                 });
             }
 
-            if(this.isInFog(player)) {
-                player.isInFog = 1;
-                player.damage(this.game.fogDamagePerTick, player.uid);
-            } else {
-                player.isInFog = 0;
+            if(this.game.gameMode == "FFA" || this.game.gameMode == "TDM") {
+                if(this.isInFog(player)) {
+                    player.isInFog = 1;
+                    player.damage(this.game.fogDamagePerTick, player.uid);
+                } else {
+                    player.isInFog = 0;
+                }
             }
         }
     }
