@@ -122,20 +122,20 @@ export default class PlayerManager {
 
     public generateSpawnPosition(player: PlayerEntity): void {
         if(!this.game.spawnManager) {
-            this.generateRandomPosition(player);
+            this.generateRandomPosition(player, this.game.arenaSize, this.game.arenaSize);
             return;
         }
         
         this.game.spawnManager.spawnPlayer(player);
     }
 
-    public generateRandomPosition(player: PlayerEntity): void {
+    public generateRandomPosition(player: PlayerEntity, width: number, height: number): void {
         let attempts = 0;
         const maxAttempts = 100;
         
         do {
-            player.x = Math.floor(Math.random() * this.game.arenaSize);
-            player.y = Math.floor(Math.random() * this.game.arenaSize);
+            player.x = Math.floor(Math.random() * width);
+            player.y = Math.floor(Math.random() * height);
             attempts++;
         } while(this.isCollidingWithCrates(player) && attempts < maxAttempts);
     }
@@ -373,29 +373,29 @@ export default class PlayerManager {
             player.update();
             this.checkCollisions(player);
 
-            if(this.isInScoreSquare(player) && (performance.now() - player.lastScoreSquareGain) > player.scoreSquareGainCooldown) {
-                if(this.game.config?.scoreSquareEnabled !== undefined) {
-                    if(this.game.config.scoreSquareEnabled !== true) {
-                        continue;
+            if(this.game.gameMode == "FFA" || this.game.gameMode == "TDM") {
+                if(this.isInScoreSquare(player) && (performance.now() - player.lastScoreSquareGain) > player.scoreSquareGainCooldown) {
+                    if(this.game.config?.scoreSquareEnabled !== undefined) {
+                        if(this.game.config.scoreSquareEnabled !== true) {
+                            continue;
+                        }
+                        this.awardScoreSquareGain(player);
+                    } else {
+                        this.awardScoreSquareGain(player);
                     }
-                    this.awardScoreSquareGain(player);
-                } else {
-                    this.awardScoreSquareGain(player);
-                }
 
-                player.fieldManager.safeUpdate({
-                    states: [EntityStateFlags.FIRST_PERSON_UPDATE],
-                    firstPersonFields: ['score']
-                });
+                    player.fieldManager.safeUpdate({
+                        states: [EntityStateFlags.FIRST_PERSON_UPDATE],
+                        firstPersonFields: ['score']
+                    });
+                }
             }
 
-            if(this.game.gameMode == "FFA" || this.game.gameMode == "TDM") {
-                if(this.isInFog(player)) {
-                    player.isInFog = 1;
-                    player.damage(this.game.fogDamagePerTick, player.uid);
-                } else {
-                    player.isInFog = 0;
-                }
+            if(this.isInFog(player)) {
+                player.isInFog = 1;
+                player.damage(this.game.fogDamagePerTick, player.uid);
+            } else {
+                player.isInFog = 0;
             }
         }
     }
