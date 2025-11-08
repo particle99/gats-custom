@@ -22477,112 +22477,99 @@
 		var _0x204ba3 = _0x3b4c10;
 		if (respawnButtonVisible)
 			return;
-		var _0x21e55b = 144,
-			_0x572e15 = 144;
-		ctx['globalAlpha'] = 0.5, ctx['fillStyle'] = '#808080', ctx['fillRect'](5, 20, 150, 150), ctx['fillStyle'] = '#7a7a7a', ctx['fillRect'](8, 23, _0x21e55b, _0x572e15);
+    
+    //map dimensions (144x144)
+		var mapWidth = 144,
+			mapHeight = 144;
+
+		ctx['globalAlpha'] = 0.5;
+    ctx['fillStyle'] = '#808080';
+    ctx['fillRect'](5, 20, 150, 150);
+    ctx['fillStyle'] = '#7a7a7a';
+    ctx['fillRect'](8, 23, mapWidth, mapHeight);
+
+    //draw map
 		var _0x20ee8c = (100 / GAME_WIDTH - currentWidth) * 0.01,
 			_0x189978 = (100 / GAME_HEIGHT - currentHeight) * 0.01,
-			_0x99f100 = _0x21e55b / 2 - _0x20ee8c,
-			_0x11a7ba = _0x572e15 / 2 - _0x20ee8c;
-		ctx['fillStyle'] = '#b5b5b5', ctx['strokeStyle'] = '#d9d9d9', ctx['lineWidth'] = 1, ctx['fillRect'](_0x99f100 + 8, _0x11a7ba + 23, _0x20ee8c * 2, _0x189978 * 2);
-		var _0x40a6ff = _0x21e55b * (100 / GAME_WIDTH * SCORE_SQUARE_SIDE * 0.01),
-			_0xcb6a1 = _0x572e15 * (100 / GAME_HEIGHT * SCORE_SQUARE_SIDE * 0.01),
-			_0x4a4f5f = _0x21e55b * 0.5 - _0x40a6ff * 0.5,
-			_0x5961fa = _0x572e15 * 0.5 - _0xcb6a1 * 0.5;
+			_0x99f100 = mapWidth / 2 - _0x20ee8c,
+			_0x11a7ba = mapHeight / 2 - _0x20ee8c;
+
+		ctx['fillStyle'] = '#b5b5b5';
+    ctx['strokeStyle'] = '#d9d9d9';
+    ctx['lineWidth'] = 1;
+    ctx['fillRect'](_0x99f100 + 8, _0x11a7ba + 23, _0x20ee8c * 2, _0x189978 * 2);
+		
+    //score squares position (center)
+    var _0x40a6ff = mapWidth * (100 / GAME_WIDTH * SCORE_SQUARE_SIDE * 0.01),
+			_0xcb6a1 = mapHeight * (100 / GAME_HEIGHT * SCORE_SQUARE_SIDE * 0.01),
+			_0x4a4f5f = mapWidth * 0.5 - _0x40a6ff * 0.5,
+			_0x5961fa = mapHeight * 0.5 - _0xcb6a1 * 0.5;
+
+    //draw score squares
 		if (gameType == 'FFA' || gameType == 'TDM') {
-			if ('nSEen' !== 'qYtgQ')
-				ctx['strokeStyle'] = '#d9d9d9', drawRectangle(ctx, _0x4a4f5f + 8, _0x5961fa + 23, _0x40a6ff, _0xcb6a1);
-			else
-				return;
-		} else {
-			if (gameType == '2TEAM' || gameType == 'DOM') {
-				if ('NyTEk' === 'ffAAk')
-					_0x159398();
-				else
-					for (var _0x29b4d0 = 1; _0x29b4d0 < 5; _0x29b4d0++) {
-						if ('CgxNI' === 'maCJE') {} else {
-							if (teamScoreSquares[_0x29b4d0] == 1)
-								'gTQVL' !== 'gTQVL' ? _0xe7edb0 = {
-									'current': _0x9f6a51(_0x168e4e['rechargeTimer']) * 2.5,
-									'total': _0x432d23(_0x5892ba['rechargeTimer']) * 2.5
-								} : ctx['strokeStyle'] = '#f26740';
-							else
-								teamScoreSquares[_0x29b4d0] == 2 ? ctx['strokeStyle'] = '#8dd8f8' : ctx['strokeStyle'] = '#d9d9d9';
-							var _0x2e0dfe = 0,
-								_0xdd6705 = 0;
-							if (_0x29b4d0 == 1)
-								_0x2e0dfe = _0x21e55b * 0.5 - 20, _0xdd6705 = _0x572e15 * 0.5 - 20;
-							else {
-								if (_0x29b4d0 == 2)
-									_0x2e0dfe = _0x21e55b * 0.5 + 20 - _0x40a6ff, _0xdd6705 = _0x572e15 * 0.5 - 20;
-								else {
-									if (_0x29b4d0 == 3) {
-										if ('rnfJI' !== 'rnfJI') {
-											var _0x2edbde = _0x2b847b['find'](_0x5b8626, {
-												'type': 3
-											});
-											_0x2edbde == null ? _0x37a8e4['push']({
-												'type': _0x1ffd70(_0x5ab1e5['type']),
-												'content': _0x382a41(_0x2d0e1a['content']),
-												'initTime': new _0x463c9c()['getTime']()
-											}) : (_0x2edbde['content'] += _0x4a7f41(_0x4a9b34['content']), _0x2edbde['initTime'] = new _0x1ff88f()['getTime']());
-										} else
-											_0x2e0dfe = _0x21e55b * 0.5 - 20, _0xdd6705 = _0x572e15 * 0.5 + 20 - _0xcb6a1;
-									} else {
-										if (_0x29b4d0 == 4) {
-											if ('uOckH' === 'PibWf') {
-												var _0x29ae0c = _0x36063d || _0x77c25b['userAgent'],
-													_0x1ce215 = _0x29ae0c['split']('[FBAN');
-												if (void 0 !== _0x1ce215[1])
-													_0x29ae0c = _0x1ce215[0];
-												var _0x4bf1bd = _0x29ae0c['split']('Twitter');
-												if (void 0 !== _0x4bf1bd[1])
-													_0x29ae0c = _0x4bf1bd[0];
-												this['apple'] = {
-													'phone': _0x55a76a(_0x2bdf4, _0x29ae0c),
-													'ipod': _0x45243e(_0x139499, _0x29ae0c),
-													'tablet': !_0xb3324(_0x1165d2, _0x29ae0c) && _0x45504f(_0x21450f, _0x29ae0c),
-													'device': _0x3cb565(_0x6951c0, _0x29ae0c) || _0x488b5d(_0x5891ae, _0x29ae0c) || _0x3382ac(_0x22295f, _0x29ae0c)
-												}, this['amazon'] = {
-													'phone': _0x6c94e2(_0x5389c2, _0x29ae0c),
-													'tablet': !_0x4e511a(_0x40eb68, _0x29ae0c) && _0x2720dc(_0x92fcdf, _0x29ae0c),
-													'device': _0x22d415(_0x4e4129, _0x29ae0c) || _0x426f36(_0x32068b, _0x29ae0c)
-												}, this['android'] = {
-													'phone': _0x5c0eec(_0x268c7d, _0x29ae0c) || _0x415e7e(_0x4704a9, _0x29ae0c),
-													'tablet': !_0x3b36a5(_0x5dcf3c, _0x29ae0c) && !_0x258564(_0x12fda8, _0x29ae0c) && (_0x2b1df1(_0x3e426a, _0x29ae0c) || _0x18ba87(_0x2083cb, _0x29ae0c)),
-													'device': _0x154bcf(_0xbeeff6, _0x29ae0c) || _0x5ee5b2(_0x4d4acf, _0x29ae0c) || _0x3015ec(_0x3d128a, _0x29ae0c) || _0x520464(_0x49de27, _0x29ae0c)
-												}, this['windows'] = {
-													'phone': _0x4fc975(_0x19eaf0, _0x29ae0c),
-													'tablet': _0x2e1163(_0x2588f2, _0x29ae0c),
-													'device': _0x490d34(_0x41c076, _0x29ae0c) || _0x20cbc0(_0x21fa90, _0x29ae0c)
-												}, this['other'] = {
-													'blackberry': _0x2d2369(_0xa2da53, _0x29ae0c),
-													'blackberry10': _0x2e0019(_0x4f8692, _0x29ae0c),
-													'opera': _0x50a291(_0x4cce98, _0x29ae0c),
-													'firefox': _0x542f11(_0x2da2d0, _0x29ae0c),
-													'chrome': _0x513b50(_0x10f7fc, _0x29ae0c),
-													'device': _0x58bec7(_0x6fef8, _0x29ae0c) || _0x294707(_0x472aaa, _0x29ae0c) || _0x5bd16c(_0x11f5c3, _0x29ae0c) || _0x2a7c1d(_0x35ca23, _0x29ae0c) || _0x3f95c9(_0x57d224, _0x29ae0c)
-												}, this['seven_inch'] = _0xb4f2f9(_0xdddc11, _0x29ae0c), this['any'] = this['apple']['device'] || this['android']['device'] || this['windows']['device'] || this['other']['device'] || this['seven_inch'], this['phone'] = this['apple']['phone'] || this['android']['phone'] || this['windows']['phone'], this['tablet'] = this['apple']['tablet'] || this['android']['tablet'] || this['windows']['tablet'];
-											} else
-												_0x2e0dfe = _0x21e55b * 0.5 + 20 - _0x40a6ff, _0xdd6705 = _0x572e15 * 0.5 + 20 - _0xcb6a1;
-										}
-									}
-								}
-							}
-							drawRectangle(ctx, _0x2e0dfe + 8, _0xdd6705 + 23, _0x40a6ff, _0xcb6a1);
-						}
-					}
-			}
-		}
-		if (_0x32f6ed == null || _0x32f6ed === undefined) {
-			if ('zKVtd' !== 'zKVtd')
-				_0x5d4e6c['log']('Could not make ' + _0x6b8b84 + ' unselectable.');
-			else
-				return;
-		}
-		var _0x411202 = _0x21e55b * (100 / GAME_WIDTH * _0x32f6ed['x']) * 0.01,
-			_0x39661a = _0x572e15 * (100 / GAME_HEIGHT * _0x32f6ed['y']) * 0.01;
-		ctx['strokeStyle'] = '#666', ctx['lineWidth'] = 0, drawCircle(ctx, _0x411202 + 8, _0x39661a + 23, 2), ctx['fillStyle'] = _0x32f6ed['color']['a'], ctx['fill'](), ctx['globalAlpha'] = 1;
+      ctx['strokeStyle'] = '#d9d9d9';
+      drawRectangle(ctx, _0x4a4f5f + 8, _0x5961fa + 23, _0x40a6ff, _0xcb6a1);
+		} else if (gameType == '2TEAM' || gameType == 'DOM') {
+      for (var _0x29b4d0 = 1; _0x29b4d0 < 5; _0x29b4d0++) {
+          if (teamScoreSquares[_0x29b4d0] == 1) ctx['strokeStyle'] = '#f26740';
+          else teamScoreSquares[_0x29b4d0] == 2 
+              ? ctx['strokeStyle'] = '#8dd8f8' 
+              : ctx['strokeStyle'] = '#d9d9d9';
+            
+          var _0x2e0dfe = 0,
+            _0xdd6705 = 0;
+
+          if (_0x29b4d0 == 1) {
+            _0x2e0dfe = mapWidth * 0.5 - 20;
+            _0xdd6705 = mapHeight * 0.5 - 20;
+          } else {
+            if (_0x29b4d0 == 2) {
+              _0x2e0dfe = mapWidth * 0.5 + 20 - _0x40a6ff;
+              _0xdd6705 = mapHeight * 0.5 - 20;
+            } else {
+              if (_0x29b4d0 == 3) {
+                  _0x2e0dfe = mapWidth * 0.5 - 20;
+                  _0xdd6705 = mapHeight * 0.5 + 20 - _0xcb6a1;
+              } else {
+                if (_0x29b4d0 == 4) {
+                    _0x2e0dfe = mapWidth * 0.5 + 20 - _0x40a6ff;
+                    _0xdd6705 = mapHeight * 0.5 + 20 - _0xcb6a1;
+                }
+            }
+          }
+          drawRectangle(ctx, _0x2e0dfe + 8, _0xdd6705 + 23, _0x40a6ff, _0xcb6a1);
+        }
+      }
+    } else { //custom gamemodes
+      for(var i = 0; i < CUSTOM_SCORE_SQUARES.length; i++) {
+        var customSquare = CUSTOM_SCORE_SQUARES[i];
+        var customScoreSquareWidth = mapWidth * ((100 / GAME_WIDTH * customSquare.width) * 0.01);
+        var customScoreSquareHeight = mapHeight * ((100 / GAME_HEIGHT * customSquare.height) * 0.01);
+      
+        if(customSquare.team == 1) ctx['strokeStyle'] = '#f26740';
+        else if(customSquare.team == 2) ctx['strokeStyle'] = '#8dd8f8';
+        else ctx['strokeStyle'] = '#d9d9d9';
+
+        var customScoreSquarePos = {
+          x: (customSquare.x / GAME_WIDTH) * mapWidth,
+          y: (customSquare.y / GAME_HEIGHT) * mapHeight
+        }
+
+        drawRectangle(ctx, customScoreSquarePos.x + 8, customScoreSquarePos.y + 23, customScoreSquareWidth, customScoreSquareHeight);
+      }
+    }
+
+		if (_0x32f6ed == null || _0x32f6ed === undefined) return;
+
+		var _0x411202 = mapWidth * (100 / GAME_WIDTH * _0x32f6ed['x']) * 0.01,
+			_0x39661a = mapHeight * (100 / GAME_HEIGHT * _0x32f6ed['y']) * 0.01;
+
+		ctx['strokeStyle'] = '#666';
+    ctx['lineWidth'] = 0;
+    drawCircle(ctx, _0x411202 + 8, _0x39661a + 23, 2);
+    ctx['fillStyle'] = _0x32f6ed['color']['a'];
+    ctx['fill']();
+    ctx['globalAlpha'] = 1;
 	}
 
 	function drawHudSelection(_0x447ef5, _0x536d83) {
