@@ -47,7 +47,7 @@ export default class PlayerManager {
         const player: PlayerEntity = new PlayerEntity(this.game, uid, playerData.gun, playerData.armor, playerData.color);
         this.setEntity(uid, player);
 
-        this.generateSpawnPosition(player);
+        //this.generateSpawnPosition(player);
 
         return player;
     }
@@ -97,7 +97,7 @@ export default class PlayerManager {
         );
     }
 
-    private isInFog(player: PlayerEntity): boolean {
+    public isInFog(player: PlayerEntity): boolean {
         const fogSize = this.game.fogSize / 2;
 
         const mapCenterX = this.game.arenaSize / 2;
@@ -111,7 +111,7 @@ export default class PlayerManager {
         );
     }
 
-    private isInScoreSquare(player: PlayerEntity): boolean {
+    public isInScoreSquare(player: PlayerEntity): boolean {
         return (
             player.x >= 3400 &&
             player.x <= 3600 &&
@@ -218,7 +218,7 @@ export default class PlayerManager {
         for(const crate of crates) {
             if(crate.type == 5) {
                 medkits.push(crate as MedKitObject);
-            } else if(crate.type !== 0) { //skip shields
+            } else if(crate.type !== 0 && crate.type !== 6) { //skip shields and flags
                 regularCrates.push(crate);
             }
         }
@@ -369,34 +369,6 @@ export default class PlayerManager {
     }
 
     public updatePlayers(): void {
-        for(const [uid, player] of this.players) {
-            player.update();
-            this.checkCollisions(player);
-
-            if(this.game.gameMode == "FFA" || this.game.gameMode == "TDM") {
-                if(this.isInScoreSquare(player) && (performance.now() - player.lastScoreSquareGain) > player.scoreSquareGainCooldown) {
-                    if(this.game.config?.scoreSquareEnabled !== undefined) {
-                        if(this.game.config.scoreSquareEnabled !== true) {
-                            continue;
-                        }
-                        this.awardScoreSquareGain(player);
-                    } else {
-                        this.awardScoreSquareGain(player);
-                    }
-
-                    player.fieldManager.safeUpdate({
-                        states: [EntityStateFlags.FIRST_PERSON_UPDATE],
-                        firstPersonFields: ['score']
-                    });
-                }
-            }
-
-            if(this.isInFog(player)) {
-                player.isInFog = 1;
-                player.damage(this.game.fogDamagePerTick, player.uid);
-            } else {
-                player.isInFog = 0;
-            }
-        }
+        this.game.gameClass.updatePlayers(this.players);
     }
 }

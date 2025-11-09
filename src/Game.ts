@@ -18,7 +18,7 @@ import { Gamemode } from './Gamemodes/Gamemode';
 import FFA from './Gamemodes/Native/FFA';
 import DOM from './Gamemodes/Native/DOM';
 import TDM from './Gamemodes/Native/TDM';
-import CaptureTheFlag from './Gamemodes/Custom/CTF';
+import { CaptureTheFlag } from './Gamemodes/Custom/CTF';
 
 export default class Game {
     /** Game server */
@@ -79,9 +79,6 @@ export default class Game {
         /** Server */
         this.gameServer = new WebSocketServer({ port: this.gamePort });
 
-        /** Gamemode class */
-        this.gameClass = this.getGamemodeClass(this.gameMode);
-
         /** Sockets */
         this.sockets = new Set(); //container for sockets
         this.socketToIp = new Map(); //container for socket to IP mapping
@@ -113,10 +110,13 @@ export default class Game {
         /** Managers */
         this.codec = new Codec(this);
         this.networkManager = new NetworkManager(this, this.codec);
-        this.spawnManager = new SpawnManager(this, 10); //10 valid spawn positions per chunk
+        this.spawnManager = new SpawnManager(this, this.arenaSize, this.arenaSize, this.fogSize, this.fogSize, 10); //10 valid spawn positions per chunk
         this.playerManager = new PlayerManager(this);
         this.bulletManager = new BulletManager(this, this.playerManager.spatialGrid);
         this.explosiveManager = new ExplosiveManager(this);
+
+        /** Gamemode class */
+        this.gameClass = this.getGamemodeClass(this.gameMode);
 
         /** Fog */
         if(config?.fogEnabled !== undefined) {

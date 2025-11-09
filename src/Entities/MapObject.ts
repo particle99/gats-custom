@@ -20,6 +20,7 @@ export class RectangularMapObject extends MapObject {
     public angle: number;
 
     public type: number;
+    public team: number = 0;
 
     public hp: number = 0;
     public maxHp: number = 0;
@@ -161,5 +162,14 @@ export class ShieldObject extends RectangularMapObject {
         super(uid, 0, 16, 50, 0);
 
         this.parentId = parentId;
+    }
+}
+
+export class FlagObject extends RectangularMapObject {
+    public owner: PlayerEntity | null = null;
+    public stolen: boolean = false;
+
+    constructor(uid: number, parentId: number) {
+        super(uid, 6, 50, 50, 0);
     }
 }

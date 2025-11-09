@@ -16821,6 +16821,27 @@
         [ [ 11, 0 ], [ 11, 3.14159, 22, '#ffffff' ] ],
         [ [ 8, 0 ], [ 8, 3.14159, 4, '#007649' ] ],
         [ [ 8, 1.5708 ], [ 8, 4.71239, 4, '#007649' ] ]
+      ]], redFlag = [[
+        //flag
+        [[18, 0], [52, 1.3, 26, "#ff0000"]],
+        //pole
+        [[32, 0], [32, 3.14159, 6, "#818181"]],
+        //top part of pole
+        [[25, 0], [38, 0, 14, "#656565"]]
+      ]], blueFlag = [[
+        //flag
+        [[18, 0], [52, 1.3, 26, "#2917bf"]],
+        //pole
+        [[32, 0], [32, 3.14159, 6, "#818181"]],
+        //top part of pole
+        [[25, 0], [38, 0, 14, "#656565"]]
+      ]], defaultFlag = [[
+        //flag 
+        [[18, 0], [52, 1.3, 26, "#11ae05"]],
+        //pole
+        [[32, 0], [32, 3.14159, 6, "#818181"]],
+        //top part of pole
+        [[25, 0], [38, 0, 14, "#656565"]]
       ]], fragGrenade = [ [ [ [ 11.25, 1.5708 ], [ 9.75, 0.7854 ], [ 9.75, 0, 1.5, '#000000' ] ],
         [ [ 7.5, 1.5708 ], [ 12, 1.5708, 5.25, '#666666' ] ],
         [ [ 7.5, 1.5708 ], [ 9, 1.5708, 5.25, '#000000' ] ],
@@ -18651,11 +18672,42 @@
 	};
 	var MapObject = function(_0x2c930d) {
 		var _0x24447a = _0x3b4c10;
-		this['id'] = _0x2c930d, this['parent'] = 0, this['type'] = '', this['x'] = 0, this['y'] = 0, this['width'] = 0, this['height'] = 0, this['angle'] = 0, this['maxHp'] = 0, this['hp'] = 0, this['bulletCollisions'] = 0, this['model'] = null, this['animationFrame'] = 0, this['activated'] = 0, this['isPremium'] = 0;
+		this['id'] = _0x2c930d;
+    this['parent'] = 0;
+    this['type'] = '';
+    this['x'] = 0;
+    this['y'] = 0;
+    this['width'] = 0;
+    this['height'] = 0;
+    this['angle'] = 0;
+    this['maxHp'] = 0;
+    this['hp'] = 0;
+    this['bulletCollisions'] = 0;
+    this['model'] = null;
+    this['animationFrame'] = 0;
+    this['activated'] = 0;
+    this['isPremium'] = 0;
+    this['team'] = 0;
 	};
 	MapObject['prototype']['pool'] = {}, MapObject['prototype']['activate'] = function(_0x35c381) {
 		var _0x2f7976 = _0x3b4c10;
-		this['parent'] = _0x35c381['parentId'], this['type'] = _0x35c381['type'], this['x'] = _0x35c381['x'] / 10, this['y'] = _0x35c381['y'] / 10, this['angle'] = _0x35c381['angle'], this['maxHp'] = _0x35c381['maxHp'], this['hp'] = _0x35c381['hp'], this['isPremium'] = _0x35c381['isPremium'], this['model'] = getModel(this['type'], this['isPremium']);
+		this['parent'] = _0x35c381['parentId'];
+    this['type'] = _0x35c381['type'];
+    this['x'] = _0x35c381['x'] / 10;
+    this['y'] = _0x35c381['y'] / 10;
+    this['angle'] = _0x35c381['angle'];
+    this['maxHp'] = _0x35c381['maxHp'];
+    this['hp'] = _0x35c381['hp'];
+    this['isPremium'] = _0x35c381['isPremium'];
+    this['model'] = getModel(this['type'], this['isPremium'], this['team']);
+
+    if(_0x35c381['team'] !== undefined) {
+      this['team'] = parseInt(_0x35c381['team']);
+      this['model'] = getModel(this['type'], this['isPremium'], this['team']);
+
+      FLAGS.push(this); 
+    }
+
 		if (this['type'] == 'crate') {
 			if ('oOsFM' === 'spQWO')
 				try {
@@ -19071,6 +19123,7 @@
 		GAME_HEIGHT = 7000,
 		currentWidth, currentHeight, SCORE_SQUARE_SIDE = 200,
     CUSTOM_SCORE_SQUARES = [],
+    FLAGS = [],
 		SCORE_FOR_LEVEL_ONE = 100,
 		SCORE_FOR_LEVEL_TWO = 300,
 		SCORE_FOR_LEVEL_THREE = 600,
@@ -19366,7 +19419,7 @@
 		}
 	}
 
-	function getModel(_0xaf799b, _0x14eb74 = 0) {
+	function getModel(_0xaf799b, _0x14eb74 = 0, team = 0) {
 		var _0x42ee63 = _0x3b4c10;
 		switch (_0xaf799b) {
 			case 'crate':
@@ -19393,6 +19446,10 @@
 				return knife;
 			case 'shield':
 				return shield;
+      case 'flag':
+        if(team == 1) return blueFlag;
+        if(team == 2) return redFlag;
+        return defaultFlag;
 		}
 	}
 
@@ -20124,7 +20181,8 @@
 						'parentId': _0x147ac5[6],
 						'hp': _0x147ac5[7],
 						'maxHp': _0x147ac5[8],
-						'isPremium': _0x147ac5[9]
+						'isPremium': _0x147ac5[9],
+            'team': _0x147ac5[10]
 				};
 			case 'k':
 				return {
@@ -20434,30 +20492,14 @@
 		}
 	}
 
-	function getObjectTypeFromCode(_0x203ffe) {
-		var _0x288474 = _0x3b4c10;
-		if (parseInt(_0x203ffe) == 0)
-			return 'shield';
-		else {
-			if (parseInt(_0x203ffe) == 1)
-				return 'crate';
-			else {
-				if (parseInt(_0x203ffe) == 2)
-					return 'longCrate';
-				else {
-					if (parseInt(_0x203ffe) == 3)
-						return 'userCrate';
-					else {
-						if (parseInt(_0x203ffe) == 4)
-							return 'medKit';
-						else {
-							if (parseInt(_0x203ffe) == 5)
-								return 'userMedKit';
-						}
-					}
-				}
-			}
-		}
+	function getObjectTypeFromCode(code) {
+		if (parseInt(code) == 0) return 'shield';
+		else if (parseInt(code) == 1) return 'crate';
+		else if (parseInt(code) == 2) return 'longCrate';
+    else if (parseInt(code) == 3) return 'userCrate';
+    else if (parseInt(code) == 4) return 'medKit';
+    else if (parseInt(code) == 5) return 'userMedKit';
+    else if (parseInt(code) == 6) return 'flag';
 	}
 
 	function getPowerupNameFromCode(_0x82c009) {
@@ -21585,6 +21627,12 @@
                 team: parseInt(_0x2a9994['team'])
               });
               break;
+            case 'flagPos':
+              var flagUID = parseInt(_0x2a9994['id']);
+
+              FLAGS[flagUID].x = parseInt(_0x2a9994['x']);
+              FLAGS[flagUID].y = parseInt(_0x2a9994['y']);
+              break;
 					}
 				} else
 					_0x450550 = !![], _0x33deaf = 0, _0x1c0ae0 = 0, _0x135429 = 0, _0x4352aa = {
@@ -22541,13 +22589,30 @@
         }
       }
     } else { //custom gamemodes
+      //draw CTF flags
+      if(gameType == 'CTF') {
+        for(var i = 0; i < FLAGS.length; i++) {
+          var flag = FLAGS[i];
+
+          var flagPositionX = mapWidth * (100 / GAME_WIDTH * flag.x) * 0.01;
+          var flagPositionY = mapHeight * (100 / GAME_HEIGHT * flag.y) * 0.01;
+          
+          if(flag.team == 1) ctx['strokeStyle'] = '#8dd8f8';
+          else if(flag.team == 2) ctx['strokeStyle'] = '#f26740';
+
+          ctx['lineWidth'] = 0;
+
+          drawCircle(ctx, flagPositionX + 8, flagPositionY + 23, 2);
+        }
+      }
+
       for(var i = 0; i < CUSTOM_SCORE_SQUARES.length; i++) {
         var customSquare = CUSTOM_SCORE_SQUARES[i];
         var customScoreSquareWidth = mapWidth * ((100 / GAME_WIDTH * customSquare.width) * 0.01);
         var customScoreSquareHeight = mapHeight * ((100 / GAME_HEIGHT * customSquare.height) * 0.01);
       
-        if(customSquare.team == 1) ctx['strokeStyle'] = '#f26740';
-        else if(customSquare.team == 2) ctx['strokeStyle'] = '#8dd8f8';
+        if(customSquare.team == 1) ctx['strokeStyle'] = '#8dd8f8';
+        else if(customSquare.team == 2) ctx['strokeStyle'] = '#f26740';
         else ctx['strokeStyle'] = '#d9d9d9';
 
         var customScoreSquarePos = {
@@ -22793,8 +22858,8 @@
 			} else { //custom score square
         for(var i = 0; i < CUSTOM_SCORE_SQUARES.length; i++) {
           //color of the border
-          if(CUSTOM_SCORE_SQUARES[i].team == 1) _0x4d4b91 = '#f26740';
-          else if(CUSTOM_SCORE_SQUARES[i].team == 2) _0x4d4b91 = '#8dd8f8';
+          if(CUSTOM_SCORE_SQUARES[i].team == 1) _0x4d4b91 = '#8dd8f8';
+          else if(CUSTOM_SCORE_SQUARES[i].team == 2) _0x4d4b91 = '#f26740';
 
           //draw the border relative to the player's pos
           var customSquarePos = {

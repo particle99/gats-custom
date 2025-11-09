@@ -79,7 +79,7 @@ export default class CrateManager {
     public update(): void {
         for(const [uid, object] of this.objects) {
             //only update shields, medkits and user crates
-            if(object.type == 5 || object.type == 3 || object.type == 0) {
+            if(object.type == 6 || object.type == 5 || object.type == 3 || object.type == 0) {
                 //medkits
                 if(object.type == 5) {
                     if(this.game.tick - object.spawnTick > object.duration) {
@@ -103,6 +103,9 @@ export default class CrateManager {
 
                 //shields
                 if(object.type == 0) this.broadcastObject(object, ['uid', 'type', 'x', 'y', 'angle', 'parentId']);
+            
+                //flags
+                if(object.type == 6) this.broadcastObject(object, ['uid', 'type', 'x', 'y', 'angle', 'parentId', 'team']);
             }
         }
     }

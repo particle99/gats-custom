@@ -20,6 +20,11 @@ export default class SpawnManager {
     private chunkWidth: number;
     private chunkHeight: number;
 
+    private width: number;
+    private height: number;
+    private availableWidth: number;
+    private availableHeight: number;
+
     private chunks: Array<SpawnChunk>;
 
     private validPositionsPerChunk: number;
@@ -32,16 +37,21 @@ export default class SpawnManager {
     private cols: number = 4;
     private rows: number = 4;
 
-    constructor(game: Game, validPositionsPerChunk: number) {
+    constructor(game: Game, width: number, height: number, availableX: number, availableY: number, validPositionsPerChunk: number) {
         this.game = game;
+
+        this.width = width;
+        this.height = height;
+        this.availableWidth = availableX;
+        this.availableHeight = availableY;
 
         this.validPositionsPerChunk = validPositionsPerChunk;
 
-        this.mapCenterX = game.arenaSize / 2;
-        this.mapCenterY = game.arenaSize / 2;
+        this.mapCenterX = this.width / 2;
+        this.mapCenterY = this.height / 2;
 
-        this.chunkWidth = game.fogSize / this.rows;
-        this.chunkHeight = game.fogSize / this.cols;
+        this.chunkWidth = this.availableWidth / this.rows;
+        this.chunkHeight = this.availableHeight / this.cols;
 
         this.chunks = this.initializeChunks();
         this.generateValidSpawnPositions();
@@ -49,7 +59,7 @@ export default class SpawnManager {
 
     private initializeChunks(): Array<SpawnChunk> {
         const chunks: Array<SpawnChunk> = [];
-        const halfFogSize = this.game.fogSize / 2;
+        const halfFogSize = this.availableWidth / 2;
         
         const fogStartX = this.mapCenterX - halfFogSize;
         const fogStartY = this.mapCenterY - halfFogSize;

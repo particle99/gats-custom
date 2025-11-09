@@ -20,7 +20,7 @@ import { Packets } from '../Enums/Flags';
 import PacketType from './PacketType';
 import PlayerEntity from '../Entities/PlayerEntity';
 import Bullet from '../Entities/Bullet';
-import { ExplodingObject, ExplosiveObject, RectangularMapObject } from "../Entities/MapObject";
+import { ExplodingObject, ExplosiveObject, FlagObject, RectangularMapObject } from "../Entities/MapObject";
 
 export default class Codec {
     public game: Game;
@@ -316,6 +316,14 @@ export default class Codec {
 
     public buildCustomScoreSquarePacket(x: number, y: number, width: number, height: number, team: number): string {
         return `scoreSquare,${x},${y},${width},${height},${team}|`;
+    }
+
+    public buildFlagPositionPacket(flag: FlagObject): string {
+        return `flagPos,${flag.x},${flag.y},${flag.team}|`;
+    }
+
+    public buildDisconnectPacket(): string {
+        return `${Packets.DISCONNECT_PACKET}|`;
     }
 
     public buildPingPacket(): string {

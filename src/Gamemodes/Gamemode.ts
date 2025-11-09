@@ -1,5 +1,7 @@
 import PlayerEntity from "../Entities/PlayerEntity";
 import Game from "../Game";
+import PacketType from "../Network/PacketType";
+import { WebSocket } from "ws";
 
 export interface ScoreSquare {
     x: number,
@@ -58,4 +60,16 @@ export class Gamemode {
         //broadcast current leader
         this.game.networkManager.broadcast(this.game.codec.buildAuxilaryUpdatePacket(player, ['uid', 'isLeader']));
     }
+
+    //players spawn differently across gamemodes; make this be handled by the specific game class
+    spawnPlayer(packet: PacketType, ws: WebSocket): void { }
+
+    //handle player closing
+    closePlayer(ws: WebSocket): void { }
+
+    //players are updated differently across gamemodes
+    updatePlayers(players: Map<number, PlayerEntity>): void { }
+
+    //not always used
+    update(): void { }
 }

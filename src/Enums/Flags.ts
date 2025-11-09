@@ -19,7 +19,8 @@ enum Packets {
     OVERLAY_MESSAGES_PACKET = 'r',
     HIT_MARKER_PACKET = 'q',
     RESPAWN_PACKET = 're',
-    KILLER_INFO_PACKET = 'sta'
+    KILLER_INFO_PACKET = 'sta',
+    DISCONNECT_PACKET = 't'
 }
 
 /** EntityStateFlags */

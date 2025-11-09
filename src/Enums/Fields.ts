@@ -79,6 +79,7 @@ type ObjectUpdateFields = keyof Pick<RectangularMapObject,
     | 'hp'
     | 'maxHp'
     | 'isPremium'
+    | 'team'
 >;
 
 type ExplosiveActivationFields = keyof Pick<ExplosiveObject, 
@@ -179,7 +180,8 @@ const OBJECT_UPDATE_PACKET_FIELDS: Array<ObjectUpdateFields> = [
     'parentId',
     'hp',
     'maxHp',
-    'isPremium'
+    'isPremium',
+    'team'
 ];
 
 const EXPLOSIVE_ACTIVATION_PACKET_FIELDS: Array<ExplosiveActivationFields> = [

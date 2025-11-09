@@ -147,53 +147,7 @@ export default class NetworkManager {
     }
 
     public onJoin(packet: PacketType, ws: WebSocket): void {
-        //respawn
-        if(this.socketToPlayer.has(ws)) {
-            const player = this.socketToPlayer.get(ws);
-            
-            if(!player) return;
-
-            player.respawn();
-            player.queueManager.addToQueue(this.codec.buildJoinPacket(player));
-                        
-            //still need to send crates every time you respawn,
-            //gats removes crates when you unload the player
-            this.codec.loadPrerequisites(player);
-            this.broadcast(this.codec.buildLeaderboardPacket());
-
-            this.game.playerManager.generateSpawnPosition(player);
-
-            player.fieldManager.safeUpdate({
-                states: [EntityStateFlags.ACTIVATION_UPDATE, EntityStateFlags.FIRST_PERSON_UPDATE],
-                firstPersonFields: ['score', 'currentBullets', 'maxBullets'],
-            });
-        } else {
-            const player: PlayerEntity | null = this.game.playerManager.createPlayer(packet.parts);
-            if(!player) return;
-
-            this.addPlayer(ws, player);
-
-            //join packet
-            player.queueManager.addToQueue(this.codec.buildJoinPacket(player));
-            //gamemode packet
-            player.queueManager.addToQueue(this.codec.buildGamemodePacket(this.game.gameMode));
-
-            //load score squares
-            this.loadScoreSquares(player);
-            
-            this.codec.loadPrerequisites(player);
-            this.broadcast(this.codec.buildLeaderboardPacket());
-
-            //display custom join message
-            if(this.game.config?.customClient !== undefined) {
-                if(this.game.config.customClient) this.broadcast(this.codec.buildCustomOverlayPacket(`Player ${player.username} has joined the arena!`));
-            }
-
-            player.fieldManager.safeUpdate({
-                states: [EntityStateFlags.ACTIVATION_UPDATE, EntityStateFlags.FIRST_PERSON_UPDATE],
-                firstPersonFields: ['score', 'currentBullets', 'maxBullets']
-            });
-        }
+        this.game.gameClass.spawnPlayer(packet, ws);
     }
 
     public onMouseUpdate(packet: PacketType, ws: WebSocket): void {
@@ -318,11 +272,7 @@ export default class NetworkManager {
     }
 
     public onPlayerClose(ws: WebSocket): void {
-        const player = this.socketToPlayer.get(ws);
-        if (!player) return;
-
-        this.broadcast(this.codec.buildUnloadPlayerPacket(player));
-        this.removePlayer(player);
+        this.game.gameClass.closePlayer(ws);
     }
 
     public onPing(ws: WebSocket): void {

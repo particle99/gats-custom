@@ -1,5 +1,5 @@
 import SecondaryUpgrade from "../../SecondaryUpgrade";
-import { MedKitObject } from "../../../Entities/MapObject";
+import { FlagObject, MedKitObject } from "../../../Entities/MapObject";
 import PlayerEntity from "../../../Entities/PlayerEntity";
 import Game from "../../../Game";
 import { EntityStateFlags } from "../../../Enums/Flags";
@@ -21,7 +21,7 @@ export default class MedKit extends SecondaryUpgrade {
     }
 
     public activate(): void {
-        const placementDistance = 50;
+        const placementDistance = 150;
         
         const angleRad = (this.owner.playerAngle * Math.PI) / 180;
         
