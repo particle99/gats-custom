@@ -203,9 +203,14 @@ export class CaptureTheFlag extends Gamemode {
 
             console.log(player.teamCode);
 
-            if(player.teamCode == 1) this.teamOneSpawnManager.spawnPlayer(player);
-            else this.teamTwoSpawnManager.spawnPlayer(player);
-
+            if(player.teamCode == 1) {
+                player.color = 0; //red
+                this.teamOneSpawnManager.spawnPlayer(player);
+            }
+            else {
+                player.color = 4; //blue
+                this.teamTwoSpawnManager.spawnPlayer(player);
+            }
             this.game.networkManager.addPlayer(ws, player);
 
             //join packet
@@ -283,7 +288,7 @@ export class CaptureTheFlag extends Gamemode {
                 this.teamTwoFlag.x = this.teamTwoFlag.owner.x;
                 this.teamTwoFlag.y = this.teamTwoFlag.owner.y;
 
-                if(this.teamTwoFlag.x <= this.teamOneScoreSquare.x) {
+                if(this.teamTwoFlag.x <= this.teamOneScoreSquare.x + this.teamOneScoreSquare.width) {
                     this.broadcastWinner(this.teamTwoFlag.owner, this.teamTwoFlag);
                     this.reset(players);
                 }

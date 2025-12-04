@@ -16823,14 +16823,14 @@
         [ [ 8, 1.5708 ], [ 8, 4.71239, 4, '#007649' ] ]
       ]], redFlag = [[
         //flag
-        [[18, 0], [52, 1.3, 26, "#ff0000"]],
+        [[18, 0], [52, 1.3, 26, "#2917bf"]],
         //pole
         [[32, 0], [32, 3.14159, 6, "#818181"]],
         //top part of pole
         [[25, 0], [38, 0, 14, "#656565"]]
       ]], blueFlag = [[
         //flag
-        [[18, 0], [52, 1.3, 26, "#2917bf"]],
+        [[18, 0], [52, 1.3, 26, "#ff0000"]], 
         //pole
         [[32, 0], [32, 3.14159, 6, "#818181"]],
         //top part of pole
@@ -22597,8 +22597,8 @@
           var flagPositionX = mapWidth * (100 / GAME_WIDTH * flag.x) * 0.01;
           var flagPositionY = mapHeight * (100 / GAME_HEIGHT * flag.y) * 0.01;
           
-          if(flag.team == 1) ctx['strokeStyle'] = '#8dd8f8';
-          else if(flag.team == 2) ctx['strokeStyle'] = '#f26740';
+          if(flag.team == 1) ctx['strokeStyle'] = '#f26740';
+          else if(flag.team == 2) ctx['strokeStyle'] = '#8dd8f8'; 
 
           ctx['lineWidth'] = 0;
 
@@ -22611,8 +22611,8 @@
         var customScoreSquareWidth = mapWidth * ((100 / GAME_WIDTH * customSquare.width) * 0.01);
         var customScoreSquareHeight = mapHeight * ((100 / GAME_HEIGHT * customSquare.height) * 0.01);
       
-        if(customSquare.team == 1) ctx['strokeStyle'] = '#8dd8f8';
-        else if(customSquare.team == 2) ctx['strokeStyle'] = '#f26740';
+        if(customSquare.team == 1) ctx['strokeStyle'] = '#f26740';
+        else if(customSquare.team == 2) ctx['strokeStyle'] = '#8dd8f8'; 
         else ctx['strokeStyle'] = '#d9d9d9';
 
         var customScoreSquarePos = {
@@ -22858,8 +22858,8 @@
 			} else { //custom score square
         for(var i = 0; i < CUSTOM_SCORE_SQUARES.length; i++) {
           //color of the border
-          if(CUSTOM_SCORE_SQUARES[i].team == 1) _0x4d4b91 = '#8dd8f8';
-          else if(CUSTOM_SCORE_SQUARES[i].team == 2) _0x4d4b91 = '#f26740';
+          if(CUSTOM_SCORE_SQUARES[i].team == 1) _0x4d4b91 = '#f26740';
+          else if(CUSTOM_SCORE_SQUARES[i].team == 2) _0x4d4b91 = '#8dd8f8'; 
 
           //draw the border relative to the player's pos
           var customSquarePos = {
