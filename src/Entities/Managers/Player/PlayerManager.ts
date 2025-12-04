@@ -111,6 +111,12 @@ export default class PlayerManager {
         );
     }
 
+    public getTopPlayers(): Array<PlayerEntity> {
+        const playersArray: PlayerEntity[] = Array.from(this.players.values());
+        playersArray.sort((a, b) => b.score - a.score);
+        return playersArray.slice(0, 10);
+    }
+
     public isInScoreSquare(player: PlayerEntity): boolean {
         return (
             player.x >= 3400 &&

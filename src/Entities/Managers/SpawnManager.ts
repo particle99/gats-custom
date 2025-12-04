@@ -14,16 +14,18 @@ interface SpawnChunk {
     validSpawnPositions: Array<{ x: number, y: number }>;
 }
 
-export default class SpawnManager {
+export interface SpawnArea {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+}
+
+export class SpawnManager {
     private game: Game;
     
     private chunkWidth: number;
     private chunkHeight: number;
-
-    private width: number;
-    private height: number;
-    private availableWidth: number;
-    private availableHeight: number;
 
     private chunks: Array<SpawnChunk>;
 
@@ -31,61 +33,52 @@ export default class SpawnManager {
     private spawnRadius: number = 100; //distance from crates
     private spawnPadding: number = 100; //padding from edges
 
-    private mapCenterX: number;
-    private mapCenterY: number;
-
     private cols: number = 4;
     private rows: number = 4;
 
-    constructor(game: Game, width: number, height: number, availableX: number, availableY: number, validPositionsPerChunk: number) {
+    constructor(game: Game, spawnAreas: SpawnArea | SpawnArea[], validPositionsPerChunk: number) {
         this.game = game;
-
-        this.width = width;
-        this.height = height;
-        this.availableWidth = availableX;
-        this.availableHeight = availableY;
-
         this.validPositionsPerChunk = validPositionsPerChunk;
 
-        this.mapCenterX = this.width / 2;
-        this.mapCenterY = this.height / 2;
+        //convert to arrays
+        const areas = Array.isArray(spawnAreas) ? spawnAreas : [spawnAreas];
 
-        this.chunkWidth = this.availableWidth / this.rows;
-        this.chunkHeight = this.availableHeight / this.cols;
+        //assume all areas have same size
+        const firstArea = areas[0];
+        this.chunkWidth = firstArea.width / this.cols;
+        this.chunkHeight = firstArea.height / this.rows;
 
-        this.chunks = this.initializeChunks();
+        this.chunks = this.initializeChunks(areas);
         this.generateValidSpawnPositions();
     }
 
-    private initializeChunks(): Array<SpawnChunk> {
+    private initializeChunks(spawnAreas: SpawnArea[]): Array<SpawnChunk> {
         const chunks: Array<SpawnChunk> = [];
-        const halfFogSize = this.availableWidth / 2;
-        
-        const fogStartX = this.mapCenterX - halfFogSize;
-        const fogStartY = this.mapCenterY - halfFogSize;
-
-        const chunkW = this.chunkWidth;
-        const chunkH = this.chunkHeight;
-
         let chunkId = 0;
-        for(let row = 0; row < this.rows; row++) {
-            for(let col = 0; col < this.cols; col++) {
-                const minX = fogStartX + (col * chunkW);
-                const maxX = fogStartX + ((col + 1) * chunkW);
-                const minY = fogStartY + (row * chunkH);
-                const maxY = fogStartY + ((row + 1) * chunkH);
 
-                chunks.push({
-                    id: chunkId++,
-                    minX: minX,
-                    maxX: maxX,
-                    minY: minY,
-                    maxY: maxY,
-                    spawnX: minX + chunkW / 2,
-                    spawnY: minY + chunkH / 2,
-                    playerCount: 0,
-                    validSpawnPositions: []
-                });
+        for(const area of spawnAreas) {
+            const chunkW = area.width / this.cols;
+            const chunkH = area.height / this.rows;
+
+            for(let row = 0; row < this.rows; row++) {
+                for(let col = 0; col < this.cols; col++) {
+                    const minX = area.x + (col * chunkW);
+                    const maxX = area.x + ((col + 1) * chunkW);
+                    const minY = area.y + (row * chunkH);
+                    const maxY = area.y + ((row + 1) * chunkH);
+
+                    chunks.push({
+                        id: chunkId++,
+                        minX: minX,
+                        maxX: maxX,
+                        minY: minY,
+                        maxY: maxY,
+                        spawnX: minX + chunkW / 2,
+                        spawnY: minY + chunkH / 2,
+                        playerCount: 0,
+                        validSpawnPositions: []
+                    });
+                }
             }
         }
 
@@ -197,12 +190,12 @@ export default class SpawnManager {
     }
 
     //for debugging
-    //public getChunkStats(): Array<{ chunkId: number, players: number, validSpawns: number }> {
-    //    this.updatePlayerCounts();
-    //    return this.chunks.map(chunk => ({
-    //        chunkId: chunk.id,
-    //        players: chunk.playerCount,
-    //        validSpawns: chunk.validSpawnPositions.length
-    //    }));
-    //}
+    public getChunkStats(): Array<{ chunkId: number, players: number, validSpawns: number }> {
+        this.updatePlayerCounts();
+        return this.chunks.map(chunk => ({
+            chunkId: chunk.id,
+            players: chunk.playerCount,
+            validSpawns: chunk.validSpawnPositions.length
+        }));
+    }
 }

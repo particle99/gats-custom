@@ -57,7 +57,7 @@ export default class NetworkManager {
         this.socketToPlayer = new Map();
         this.playerToSocket = new Map();
 
-        this.playerStateManager = new PlayerStateManager(this);
+        this.playerStateManager = new PlayerStateManager(this.game, this);
 
         console.log("NetworkManager initialized");
     }

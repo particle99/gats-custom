@@ -1,4 +1,5 @@
 import PlayerEntity from "../Entities/PlayerEntity";
+import { EntityStateFlags } from "../Enums/Flags";
 import Game from "../Game";
 import PacketType from "../Network/PacketType";
 import { WebSocket } from "ws";
@@ -48,17 +49,30 @@ export class Gamemode {
             this.leader.isLeader = 0;
 
             //remove old leader
-            this.game.networkManager.broadcast(this.game.codec.buildAuxilaryUpdatePacket(this.leader, ['uid', 'isLeader']));
+            this.leader.fieldManager.safeUpdate({
+                states: [EntityStateFlags.AUX_UPDATE],
+                auxFields: ['uid', 'isLeader']
+            });
 
             //set current leader
             this.leader = player;
+            player.isLeader = 1;
+
+            player.fieldManager.safeUpdate({
+                states: [EntityStateFlags.AUX_UPDATE],
+                auxFields: ['uid', 'isLeader']
+            });
+        } else if(this.leader == null) {
+            this.leader = player;
+
+            //update current leader
+            player.isLeader = 1;
+
+            player.fieldManager.safeUpdate({
+                states: [EntityStateFlags.AUX_UPDATE],
+                auxFields: ['uid', 'isLeader']
+            });
         }
-
-        //update current leader
-        player.isLeader = 1;
-
-        //broadcast current leader
-        this.game.networkManager.broadcast(this.game.codec.buildAuxilaryUpdatePacket(player, ['uid', 'isLeader']));
     }
 
     //players spawn differently across gamemodes; make this be handled by the specific game class

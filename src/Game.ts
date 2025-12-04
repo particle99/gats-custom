@@ -5,7 +5,7 @@ import PlayerManager from './Entities/Managers/Player/PlayerManager';
 import BulletManager from './Entities/Managers/BulletManager';
 import CrateManager from './Entities/Managers/CrateManager';
 import ExplosiveManager from './Entities/Managers/ExplosiveManager';
-import SpawnManager from './Entities/Managers/SpawnManager';
+import { SpawnManager, SpawnArea } from './Entities/Managers/SpawnManager';
 import Codec from './Network/Codec';
 
 import MazeGenerator from './Crate/MazeGenerator';
@@ -107,10 +107,18 @@ export default class Game {
             this.crateManager = new CrateManager(this, this.crateData);
         }
 
+        /** Default spawn area */
+        const spawnArea: SpawnArea = {
+            x: (this.arenaSize - this.fogSize) / 2,
+            y: (this.arenaSize - this.fogSize) / 2,
+            width: this.fogSize,
+            height: this.fogSize
+        };
+
         /** Managers */
         this.codec = new Codec(this);
         this.networkManager = new NetworkManager(this, this.codec);
-        this.spawnManager = new SpawnManager(this, this.arenaSize, this.arenaSize, this.fogSize, this.fogSize, 10); //10 valid spawn positions per chunk
+        this.spawnManager = new SpawnManager(this, spawnArea, 10); //10 valid spawn positions per chunk
         this.playerManager = new PlayerManager(this);
         this.bulletManager = new BulletManager(this, this.playerManager.spatialGrid);
         this.explosiveManager = new ExplosiveManager(this);

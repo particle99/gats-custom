@@ -1,5 +1,6 @@
 import { AuxilaryUpdateFields } from '../../../Enums/Fields';
 import { EntityStateFlags } from '../../../Enums/Flags';
+import Game from '../../../Game';
 
 import NetworkManager from '../../../Network/Managers/NetworkManager';
 import PlayerEntity from '../../PlayerEntity';
@@ -12,13 +13,14 @@ const PERSISTENT_STATES = new Set([
     EntityStateFlags.PLAYER_SHOOTING,
     EntityStateFlags.PLAYER_DASHING,
     EntityStateFlags.PLAYER_SHIELDING
-    //EntityStateFlags.
 ]);
 
 export default class PlayerStateManager {
+    private game: Game;
     public networkManager: NetworkManager;
 
-    constructor(networkManager: NetworkManager) {
+    constructor(game: Game, networkManager: NetworkManager) {
+        this.game = game;
         this.networkManager = networkManager;
     }
 
@@ -104,14 +106,20 @@ export default class PlayerStateManager {
         return finalPacket.join('|');
     }
 
-    public handleFirstPersonUpdate(player: PlayerEntity, finalPacket: Array<string>): void {
+    public handleFirstPersonUpdate(player: PlayerEntity, finalPacket: Array<string>): void {        
+        //update leaderboard only when score is changed on a player
+        if (player.fieldManager.fields.FIRST_PERSON_UPDATE_FIELDS.includes('score')) {
+            finalPacket.push(this.networkManager.codec.buildLeaderboardPacket());
+            //update leader only when leaderboard is changed
+            const topPlayers = this.game.playerManager.getTopPlayers();
+            if(topPlayers.length > 0) this.game.gameClass.setLeader(topPlayers[0]);
+        }
+
+        //build packet
         const packet = this.networkManager.codec.buildFirstPersonUpdatePacket(player, player.fieldManager.fields.FIRST_PERSON_UPDATE_FIELDS);
         
-        //first person update is NOT broadcasted, only sent to one player
+        //first person update is not broadcasted, only sent to one player
         player.queueManager.addToQueue(packet);
-        
-        //update leaderboard only when score is changed on a player
-        if (player.fieldManager.fields.FIRST_PERSON_UPDATE_FIELDS.includes('score')) finalPacket.push(this.networkManager.codec.buildLeaderboardPacket());
     }
 
     public handlePlayerDying(player: PlayerEntity): void {
@@ -152,9 +160,10 @@ export default class PlayerStateManager {
         const lastRegenTick = player.lastRegenTick;
 
         //because regen is only appened after being hit, make sure to remove the field
-        if(player.fieldManager.fields.AUX_UPDATE_FIELDS.includes('beingHit') 
-            && !player.isInFog
-            && player.beingHit
+        if(
+            !player.isInFog &&
+            player.beingHit &&
+            player.fieldManager.fields.AUX_UPDATE_FIELDS.includes('beingHit')
         ) {
             player.fieldManager.fields.AUX_UPDATE_FIELDS = player.fieldManager.fields.AUX_UPDATE_FIELDS.filter(field => field !== 'beingHit');
             player.beingHit = 0;

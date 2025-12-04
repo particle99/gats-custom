@@ -243,12 +243,8 @@ export default class Codec {
             Packets.LEADERBOARD_UPDATE_PACKET,
             String(this.game.playerManager.players.size)
         ];
-        const playersArray: PlayerEntity[] = Array.from(this.game.playerManager.players.values());
 
-        //sort by score
-        playersArray.sort((a, b) => b.score - a.score);
-        //only get top 10 players
-        const topPlayers = playersArray.slice(0, 10);
+        const topPlayers = this.game.playerManager.getTopPlayers();
 
         for (const player of topPlayers) {
             packetParts.push(`${player.username}.${player.isMember}.${player.score}.${player.kills}.${player.teamCode}`);

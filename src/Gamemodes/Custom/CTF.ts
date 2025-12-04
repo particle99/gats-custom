@@ -5,7 +5,7 @@ import { EntityStateFlags } from "../../Enums/Flags";
 import Game from "../../Game";
 import { Gamemode, ScoreSquare } from "../Gamemode";
 import PacketType from "../../Network/PacketType";
-import SpawnManager from "../../Entities/Managers/SpawnManager";
+import { SpawnManager, SpawnArea } from "../../Entities/Managers/SpawnManager";
 
 export class CaptureTheFlag extends Gamemode { 
     public teamOneScoreSquare: ScoreSquare;
@@ -50,21 +50,29 @@ export class CaptureTheFlag extends Gamemode {
         this.setScoreSquare(this.teamOneScoreSquare);
         this.setScoreSquare(this.teamTwoScoreSquare);
 
+        //spawn areas
+        const teamOneSpawnArea: SpawnArea = {
+            x: this.teamOneScoreSquare.x,
+            y: this.teamOneScoreSquare.y,
+            width: this.teamOneScoreSquare.width,
+            height: this.teamOneScoreSquare.height
+        };
+        const teamTwoSpawnArea: SpawnArea = {
+            x: this.teamTwoScoreSquare.x,
+            y: this.teamTwoScoreSquare.y,
+            width: this.teamTwoScoreSquare.width,
+            height: this.teamTwoScoreSquare.height
+        };
+
         //spawn managers
         this.teamOneSpawnManager = new SpawnManager(
             this.game, 
-            this.teamOneScoreSquare.width, 
-            this.teamOneScoreSquare.height,
-            this.teamOneScoreSquare.width,
-            this.teamOneScoreSquare.height,
+            teamOneSpawnArea,
             10
         );
         this.teamTwoSpawnManager = new SpawnManager(
             this.game,
-            this.teamTwoScoreSquare.width,
-            this.teamTwoScoreSquare.height,
-            this.teamTwoScoreSquare.width,
-            this.teamTwoScoreSquare.height,
+            teamTwoSpawnArea,
             10
         );
 
@@ -164,7 +172,7 @@ export class CaptureTheFlag extends Gamemode {
             this.game.networkManager.broadcast(this.game.networkManager.codec.buildLeaderboardPacket());
 
             if(player.teamCode == 1) this.teamOneSpawnManager.spawnPlayer(player);
-            else this.teamTwoSpawnManager.spawnPlayer(player);
+            if(player.teamCode == 2) this.teamTwoSpawnManager.spawnPlayer(player);
 
             player.fieldManager.safeUpdate({
                 states: [EntityStateFlags.ACTIVATION_UPDATE, EntityStateFlags.FIRST_PERSON_UPDATE],
@@ -177,14 +185,23 @@ export class CaptureTheFlag extends Gamemode {
             //determine teamcode
             if(this.teamOneMembers > this.teamTwoMembers) {
                 player.teamCode = 2;
-            } else if(this.teamTwoMembers < this.teamOneMembers) {
+                this.teamTwoMembers++;
+            } else if(this.teamOneMembers < this.teamTwoMembers) {
                 player.teamCode = 1;
+                this.teamOneMembers++;
             } else if(this.teamOneMembers == this.teamTwoMembers) {
                 const teamcode = Math.random();
 
-                if(teamcode < 0.5) player.teamCode = 1;
-                else player.teamCode = 2;
+                if(teamcode < 0.5) {
+                    player.teamCode = 1;
+                    this.teamOneMembers++;
+                } else {
+                    player.teamCode = 2;
+                    this.teamTwoMembers++;
+                }
             }
+
+            console.log(player.teamCode);
 
             if(player.teamCode == 1) this.teamOneSpawnManager.spawnPlayer(player);
             else this.teamTwoSpawnManager.spawnPlayer(player);
@@ -230,11 +247,11 @@ export class CaptureTheFlag extends Gamemode {
             player.update();
             this.game.playerManager.checkCollisions(player);
 
-            if(this.isOnFlag(player, this.teamOneFlag) && player.teamCode !== 1) {
+            if(this.isOnFlag(player, this.teamOneFlag) && player.teamCode !== this.teamOneFlag.team) {
                 this.onFlagPickup(player, this.teamOneFlag);
             }
 
-            if(this.isOnFlag(player, this.teamTwoFlag) && player.teamCode !== 2) {
+            if(this.isOnFlag(player, this.teamTwoFlag) && player.teamCode !== this.teamTwoFlag.team) {
                 this.onFlagPickup(player, this.teamTwoFlag);
             }
         }
