@@ -77,13 +77,15 @@ export default class BulletManager {
         this.takenUids.delete(bullet.uid);
     }
 
-    private getNearestCrates(bullet: Bullet, range: number = 250): Array<RectangularMapObject> {
+    private getNearestCrates(bullet: Bullet, range: number = 250, queryX?: number, queryY?: number): Array<RectangularMapObject> {
         if (!this.game.crateManager) {
             console.warn('CrateManager not available for bullet collision detection');
             return [];
         }
 
-        const nearbyCrates = this.game.crateManager.spatialGrid.query(bullet.x, bullet.y, range);
+        const x = queryX ?? bullet.x;  //if next position is not provided, use current bullet position
+        const y = queryY ?? bullet.y;
+        const nearbyCrates = this.game.crateManager.spatialGrid.query(x, y, range);
         
         return Array.from(nearbyCrates);
     }
@@ -93,9 +95,12 @@ export default class BulletManager {
     }
 
     private bulletShieldCollision(bullet: Bullet, shield: RectangularMapObject): boolean {
+        const nextX = bullet.x + bullet.spdX;
+        const nextY = bullet.y + bullet.spdY;
+
         const bulletRect = {
-            x: bullet.x,
-            y: bullet.y,
+            x: nextX,
+            y: nextY,
             width: bullet.width,
             height: bullet.height
         };
@@ -164,7 +169,7 @@ export default class BulletManager {
 
     public checkCollisions(bullet: Bullet): void {
         //skip collision checks if bullet collisions are disabled
-        if(this.game.config?.bulletCollisionsEnabled !== undefined) {
+        if(this.game.config?.bulletCollisionsEnabled) {
             if(this.game.config.bulletCollisionsEnabled !== true) return;
         }
 
@@ -179,8 +184,8 @@ export default class BulletManager {
         };
 
         const nearbyPlayers = this.spatialGrid.query(nextX, nextY, 250);
-        const nearbyCrates = this.getNearestCrates(bullet, 250);
-
+        const nearbyCrates = this.getNearestCrates(bullet, 250, nextX, nextY);  //query from next position
+        
         let bulletRemoved = false;
         for (const crate of nearbyCrates) {
             //skip over invulnerable bullets (only for crates)
@@ -266,7 +271,7 @@ export default class BulletManager {
 
                     if (hit) {
                         //do not damage player if bullet damage is disabled
-                        if(this.game.config?.bulletDamageEnabled !== undefined) {
+                        if(this.game.config?.bulletDamageEnabled) {
                             if(this.game.config.bulletDamageEnabled !== true) return;
                         }
                         
@@ -280,10 +285,21 @@ export default class BulletManager {
         }
     }
 
+    /**
+     * TODO: Fix bullet collision checks, the bullets go through the crates before unloading
+     */
     public updateBullets(): void {
         for (const bullet of this.bullets.values()) {
             //skip dead bullets
             if(!bullet.alive) continue;
+
+            //check collisions BEFORE updating bullet position
+            if(this.game.config?.bulletCollisionsEnabled) {
+                if(this.game.config.bulletCollisionsEnabled) this.checkCollisions(bullet);
+            } else {
+                //check collisions before updating position
+                this.checkCollisions(bullet);
+            }
 
             //update bullet
             bullet.update(this.game);
@@ -291,14 +307,6 @@ export default class BulletManager {
             if (bullet.totalDistanceTraveled >= bullet.maxDistanceTraveled) {
                 //unload the bullet after it's traveled 
                 this.unloadBullet(bullet);
-            }
-
-            //bullet collision config
-            if(this.game.config?.bulletCollisionsEnabled !== undefined) {
-                if(this.game.config.bulletCollisionsEnabled) this.checkCollisions(bullet);
-            } else {
-                //check collisions before updating position
-                this.checkCollisions(bullet);
             }
         }
     }
