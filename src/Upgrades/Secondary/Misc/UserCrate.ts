@@ -1,9 +1,12 @@
-import { UserCrateObject } from "../../../Entities/MapObject";
-import PlayerEntity from "../../../Entities/PlayerEntity";
-import SecondaryUpgrade from "../../SecondaryUpgrade";
-import Game from "../../../Game";
-import { EntityStateFlags } from "../../../Enums/Flags";
-import { ObjectUpdateFields } from "../../../Enums/Fields";
+import Game from '../../../Game';
+
+import PlayerEntity from '../../../Entities/PlayerEntity';
+import { EntityStateFlags } from '../../../Enums/Flags';
+
+import { UserCrateObject } from '../../../Entities/MapObjects/CrateObjects';
+import { ObjectUpdateFields } from '../../../Enums/Fields';
+
+import SecondaryUpgrade from '../../SecondaryUpgrade';
 
 export default class UserCrate extends SecondaryUpgrade {
     private game: Game;

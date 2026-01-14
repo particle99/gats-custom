@@ -1,19 +1,39 @@
-import { GunEnum, ArmorEnum, ColorEnum, FireRates, GunWeight, ArmorWeight, ReloadSpeed, FireRatesInTicks, ReloadSpeedInTicks, MaxBullets } from '../Enums/Enums';
+import Game from '../Game';
+
+import { 
+    GunEnum, 
+    ArmorEnum, 
+    ColorEnum, 
+    FireRates, 
+    GunWeight, 
+    ArmorWeight, 
+    ReloadSpeed, 
+    FireRatesInTicks, 
+    ReloadSpeedInTicks, 
+    MaxBullets 
+} from '../Enums/Enums';
 import { EntityStateFlags } from '../Enums/Flags';
 
 import PlayerFieldManager from './Managers/Player/PlayerFieldsManager';
 import PlayerInputManager from './Managers/Player/PlayerInputManager';
+import QueueManager from './Managers/QueueManager';
 
-import { BulletDamage, BulletDistance, ProjectileDistance, BulletSpeed, BulletSpread } from '../Enums/Enums';
+import { 
+    BulletDamage,
+    BulletDistance, 
+    ProjectileDistance, 
+    BulletSpeed, 
+    BulletSpread 
+} from '../Enums/Enums';
 
 import { GuestNames } from '../Enums/GuestNames';
 
 import PrimaryUpgrade from '../Upgrades/PrimaryUpgrade';
 import SecondaryUpgrade from '../Upgrades/SecondaryUpgrade';
-import Game from '../Game';
-import { Player } from './MapObject';
+
+import { Player } from './MapObjects/PlayerObject';
+
 import Dashing from '../Upgrades/Secondary/Misc/Dashing';
-import QueueManager from './Managers/QueueManager';
 
 type InputType = "LEFT" | "RIGHT" | "DOWN" | "UP" | "RELOADING" | "SPACE" | "MOUSEDOWN" | "CHAT"
 
@@ -194,6 +214,19 @@ export default class PlayerEntity extends Player {
 
     public setChatMessage(message: string): void {
         this.chatMessage = message;
+    }
+
+    public unlock(): void {
+        this.hasMoved = true;
+        this.canShoot = true;
+        this.canBeHit = true;
+        this.canMove = true;
+        this.invincible = 0;
+
+        this.fieldManager.safeUpdate({
+            states: [EntityStateFlags.AUX_UPDATE],
+            auxFields: ['uid', 'invincible']
+        });
     }
 
     public respawn(): void {

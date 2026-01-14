@@ -1,8 +1,11 @@
-import SecondaryUpgrade from "../../SecondaryUpgrade";
-import { FlagObject, MedKitObject } from "../../../Entities/MapObject";
-import PlayerEntity from "../../../Entities/PlayerEntity";
-import Game from "../../../Game";
-import { EntityStateFlags } from "../../../Enums/Flags";
+import Game from '../../../Game';
+
+import PlayerEntity from '../../../Entities/PlayerEntity';
+import { EntityStateFlags } from '../../../Enums/Flags';
+
+import { MedKitObject } from '../../../Entities/MapObjects/CrateObjects';
+
+import SecondaryUpgrade from '../../SecondaryUpgrade';
 
 export default class MedKit extends SecondaryUpgrade {
     private game: Game;

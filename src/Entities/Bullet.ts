@@ -1,7 +1,16 @@
-import PlayerEntity from './PlayerEntity';
-import { BulletDamage, BulletDistance, BulletDropOff, BulletSpeed, BulletSpread, MaxDropOff } from '../Enums/Enums';
 import Game from '../Game';
-import { RectangularMapObject } from './MapObject';
+
+import PlayerEntity from './PlayerEntity';
+
+import {
+    BulletDamage, 
+    BulletDistance, 
+    BulletDropOff, 
+    BulletSpeed, 
+    BulletSpread, 
+    MaxDropOff 
+} from '../Enums/Enums';
+import { RectangularMapObject } from './MapObjects/MapObjects';
 
 export default class Bullet extends RectangularMapObject {
     private game: Game;
@@ -18,7 +27,7 @@ export default class Bullet extends RectangularMapObject {
     public silenced: number = 0;
     public isKnife: number = 0;
     public isShrapnel: number = 0;
-
+    
     public ownerId: number = 0;
     public teamCode: number = 0; //not used in ffa
 
@@ -82,7 +91,7 @@ export default class Bullet extends RectangularMapObject {
             case 2: return [32, -12]; // shotgun
             case 3: return [44, -12]; // assault
             case 4: return [48, -12]; // sniper
-            case 5: return [36, -12]; // lmg
+            case 5: return [42, -12]; // lmg
             default: return [0, 0];
         }
     }
@@ -114,7 +123,7 @@ export default class Bullet extends RectangularMapObject {
         const [width, height] = this.getBulletSize(this.bulletType);
 
         const angleRad = this.toRadians(player.playerAngle);
-        const sideAngleRad = angleRad + Math.PI / 2;;
+        const sideAngleRad = angleRad + Math.PI / 2;
 
         this.width = width;
         this.height = height;

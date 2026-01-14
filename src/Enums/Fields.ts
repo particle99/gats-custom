@@ -1,7 +1,11 @@
 import Bullet from '../Entities/Bullet';
 import PlayerEntity from '../Entities/PlayerEntity';
 
-import { ExplodingObject, ExplosiveObject, RectangularMapObject } from '../Entities/MapObject';
+import { 
+    ExplodingObject, 
+    ExplosiveObject 
+} from '../Entities/MapObjects/ExplosiveObjects';
+import { RectangularMapObject } from '../Entities/MapObjects/MapObjects';
 
 type AuxilaryUpdateFields = keyof Pick<PlayerEntity,
     | 'uid'

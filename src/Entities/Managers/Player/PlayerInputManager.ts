@@ -32,16 +32,7 @@ export default class PlayerInputManager {
     public handleMovement(input: InputType, state: number): void {
         if (!this.player.hasMoved) {
             if (["LEFT", "RIGHT", "UP", "DOWN"].includes(input) && state === 1) {
-                this.player.hasMoved = true;
-                this.player.canShoot = true;
-                this.player.canBeHit = true;
-                this.player.canMove = true;
-                this.player.invincible = 0;
-
-                this.player.fieldManager.safeUpdate({
-                    states: [EntityStateFlags.AUX_UPDATE],
-                    auxFields: ['uid', 'invincible']
-                });
+                this.player.unlock();
             }
         }
     }

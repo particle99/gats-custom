@@ -1,9 +1,9 @@
-import SpatialGrid from '../../Util/SpatialGrid';
-import { ObjectUpdateFields } from '../../Enums/Fields';
 import Game from '../../Game';
-import MedKit from '../../Upgrades/Secondary/Misc/MedKit';
 
-import { RectangularMapObject } from '../MapObject';
+import SpatialGrid from '../../Util/SpatialGrid';
+
+import { ObjectUpdateFields } from '../../Enums/Fields';
+import { RectangularMapObject } from '../MapObjects/MapObjects';
 
 export default class CrateManager {
     public game: Game;

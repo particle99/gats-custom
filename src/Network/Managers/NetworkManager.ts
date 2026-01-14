@@ -1,12 +1,15 @@
+import Game from '../../Game';
 import { WebSocket } from 'ws';
 
-import { Packets, EntityStateFlags } from '../../Enums/Flags';
+import { 
+    Packets, 
+    EntityStateFlags 
+} from '../../Enums/Flags';
 import { AuxilaryUpdateFields } from '../../Enums/Fields';
 import { InputEnum } from '../../Enums/Enums';
 
 import PlayerStateManager from '../../Entities/Managers/Player/PlayerStateManager';
 
-import Game from '../../Game';
 import PacketType from '../PacketType';
 import PlayerEntity from '../../Entities/PlayerEntity';
 import Codec from '../Codec';
@@ -184,7 +187,6 @@ export default class NetworkManager {
 
         const message = packet.parts[1].replace(/\0/g, '').trim();
         player.setChatMessage(message);
-        
         //only include chatMessage if it's present in the packet
         const chatFields: AuxilaryUpdateFields[] = message !== "" 
             ? ['uid', 'chatBoxOpen', 'chatMessage'] 

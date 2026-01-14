@@ -1,9 +1,11 @@
+import Game from "../../Game";
+import { WebSocket } from "ws";
+
 import PlayerEntity from "../../Entities/PlayerEntity";
 import { EntityStateFlags } from "../../Enums/Flags";
-import Game from "../../Game";
+
 import PacketType from "../../Network/PacketType";
 import { Gamemode } from "../Gamemode";
-import { WebSocket } from "ws";
 
 export default class FFA extends Gamemode { 
     constructor(game: Game) {

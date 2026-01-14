@@ -1,8 +1,11 @@
-import Bullet from "../../../Entities/Bullet";
-import PlayerEntity from "../../../Entities/PlayerEntity";
-import { EntityStateFlags } from "../../../Enums/Flags";
-import Game from "../../../Game";
-import SecondaryUpgrade from "../../SecondaryUpgrade";
+import Game from '../../../Game';
+
+import PlayerEntity from '../../../Entities/PlayerEntity';
+import { EntityStateFlags } from '../../../Enums/Flags';
+
+import Bullet from '../../../Entities/Bullet';
+
+import SecondaryUpgrade from '../../SecondaryUpgrade';
 
 export default class Knife extends SecondaryUpgrade {
     private game: Game;

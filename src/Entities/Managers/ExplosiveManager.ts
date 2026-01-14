@@ -1,7 +1,16 @@
-import { ExplodingUpdateFields, ExplosiveActivationFields } from "../../Enums/Fields";
-import { EntityStateFlags } from "../../Enums/Flags";
 import Game from "../../Game";
-import { ExplodingObject, ExplosiveObject } from "../MapObject";
+
+import { 
+    ExplodingUpdateFields, 
+    ExplosiveActivationFields 
+} from "../../Enums/Fields";
+
+import { 
+    ExplodingObject, 
+    ExplosiveObject
+} from "../MapObjects/ExplosiveObjects";
+
+import { EntityStateFlags } from "../../Enums/Flags";
 
 export default class ExplosiveManager {
     public game: Game;

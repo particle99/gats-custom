@@ -1,6 +1,6 @@
-import { AuxilaryUpdateFields } from '../../../Enums/Fields';
-import { EntityStateFlags } from '../../../Enums/Flags';
 import Game from '../../../Game';
+
+import { EntityStateFlags } from '../../../Enums/Flags';
 
 import NetworkManager from '../../../Network/Managers/NetworkManager';
 import PlayerEntity from '../../PlayerEntity';

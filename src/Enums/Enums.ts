@@ -21,7 +21,8 @@ export enum GunEnum {
     SHOTGUN = 2,
     ASSAULT = 3,
     SNIPER = 4,
-    LMG = 5
+    LMG = 5,
+    //FLAMETHROWER = 6
 }
 
 export enum FireRates {
@@ -39,7 +40,7 @@ export enum FireRatesInTicks {
     SHOTGUN = 21,
     SMG = 2,
     ASSAULT = 4,
-    LMG = 3
+    LMG = 3,
 }
 
 export enum BulletSpeed {
@@ -48,7 +49,7 @@ export enum BulletSpeed {
     SHOTGUN = 120 / 10,
     ASSAULT = 100 / 10,
     SNIPER = 180 / 10,
-    LMG = 120 / 10
+    LMG = 100 / 10,
 }
 
 export enum BulletDistance {
@@ -57,7 +58,7 @@ export enum BulletDistance {
     SHOTGUN = 280,
     SNIPER = 620,
     ASSAULT = 360,
-    LMG = 330
+    LMG = 340,
 }
 
 export enum ProjectileDistance {
@@ -80,7 +81,7 @@ export enum BulletSpread {
     SHOTGUN = 0.1,
     SNIPER = 0.05,
     ASSAULT = 0.08,
-    LMG = 0.08
+    LMG = 0.08,
 }
 
 /** NO DROPOFF */
@@ -90,7 +91,7 @@ export enum BulletDamage {
     SHOTGUN = 40, //per bullet
     ASSAULT = 48,
     SNIPER = 90,
-    LMG = 38
+    LMG = 38,
 }
 
 //per tick
@@ -100,7 +101,7 @@ export enum BulletDropOff {
     SHOTGUN = 2,
     ASSAULT = 1,
     SNIPER = 0,
-    LMG = 1
+    LMG = 1,
 }
 
 export enum MaxDropOff {
@@ -109,7 +110,7 @@ export enum MaxDropOff {
     SHOTGUN = 10,
     ASSAULT = 24,
     SNIPER = 90,
-    LMG = 24
+    LMG = 24,
 }
 
 //TICKS * MS PER TICK
@@ -128,7 +129,7 @@ export enum ReloadSpeedInTicks {
     SHOTGUN = 18,
     ASSAULT = 60,
     SNIPER = 40,
-    LMG = 120
+    LMG = 120,
 }
 
 export enum MaxBullets {
@@ -137,7 +138,7 @@ export enum MaxBullets {
     SHOTGUN = 5,
     ASSAULT = 30,
     SNIPER = 6,
-    LMG = 100
+    LMG = 100,
 }
 
 export enum ArmorWeight {
@@ -153,7 +154,7 @@ export enum GunWeight {
     SHOTGUN = 27 / 10, //2.7
     ASSAULT = 27 / 10, //2.7
     WEIGHT = 25 / 10, //2.5
-    LMG = 33 / 10 //3.3
+    LMG = 33 / 10, //3.3
 }
 
 export enum InputEnum {

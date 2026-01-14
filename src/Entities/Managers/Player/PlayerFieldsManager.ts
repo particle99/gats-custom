@@ -1,5 +1,10 @@
 import { EntityStateFlags } from '../../../Enums/Flags';
-import { AuxilaryUpdateFields, ActivationUpdateFields, FirstPersonUpdateFields, BulletActivationFields } from '../../../Enums/Fields';
+import { 
+    AuxilaryUpdateFields, 
+    ActivationUpdateFields, 
+    FirstPersonUpdateFields, 
+    BulletActivationFields 
+} from '../../../Enums/Fields';
 
 type PlayerFields = {
     AUX_UPDATE_FIELDS: Array<AuxilaryUpdateFields>,

@@ -1,11 +1,22 @@
+import Game from "../../Game";
+
 import { WebSocket } from "ws";
-import { CrateObject, FlagObject, Player } from "../../Entities/MapObject";
+import { FlagObject } from "../../Entities/MapObjects/FlagObject";
+
 import PlayerEntity from "../../Entities/PlayerEntity";
 import { EntityStateFlags } from "../../Enums/Flags";
-import Game from "../../Game";
-import { Gamemode, ScoreSquare } from "../Gamemode";
+
 import PacketType from "../../Network/PacketType";
-import { SpawnManager, SpawnArea } from "../../Entities/Managers/SpawnManager";
+
+import { 
+    Gamemode, 
+    ScoreSquare 
+} from "../Gamemode";
+
+import { 
+    SpawnManager, 
+    SpawnArea 
+} from "../../Entities/Managers/SpawnManager";
 
 export class CaptureTheFlag extends Gamemode { 
     public teamOneScoreSquare: ScoreSquare;

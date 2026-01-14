@@ -1,6 +1,6 @@
 import Game from '../../Game';
 import PlayerEntity from '../PlayerEntity';
-import { RectangularMapObject } from '../MapObject';
+import { RectangularMapObject } from '../MapObjects/MapObjects';
 
 interface SpawnChunk {
     id: number;

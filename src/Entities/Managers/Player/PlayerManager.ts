@@ -1,9 +1,10 @@
-import { EntityStateFlags } from "../../../Enums/Flags";
-
 import Game from "../../../Game";
+
 import PlayerEntity from '../../PlayerEntity';
 import SpatialGrid from '../../../Util/SpatialGrid';
-import { MedKitObject, RectangularMapObject } from '../../MapObject';
+
+import { MedKitObject } from '../../MapObjects/CrateObjects';
+import { RectangularMapObject } from "../../MapObjects/MapObjects";
 
 export default class PlayerManager {
     private game: Game;
@@ -367,6 +368,23 @@ export default class PlayerManager {
         const range = Math.max(width, height);
         const results = this.spatialGrid.query(player.x, player.y, range);
         return Array.from(results).filter(p => p.uid !== player.uid);
+    }
+
+    public getClosestPlayers(player: PlayerEntity, count: number = 1, range: number = 250): Array<PlayerEntity> {
+        //const allPlayers = Array.from(this.players.values());
+        const allPlayers = Array.from(this.spatialGrid.query(player.x, player.y, range));
+
+        const playersWithDistance = allPlayers
+            .filter(p => p.uid !== player.uid)
+            .map(p => {
+                const dx = player.x - p.x;
+                const dy = player.y - p.y;
+                const distSq = dx * dx + dy * dy;
+                return { player: p, distSq };
+            })
+            .sort((a, b) => a.distSq - b.distSq);
+
+        return playersWithDistance.slice(0, count).map(item => item.player);
     }
 
     public awardScoreSquareGain(player: PlayerEntity): void {

@@ -20,7 +20,13 @@ import { Packets } from '../Enums/Flags';
 import PacketType from './PacketType';
 import PlayerEntity from '../Entities/PlayerEntity';
 import Bullet from '../Entities/Bullet';
-import { ExplodingObject, ExplosiveObject, FlagObject, RectangularMapObject } from "../Entities/MapObject";
+
+import { 
+    ExplodingObject, 
+    ExplosiveObject, 
+} from "../Entities/MapObjects/ExplosiveObjects";
+import { RectangularMapObject } from "../Entities/MapObjects/MapObjects";
+import { FlagObject } from "../Entities/MapObjects/FlagObject";
 
 export default class Codec {
     public game: Game;

@@ -1,7 +1,13 @@
-import { ExplodingObject, ExplosiveObject } from "../../../Entities/MapObject";
+import Game from "../../../Game";
+
+import { 
+    ExplodingObject, 
+    ExplosiveObject 
+} from "../../../Entities/MapObjects/ExplosiveObjects";
+
 import PlayerEntity from "../../../Entities/PlayerEntity";
 import { EntityStateFlags } from "../../../Enums/Flags";
-import Game from "../../../Game";
+
 import SecondaryUpgrade from "../../SecondaryUpgrade";
 
 export default class Grendade extends SecondaryUpgrade {
