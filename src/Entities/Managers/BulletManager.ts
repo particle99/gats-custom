@@ -167,6 +167,44 @@ export default class BulletManager {
         return false;
     }
 
+    private bulletTunnelCollision(bullet: Bullet, bulletRect: { x: number, y: number, width: number, height: number }, tunnel: RectangularMapObject): void {
+        let collision = false;
+        
+        collision = rectRectCollision(
+            bulletRect.x, 
+            bulletRect.y, 
+            bulletRect.width, 
+            bulletRect.height, 
+            tunnel.x - (tunnel.width / 2), 
+            tunnel.y - (tunnel.height / 2), 
+            tunnel.width, 
+            tunnel.height
+        );
+
+        if(collision) {
+            const tunnelOwner = this.game.playerManager.players.get(tunnel.parentId);
+
+            if(!tunnelOwner) return;
+            if(!tunnelOwner.tunnelLocationOne || !tunnelOwner.tunnelLocationTwo) return;
+
+            if(bullet.hasTeleported) return;
+
+            const tunnelType = tunnel.team;
+
+            if(tunnelType == 0) {
+                bullet.x = tunnelOwner.tunnelLocationTwo.x;
+                bullet.y = tunnelOwner.tunnelLocationTwo.y;
+
+                bullet.hasTeleported = true;
+            } else if(tunnelType == 1) {
+                bullet.x = tunnelOwner.tunnelLocationOne.x;
+                bullet.y = tunnelOwner.tunnelLocationOne.y;
+
+                bullet.hasTeleported = true;
+            }
+        }
+    }
+
     public checkCollisions(bullet: Bullet): void {
         //skip collision checks if bullet collisions are disabled
         if(this.game.config?.bulletCollisionsEnabled) {
@@ -197,6 +235,9 @@ export default class BulletManager {
             
             if (crate.type === 0) { //bullet shield collisions
                 collision = this.bulletShieldCollision(bullet, crate);
+            } else if (crate.type == 8) { //tunnel collisions
+                this.bulletTunnelCollision(bullet, bulletRect, crate);
+                continue;
             } else if (crate.type == 3) {
                 collision = rectRectCollision(
                     bulletRect.x, 
@@ -239,8 +280,27 @@ export default class BulletManager {
             }
             
             if (collision) {
-                this.unloadBullet(bullet);
-                bulletRemoved = true;
+                if(bullet.owner.bulletRicochet) {
+                    //reflect bullet velocity based on which side of the crate was hit
+                    const overlapLeft = (bulletRect.x + bulletRect.width) - (crate.x - crate.width / 2);
+                    const overlapRight = (crate.x + crate.width / 2) - bulletRect.x;
+                    const overlapTop = (bulletRect.y + bulletRect.height) - (crate.y - crate.height / 2);
+                    const overlapBottom = (crate.y + crate.height / 2) - bulletRect.y;
+
+                    const minOverlapX = Math.min(overlapLeft, overlapRight);
+                    const minOverlapY = Math.min(overlapTop, overlapBottom);
+
+                    if (minOverlapX < minOverlapY) {
+                        bullet.spdX = -bullet.spdX;
+                        bullet.angle = 180 - bullet.angle;
+                    } else {
+                        bullet.spdY = -bullet.spdY;
+                        bullet.angle = -bullet.angle;
+                    }
+                } else {
+                    this.unloadBullet(bullet);
+                    bulletRemoved = true;
+                }
                 break;
             }
         }
@@ -277,6 +337,12 @@ export default class BulletManager {
                         
                         //if the bullet has collided with a player, apply damage and unload the bullet
                         player.damage(bullet.damage, bullet.ownerId);
+                        //send hit marker packet to owner of the bullet
+                        const hitMarkerPacket = this.game.networkManager.codec.buildHitMarkerPacket(player);
+                        const owner = this.game.playerManager.players.get(bullet.ownerId);
+                        if(!owner) return;
+                        owner.queueManager.addToQueue(hitMarkerPacket);
+                        //unload bullet
                         this.unloadBullet(bullet);
                         break;
                     }
@@ -308,6 +374,13 @@ export default class BulletManager {
                 //unload the bullet after it's traveled 
                 this.unloadBullet(bullet);
             }
+
+            //generate bullet update packets
+            const bulletUpdatePacket = this.game.codec.buildBulletUpdatePacket(bullet);
+            const inRange = this.game.playerManager.getNearbyPlayers(bullet.x, bullet.y, 1000);
+
+            //broadcast the update packets only to those in range
+            this.game.networkManager.broadcastToFiltered(inRange, bulletUpdatePacket);
         }
     }
 }
