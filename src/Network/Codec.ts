@@ -300,8 +300,11 @@ export default class Codec {
         return `${Packets.DEACTIVATE_BULLET_PACKET},${uid}|`;
     }
     
+    /** Customized: 
+     * bullet.angle was added for custom bullet ricochet upgrade 
+     */
     public buildBulletUpdatePacket(entity: Bullet): string {
-        return `${Packets.UPDATE_BULLET_PACKET},${entity.uid},${entity.x * 10},${entity.y * 10}|`;
+        return `${Packets.UPDATE_BULLET_PACKET},${entity.uid},${entity.x * 10},${entity.y * 10},${entity.angle}|`;
     }
 
     public buildUnloadCratePacket(object: RectangularMapObject): string {

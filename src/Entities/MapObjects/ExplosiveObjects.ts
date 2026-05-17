@@ -12,6 +12,8 @@ export class ExplosiveObject extends MapObject {
     public emitting: number = 0;
     public emissionRadius: number = 0;
 
+    public angle: number | null = null;
+
     public ownerId: number = 0;
     public teamCode: number = 0;
 

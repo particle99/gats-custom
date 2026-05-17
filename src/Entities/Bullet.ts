@@ -35,6 +35,8 @@ export default class Bullet extends RectangularMapObject {
     public damage: number = 0;
     public spread: number = 0;
 
+    public hasTeleported: boolean = false; //for portals
+
     public damageDropoffPerTick: number = 0;
     public maxDamageDropOff: number = 0;
 

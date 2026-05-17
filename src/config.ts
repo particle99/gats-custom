@@ -4,8 +4,8 @@ import { Config } from './Enums/Config';
 export const config: Config = {
     maxPlayers: 81,
     maxConnectionsPerIP: 2,
-    startingScore: 300,
-    maxSpeed: 75,
+    startingScore: 1000,
+    maxSpeed: 100,
     maxHealth: 100,
     fogEnabled: false,
     scoreSquareEnabled: true,

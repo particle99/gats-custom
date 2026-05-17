@@ -40,10 +40,33 @@ export class MedKitObject extends RectangularMapObject {
     }
 }
 
+export class TurretObject extends RectangularMapObject {
+    public level: number = 1; //default
+
+    constructor(uid: number, parentId: number) {
+        super(uid, 7, 20, 20, 0);
+
+        this.parentId = parentId;
+    }
+
+    public update(owner: PlayerEntity): void {
+        //if(owner.kills >= 10) this.level = 1;
+        //if(owner.kills >= 20) this.level = 2;
+        //if(owner.kills >= 30) this.level = 3;
+    }
+}
+
 export class ShieldObject extends RectangularMapObject {
     constructor(uid: number, parentId: number) {
         super(uid, 0, 16, 50, 0);
 
+        this.parentId = parentId;
+    }
+}
+
+export class TunnelObject extends RectangularMapObject {
+    constructor(uid: number, parentId: number) {
+        super(uid, 8, 40, 40, 0);
         this.parentId = parentId;
     }
 }

@@ -3,7 +3,7 @@ import Game from "../../../Game";
 import PlayerEntity from '../../PlayerEntity';
 import SpatialGrid from '../../../Util/SpatialGrid';
 
-import { MedKitObject } from '../../MapObjects/CrateObjects';
+import { MedKitObject, TunnelObject } from '../../MapObjects/CrateObjects';
 import { RectangularMapObject } from "../../MapObjects/MapObjects";
 
 export default class PlayerManager {
@@ -218,19 +218,64 @@ export default class PlayerManager {
         }
     }
 
-    private separateCratesByType(crates: Array<RectangularMapObject>): { regularCrates: Array<RectangularMapObject>, medkits: Array<MedKitObject> } {
+    private handleTunneling(player: PlayerEntity, tunnels: Array<TunnelObject>): void {
+        if(!player.tunnelLocationOne || !player.tunnelLocationTwo) {
+            return;
+        }
+
+        const now = performance.now();
+        const teleportCooldown = 5000; // 5 seconds in milliseconds
+
+        for(const tunnel of tunnels) {
+            if(tunnel.parentId !== player.uid) {
+                continue;
+            }
+
+            const tunnelCenterX = tunnel.x - tunnel.width / 2;
+            const tunnelCenterY = tunnel.y - tunnel.height / 2;
+
+            const dx = player.x - tunnelCenterX;
+            const dy = player.y - tunnelCenterY;
+            const distSq = dx * dx + dy * dy;
+            const collisionDist = player.radius + (Math.max(tunnel.width, tunnel.height) / 2);
+
+            if(distSq < collisionDist * collisionDist) {
+                // Check if player is on cooldown
+                const lastTeleportTime = player.lastTeleportTime || 0;
+                if(now - lastTeleportTime < teleportCooldown) {
+                    continue;
+                }
+
+                if(tunnel.team === 0) { //first tunnel
+                    player.x = player.tunnelLocationTwo.x;
+                    player.y = player.tunnelLocationTwo.y;
+                } else if(tunnel.team === 1) { //second tunnel
+                    player.x = player.tunnelLocationOne.x;
+                    player.y = player.tunnelLocationOne.y;
+                }
+
+                // Set the cooldown
+                player.lastTeleportTime = now;
+            }
+        }
+    }
+
+    private separateCratesByType(crates: Array<RectangularMapObject>): { regularCrates: Array<RectangularMapObject>, medkits: Array<MedKitObject>, tunnels: Array<TunnelObject> } {
         const regularCrates: Array<RectangularMapObject> = [];
         const medkits: Array<MedKitObject> = [];
+        const tunnels: Array<TunnelObject> = [];
         
         for(const crate of crates) {
             if(crate.type == 5) {
                 medkits.push(crate as MedKitObject);
+            } else if(crate.type == 8) {
+                tunnels.push(crate as TunnelObject);
             } else if(crate.type !== 0 && crate.type !== 6) { //skip shields and flags
                 regularCrates.push(crate);
             }
         }
         
-        return { regularCrates, medkits };
+        return { regularCrates, medkits, tunnels };
     }
 
     private handleCrateCollision(player: PlayerEntity, crateCollisionData: Array<{ x: number, y: number, width: number, height: number }>): void {
@@ -301,9 +346,10 @@ export default class PlayerManager {
         }
 
         const nearbyCrates = this.getNearestCrates(player, 250);
-        const { regularCrates, medkits } = this.separateCratesByType(nearbyCrates);
+        const { regularCrates, medkits, tunnels } = this.separateCratesByType(nearbyCrates);
         
         this.handleMedkitCollection(player, medkits);
+        this.handleTunneling(player, tunnels);
 
         const crateCollisionData = this.cratesToCollisionData(regularCrates);
         this.handleCrateCollision(player, crateCollisionData);
@@ -364,21 +410,20 @@ export default class PlayerManager {
         }
     }
 
-    public getNearbyPlayers(player: PlayerEntity, width: number, height: number): Array<PlayerEntity> {
-        const range = Math.max(width, height);
-        const results = this.spatialGrid.query(player.x, player.y, range);
-        return Array.from(results).filter(p => p.uid !== player.uid);
+    public getNearbyPlayers(x: number, y: number, range: number): Array<PlayerEntity> {
+        const results = this.spatialGrid.query(x, y, range);
+        return Array.from(results);
     }
 
-    public getClosestPlayers(player: PlayerEntity, count: number = 1, range: number = 250): Array<PlayerEntity> {
+    public getClosestPlayers(x: number, y: number, count: number = 1, range: number = 250): Array<PlayerEntity> {
         //const allPlayers = Array.from(this.players.values());
-        const allPlayers = Array.from(this.spatialGrid.query(player.x, player.y, range));
+        const allPlayers = Array.from(this.spatialGrid.query(x, y, range));
 
         const playersWithDistance = allPlayers
-            .filter(p => p.uid !== player.uid)
+            //.filter(p => p.uid !== player.uid)
             .map(p => {
-                const dx = player.x - p.x;
-                const dy = player.y - p.y;
+                const dx = x - p.x;
+                const dy = y - p.y;
                 const distSq = dx * dx + dy * dy;
                 return { player: p, distSq };
             })

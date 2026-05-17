@@ -38,8 +38,11 @@ import Gas from '../../Upgrades/Secondary/Explosives/Gas';
 import Frag from '../../Upgrades/Secondary/Explosives/Frag';
 import Knife from '../../Upgrades/Secondary/Misc/Knife';
 import LandMine from '../../Upgrades/Secondary/Explosives/LandMine';
+import Turret from '../../Upgrades/Secondary/Misc/Turret';
+import Tunnel from '../../Upgrades/Secondary/Misc/Tunnel';
+import Ricochet from '../../Upgrades/Primary/Ricochet';
 
-type InputType = "LEFT" | "RIGHT" | "DOWN" | "UP" | "RELOADING" | "SPACE" | "MOUSEDOWN" | "CHAT"
+type InputType = "LEFT" | "RIGHT" | "DOWN" | "UP" | "RELOADING" | "SPACE" | "MOUSEDOWN" | "CHAT" | "TURRET";
 
 export default class NetworkManager {
     public game: Game;
@@ -222,7 +225,7 @@ export default class NetworkManager {
             let upgrade: PrimaryUpgrade;
 
             switch(upgradeIndex) {
-                case 0: upgrade = new NoRecoil(player); break;
+                case 0: upgrade = new Ricochet(player); break;//new NoRecoil(player); break;
                 case 1: upgrade = new Binoculars(player); break;
                 case 2: upgrade = new Thermal(player); break;
                 case 3: upgrade = new Damage(player); break;
@@ -257,8 +260,8 @@ export default class NetworkManager {
             }
 
             switch(upgradeIndex) {
-                case 10: upgrade = new Shield(player, this.game); break;
-                case 11: upgrade = new MedKit(player, this.game); break;
+                case 10: upgrade = new Turret(player, this.game); break;//upgrade = new Shield(player, this.game); break;
+                case 11: upgrade = new Tunnel(player, this.game); break;//upgrade = new MedKit(player, this.game); break;
                 case 12: upgrade = new Grendade(player, this.game); break;
                 case 13: upgrade = new Knife(player, this.game); break;
                 case 14: upgrade = new UserCrate(player, this.game, crateIsPremium); break;

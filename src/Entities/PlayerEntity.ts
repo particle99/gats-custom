@@ -34,8 +34,9 @@ import SecondaryUpgrade from '../Upgrades/SecondaryUpgrade';
 import { Player } from './MapObjects/PlayerObject';
 
 import Dashing from '../Upgrades/Secondary/Misc/Dashing';
+import { CrateObject } from './MapObjects/CrateObjects';
 
-type InputType = "LEFT" | "RIGHT" | "DOWN" | "UP" | "RELOADING" | "SPACE" | "MOUSEDOWN" | "CHAT"
+type InputType = "LEFT" | "RIGHT" | "DOWN" | "UP" | "RELOADING" | "SPACE" | "MOUSEDOWN" | "CHAT" | "TURRET";
 
 const ArmorWeights: Record<number, number> = {
     0: 0,
@@ -91,6 +92,7 @@ export default class PlayerEntity extends Player {
     public reloadSpeed: number = 0;
 
     public activeInputs: Set<InputType> = new Set();
+    public previousCrates: Map<CrateObject, number> = new Map();
 
     public dead: boolean = false;
     public killer: any;
@@ -109,6 +111,7 @@ export default class PlayerEntity extends Player {
     public reloadTick: number = 0; //used for reloading animation
     public healthRegenPerTick: number = 1;
     public armorRegenPerTick: number = 1;
+    public lastTeleportTime: number = 0;
 
     /** Upgrades */
     public ghillie: number = 0; //boolean (invis)
@@ -120,7 +123,15 @@ export default class PlayerEntity extends Player {
     public bulletSpread: number = 1.0; //1.0 is default spread, lower is better
     public bulletDamage: number = 0;
     public damageReduction: number = 0; //used for kevlar upgrade
-    
+    public hasTurret: boolean = false;
+    public turretActive: boolean = true;
+    public bulletRicochet: boolean = false;
+
+    /** Tunnels */
+    public hasTunnels: boolean = false;
+    public tunnelLocationOne: { x: number, y: number } | null = null;
+    public tunnelLocationTwo: { x: number, y: number } | null = null;
+
     /** Movement attributes */
     public armorWeight: number = 0;
     public gunWeight: number = 0;
@@ -315,6 +326,8 @@ export default class PlayerEntity extends Player {
             
             this.levelTwoUpgrade.activate();
             this.activationTick = this.game.tick;
+
+            //console.log("activated upgrade");
         }
     }
 

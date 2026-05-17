@@ -86,7 +86,8 @@ export enum BulletSpread {
 
 /** NO DROPOFF */
 export enum BulletDamage {
-    SMG = 37,
+    //SMG = 37,
+    SMG = 16, //uzi 
     PISTOL = 60,
     SHOTGUN = 40, //per bullet
     ASSAULT = 48,
@@ -165,5 +166,6 @@ export enum InputEnum {
     RELOADING = 4, //"r"
     SPACE = 5,
     MOUSEDOWN = 6,
-    CHAT = 7
+    CHAT = 7,
+    TURRET = 8
 }

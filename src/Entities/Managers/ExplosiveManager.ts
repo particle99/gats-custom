@@ -6,11 +6,12 @@ import {
 } from "../../Enums/Fields";
 
 import { 
-    ExplodingObject, 
+    ExplodingObject,
     ExplosiveObject
 } from "../MapObjects/ExplosiveObjects";
 
 import { EntityStateFlags } from "../../Enums/Flags";
+import { rectRectCollision } from "../../Util/Collision/BulletCollisions";
 
 export default class ExplosiveManager {
     public game: Game;
@@ -124,7 +125,7 @@ export default class ExplosiveManager {
             const distance = Math.sqrt(dx * dx + dy * dy);
             
             if(distance <= radius) {
-                if(type == 0 || type == 2) { //gas + landmines
+                if(type == 0 || type == 2 || type == 4) { //gas + landmines
                     const distanceRatio = distance / radius;
                     const damagePercent = Math.pow(1 - distanceRatio, 2); //squares the falloff for less linear damage
                     const playerDamage = damage * damagePercent;
@@ -172,6 +173,30 @@ export default class ExplosiveManager {
                 exploding.phase = 2;
                 
                 break;
+            }
+        }
+    }
+
+    public checkCrateCollisions(exploding: ExplodingObject): void {
+        const explodingX = exploding.x;
+        const explodingY = exploding.y;
+
+        const nearbyCrates = this.game.crateManager.spatialGrid.query(explodingX, explodingY, 250);
+
+        for(const crate of nearbyCrates) {
+            const collision = rectRectCollision(
+                explodingX + exploding.spdY,
+                explodingY + exploding.spdY,
+                30,
+                15,
+                crate.x - (crate.width / 2),
+                crate.y - (crate.height / 2),
+                crate.width,
+                crate.height
+            );
+
+            if(collision) {
+                exploding.phase = 2;
             }
         }
     }
@@ -319,6 +344,27 @@ export default class ExplosiveManager {
         }
     }
 
+    public handleRocket(explosive: ExplosiveObject, exploding: ExplodingObject): void {
+        if(exploding.phase == 1) {
+            exploding.update();
+            
+            this.checkForPlayerColliding(explosive, exploding);
+            this.checkCrateCollisions(exploding);
+
+            if(exploding.timeTraveled >= explosive.travelTime) {
+                exploding.phase = 2;
+                exploding.timeTraveled = 0;
+            }
+        } else if(exploding.phase == 2) {
+            exploding.ticksElapsed++;
+            exploding.exploding = 1;
+
+            if(exploding.ticksElapsed >= exploding.explosionTicks) {
+                this.removeObject(exploding.uid);
+            }
+        }
+    }
+
     public update(): void {
         for(const [uid, object] of this.explodingObjects) {
             const explosiveObject = this.explosiveObjects.get(uid);
@@ -327,8 +373,11 @@ export default class ExplosiveManager {
             if(!explosiveObject) return;
 
             if(!explosiveObject.activated) {
-                this.broadcastExplosiveObject(explosiveObject, ['uid', 'type', 'x', 'y', 'spdX', 'spdY', 'emitting', 'emissionRadius', 'travelTime', 'ownerId', 'teamCode'])
+                explosiveObject.angle !== null 
+                    ? this.broadcastExplosiveObject(explosiveObject, ['uid', 'type', 'x', 'y', 'spdX', 'spdY', 'emitting', 'emissionRadius', 'travelTime', 'ownerId', 'teamCode', 'angle'])
+                    : this.broadcastExplosiveObject(explosiveObject, ['uid', 'type', 'x', 'y', 'spdX', 'spdY', 'emitting', 'emissionRadius', 'travelTime', 'ownerId', 'teamCode']);
                 this.broadcastExplodingObject(object, ['uid', 'x', 'y', 'exploding', 'emitting', 'emissionRadius']);
+
                 object.timeTraveled += 1;
                 explosiveObject.activated = true;
             } 
@@ -346,10 +395,14 @@ export default class ExplosiveManager {
                 case 3:
                     this.handleFrag(explosiveObject, object);
                     break;
+                case 4: 
+                    this.handleRocket(explosiveObject, object);
+                    break;
                 //others
             }
 
+            //broadcast object
             this.broadcastExplodingObject(object, ['uid', 'x', 'y', 'exploding', 'emitting', 'emissionRadius']);
-        }
+            }
     }
 }

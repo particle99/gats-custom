@@ -3,8 +3,9 @@ import { AuxilaryUpdateFields } from '../../../Enums/Fields';
 import { ReloadSpeedInTicks } from '../../../Enums/Enums';
 
 import PlayerEntity from '../../PlayerEntity';
+import Turret from '../../../Upgrades/Secondary/Misc/Turret';
 
-type InputType = "LEFT" | "RIGHT" | "DOWN" | "UP" | "RELOADING" | "SPACE" | "MOUSEDOWN" | "CHAT"
+type InputType = "LEFT" | "RIGHT" | "DOWN" | "UP" | "RELOADING" | "SPACE" | "MOUSEDOWN" | "CHAT" | "TURRET";
 
 export default class PlayerInputManager {
     private player: PlayerEntity;
@@ -26,6 +27,7 @@ export default class PlayerInputManager {
             case "SPACE": this.handleSpace(state); break;
             case "MOUSEDOWN": this.handleMouseDown(state); break;
             case "CHAT": this.handleChat(state); break;
+            case "TURRET": this.handleTurret(state); break;
         }
     }
 
@@ -92,5 +94,23 @@ export default class PlayerInputManager {
             states: [EntityStateFlags.AUX_UPDATE],
             auxFields: chatFields
         });
+    }
+
+    public handleTurret(state: number): void {
+        if(!this.player.hasTurret) return;
+
+        if(state === 1) {
+            this.player.turretActive = !this.player.turretActive;
+
+            let overlayPacket: string = "";
+
+            if(this.player.turretActive) {
+                overlayPacket = this.player.game.networkManager.codec.buildCustomOverlayPacket("Turret activated");
+            } else {
+                overlayPacket = this.player.game.networkManager.codec.buildCustomOverlayPacket("Turret deactivated");
+            }
+
+            this.player.queueManager.addToQueue(overlayPacket);
+        }
     }
 }

@@ -98,6 +98,7 @@ type ExplosiveActivationFields = keyof Pick<ExplosiveObject,
     | 'emissionRadius'
     | 'ownerId'
     | 'teamCode'
+    | 'angle'
 >;
 
 type ExplodingUpdateFields = keyof Pick<ExplodingObject,
@@ -199,7 +200,8 @@ const EXPLOSIVE_ACTIVATION_PACKET_FIELDS: Array<ExplosiveActivationFields> = [
     'emitting',
     'emissionRadius',
     'ownerId',
-    'teamCode'
+    'teamCode',
+    'angle'
 ];
 
 const EXPLODING_UPDATE_PACKET_FIELDS: Array<ExplodingUpdateFields> = [

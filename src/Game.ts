@@ -64,7 +64,7 @@ export default class Game {
     private gameLoop: NodeJS.Timeout | null = null;
 
     /** Room speed */
-    private roomSpeed: number = 1000 / 25;
+    private roomSpeed: number = 1000 / 50;
 
     /** Game mutations */
     public config: Config;
@@ -187,7 +187,15 @@ export default class Game {
             this.sendConfirmation(ws);
 
             ws.on("close", () => this.onClose(ws));
-            ws.on("message", (message: any) => this.networkManager.onMessage(message, ws)); //network manager handles this
+            ws.on("message", (message: any) => {
+                try {
+                    this.networkManager.onMessage(message, ws);
+                } catch (error) {
+                    logger.error(`[${new Date().toISOString()}] Error handling message:`, error);
+                    ws.close(1011, "Internal server error");
+                    this.onClose(ws);
+                }
+            });
         }
     }
 
@@ -225,14 +233,13 @@ export default class Game {
     public updateGame(): void {
         if(this.gameLoop) return;
 
-        this.gameLoop = setInterval(() => {    
+        this.gameLoop = setInterval(() => {
             this.bulletManager.updateBullets();
             this.playerManager.updatePlayers();
             this.networkManager.update();
             this.crateManager.update();
             this.explosiveManager.update();
             this.bulletManager.updateBullets();
-
             this.tick++;
         }, this.roomSpeed);
     }
