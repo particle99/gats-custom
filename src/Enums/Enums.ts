@@ -44,12 +44,12 @@ export enum FireRatesInTicks {
 }
 
 export enum BulletSpeed {
-    PISTOL = 120 / 10,
-    SMG = 100 / 10,
-    SHOTGUN = 120 / 10,
-    ASSAULT = 100 / 10,
-    SNIPER = 180 / 10,
-    LMG = 100 / 10,
+    PISTOL = 240 / 10,
+    SMG = 200 / 10,
+    SHOTGUN = 240 / 10,
+    ASSAULT = 200 / 10,
+    SNIPER = 360 / 10,
+    LMG = 200 / 10,
 }
 
 export enum BulletDistance {
@@ -69,9 +69,9 @@ export enum ProjectileDistance {
 }
 
 export enum ProjectileSpeed {
-    KNIFE = 80 / 10,
+    KNIFE = 160 / 10,
     GAS = 0 / 10,
-    GRENADE = 80 / 10,
+    GRENADE = 160 / 10,
     FRAG = 0 / 10
 }
 

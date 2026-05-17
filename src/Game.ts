@@ -36,7 +36,7 @@ export default class Game {
     public codec: Codec;
 
     /** Game server config */
-    public gamePort: number = 443; //for https/wss
+    public gamePort: number = 3001;
     public gameMode: string;
     public gameClass: Gamemode;
 
