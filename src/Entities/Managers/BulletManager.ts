@@ -167,6 +167,7 @@ export default class BulletManager {
         return false;
     }
 
+    /**
     private bulletTunnelCollision(bullet: Bullet, bulletRect: { x: number, y: number, width: number, height: number }, tunnel: RectangularMapObject): void {
         let collision = false;
         
@@ -204,6 +205,7 @@ export default class BulletManager {
             }
         }
     }
+    */
 
     public checkCollisions(bullet: Bullet): void {
         //skip collision checks if bullet collisions are disabled
@@ -235,9 +237,9 @@ export default class BulletManager {
             
             if (crate.type === 0) { //bullet shield collisions
                 collision = this.bulletShieldCollision(bullet, crate);
-            } else if (crate.type == 8) { //tunnel collisions
-                this.bulletTunnelCollision(bullet, bulletRect, crate);
-                continue;
+            //} else if (crate.type == 8) { //tunnel collisions
+                //this.bulletTunnelCollision(bullet, bulletRect, crate);
+                //continue;
             } else if (crate.type == 3) {
                 collision = rectRectCollision(
                     bulletRect.x, 
