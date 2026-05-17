@@ -64,7 +64,7 @@ export default class Game {
     private gameLoop: NodeJS.Timeout | null = null;
 
     /** Room speed */
-    private roomSpeed: number = 1000 / 50;
+    private roomSpeed: number = 1000 / 25; //default room speed is 25tps
 
     /** Game mutations */
     public config: Config;
