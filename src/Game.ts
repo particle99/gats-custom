@@ -239,7 +239,6 @@ export default class Game {
             this.networkManager.update();
             this.crateManager.update();
             this.explosiveManager.update();
-            this.bulletManager.updateBullets();
             this.tick++;
         }, this.roomSpeed);
     }
