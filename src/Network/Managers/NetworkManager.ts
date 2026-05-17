@@ -69,7 +69,13 @@ export default class NetworkManager {
     }
 
     public onMessage(message: ArrayBuffer, ws: WebSocket): void {
-        const decodedPackets: Array<PacketType> = this.codec.decode(message);
+        let decodedPackets: Array<PacketType>;
+        try {
+            decodedPackets = this.codec.decode(message);
+        } catch (error) {
+            //console.error("Error decoding packet:", error);
+            return;
+        }
 
         for (const packet of decodedPackets) {
             switch (packet.code) {

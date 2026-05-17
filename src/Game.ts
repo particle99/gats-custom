@@ -191,7 +191,7 @@ export default class Game {
                 try {
                     this.networkManager.onMessage(message, ws);
                 } catch (error) {
-                    logger.error(`[${new Date().toISOString()}] Error handling message:`, error);
+                    //logger.error(`[${new Date().toISOString()}] Error handling message:`, error);
                     ws.close(1011, "Internal server error");
                     this.onClose(ws);
                 }
