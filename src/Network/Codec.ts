@@ -156,7 +156,7 @@ export default class Codec {
                 //fields are sent as * 10 to save bandwidth
                 const value = String(entity[field as BulletActivationFields] as number * 10);
                 packetParts.push(value);
-            } else if (field == 'spdX' || field == 'spdY') {
+            } else if (field == 'initSpdx' || field == 'initSpdY') {
                 //these fields are NOT sent as * 10, * 25 to match up with client
                 const value = String(entity[field as BulletActivationFields] as number * 25);
                 packetParts.push(value);
@@ -304,7 +304,7 @@ export default class Codec {
      * bullet.angle was added for custom bullet ricochet upgrade 
      */
     public buildBulletUpdatePacket(entity: Bullet): string {
-        return `${Packets.UPDATE_BULLET_PACKET},${entity.uid},${entity.x * 10},${entity.y * 10},${entity.angle}|`;
+        return `${Packets.UPDATE_BULLET_PACKET},${entity.uid},${entity.x * 10},${entity.y * 10}|`;
     }
 
     public buildUnloadCratePacket(object: RectangularMapObject): string {

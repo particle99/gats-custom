@@ -179,7 +179,7 @@ export default class CrateManager {
                                 bullet.spawnTick = this.game.tick;
                                 bullet.invulnerable = false;
 
-                                const spawnPacket = this.game.networkManager.codec.buildBulletActivationPacket(bullet, ['uid', 'x', 'y', 'height', 'width', 'angle', 'spdX', 'spdY', 'isShrapnel', 'ownerId', 'teamCode']);
+                                const spawnPacket = this.game.networkManager.codec.buildBulletActivationPacket(bullet, ['uid', 'x', 'y', 'height', 'width', 'angle', 'initSpdx', 'initSpdY', 'isShrapnel', 'ownerId', 'teamCode']);
                                 this.game.networkManager.broadcast(spawnPacket);
                             }
                         } else if(turret.level == 1) {

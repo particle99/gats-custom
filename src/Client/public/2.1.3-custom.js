@@ -18482,11 +18482,10 @@
 		this['timeAlive']++;
     this['x'] = parseInt(_0x535851['x'] / 10);
     this['y'] = parseInt(_0x535851['y'] / 10);
-    this['angle'] = parseInt(_0x535851['angle']);
 	}, Bullet['prototype']['update'] = function() {
 		var _0xb538f8 = _0x3b4c10;
 		if (!this['activated'])
-			return;
+			return; 
 		this['x'] += this['spdX'], this['y'] += this['spdY'];
 	}, Bullet['prototype']['draw'] = function(_0x30ca75, _0x52290b) {
 		var _0x5702fa = _0x3b4c10;
@@ -20311,8 +20310,7 @@
 					'code': _0x147ac5[0],
 						'id': _0x147ac5[1],
 						'x': _0x147ac5[2],
-						'y': _0x147ac5[3],
-            'angle': _0x147ac5[4],
+						'y': _0x147ac5[3]
 				};
 			case 'i':
 				return {

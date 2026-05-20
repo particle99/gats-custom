@@ -63,7 +63,7 @@ export default class Knife extends SecondaryUpgrade {
         this.knifeObject.spawnTick = this.game.tick;
         this.knifeObject.invulnerable = false;
 
-        const spawnPacket = this.game.networkManager.codec.buildBulletActivationPacket(this.knifeObject, ['uid', 'x', 'y', 'height', 'width', 'angle', 'spdX', 'spdY', 'isKnife', 'ownerId', 'teamCode']);
+        const spawnPacket = this.game.networkManager.codec.buildBulletActivationPacket(this.knifeObject, ['uid', 'x', 'y', 'height', 'width', 'angle', 'initSpdx', 'initSpdY', 'isKnife', 'ownerId', 'teamCode']);
         this.game.networkManager.broadcast(spawnPacket);
 
         this.owner.fieldManager.safeUpdate({

@@ -69,9 +69,9 @@ export enum ProjectileDistance {
 }
 
 export enum ProjectileSpeed {
-    KNIFE = 160 / 10,
+    KNIFE = 80 / 10,
     GAS = 0 / 10,
-    GRENADE = 160 / 10,
+    GRENADE = 80 / 10,
     FRAG = 0 / 10
 }
 

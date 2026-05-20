@@ -20,6 +20,8 @@ export default class Bullet extends RectangularMapObject {
 
     public spdX: number = 0;
     public spdY: number = 0;
+    public initSpdx: number = 0;
+    public initSpdY: number = 0;
 
     public invulnerable: boolean = true;
     public spawnTick: number = 0;
@@ -115,10 +117,12 @@ export default class Bullet extends RectangularMapObject {
         const offset = (Math.random() + Math.random() - 1) * this.spread;
         
         const newAngle = angle + offset;
-        this.angle = this.angle + offset;
+        this.angle = Math.floor(this.angle + offset);
 
-        this.spdX = Math.cos(newAngle) * this.speed;
-        this.spdY = Math.sin(newAngle) * this.speed;
+        this.spdX = Math.floor(Math.cos(newAngle) * this.speed);
+        this.spdY = Math.floor(Math.sin(newAngle) * this.speed);
+        this.initSpdx = Math.floor(this.spdX / 2);
+        this.initSpdY = Math.floor(this.spdY / 2);
     }
 
     public setSpawn(player: PlayerEntity): void {
@@ -146,8 +150,8 @@ export default class Bullet extends RectangularMapObject {
         const radiusOffsetX = Math.cos(angleRad) * (player.radius / 2);
         const radiusOffsetY = Math.sin(angleRad) * (player.radius / 2);
 
-        this.x = player.x + forwardX + sideX + radiusOffsetX;
-        this.y = player.y + forwardY + sideY + radiusOffsetY;
+        this.x = Math.floor(player.x + forwardX + sideX + radiusOffsetX);
+        this.y = Math.floor(player.y + forwardY + sideY + radiusOffsetY);
 
         this.spawnTick = this.game.tick;
         this.angle = player.playerAngle;

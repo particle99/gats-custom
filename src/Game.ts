@@ -61,7 +61,7 @@ export default class Game {
     public tick: number = 0;
 
     /** Game loop */
-    private gameLoop: NodeJS.Timeout | null = null;
+    private running: boolean = true;
 
     /** Room speed */
     private roomSpeed: number = 1000 / 25; //default room speed is 25tps
@@ -231,24 +231,21 @@ export default class Game {
     }
 
     public updateGame(): void {
-        if(this.gameLoop) return;
+        if(!this.running) return;
 
-        this.gameLoop = setInterval(() => {
-            this.bulletManager.updateBullets();
-            this.playerManager.updatePlayers();
-            this.networkManager.update();
-            this.crateManager.update();
-            this.explosiveManager.update();
-            this.tick++;
-        }, this.roomSpeed);
+        //update game state
+        this.bulletManager.updateBullets();
+        this.playerManager.updatePlayers();
+        this.networkManager.update();
+        this.crateManager.update();
+        this.explosiveManager.update();
+        this.tick++;
+
+        setTimeout((() => this.updateGame()), this.roomSpeed);
     }
 
     public stopGame(): void {
-        if(this.gameLoop) {
-            clearInterval(this.gameLoop);
-            this.gameLoop = null;
-        }
-
+        this.running = false;
         this.gameServer.close();
         //this.sockets.clear();
         this.clearManagers();

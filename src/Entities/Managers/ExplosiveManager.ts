@@ -237,7 +237,7 @@ export default class ExplosiveManager {
             shrapnelBullet.spawnTick = this.game.tick;
             shrapnelBullet.invulnerable = false;
 
-            const spawnPacket = this.game.networkManager.codec.buildBulletActivationPacket(shrapnelBullet, ['uid', 'x', 'y', 'height', 'width', 'angle', 'spdX', 'spdY', 'isShrapnel', 'ownerId', 'teamCode']);
+            const spawnPacket = this.game.networkManager.codec.buildBulletActivationPacket(shrapnelBullet, ['uid', 'x', 'y', 'height', 'width', 'angle', 'initSpdx', 'initSpdY', 'isShrapnel', 'ownerId', 'teamCode']);
             this.game.networkManager.broadcast(spawnPacket);
         }
     }

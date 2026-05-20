@@ -64,7 +64,8 @@ type BulletActivationFields = keyof Pick<Bullet,
     | 'width'
     | 'height'
     | 'angle'
-    | 'spdX'
+    | 'initSpdx'
+    | 'initSpdY'
     | 'spdY'
     | 'silenced'
     | 'isKnife' 
@@ -167,8 +168,8 @@ const BULLET_ACTIVATION_PACKET_FIELDS: Array<BulletActivationFields> = [
     'height',
     'width',
     'angle',
-    'spdX',
-    'spdY',
+    'initSpdx',
+    'initSpdY',
     'silenced',
     'isKnife',
     'isShrapnel',

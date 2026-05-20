@@ -302,7 +302,7 @@ export default class PlayerEntity extends Player {
             states: [EntityStateFlags.AUX_UPDATE, EntityStateFlags.FIRST_PERSON_UPDATE, EntityStateFlags.BULLET_ACTIVATION_UPDATE, EntityStateFlags.PROTECTED],
             auxFields: ['uid', 'shooting', 'currentBullets'],
             firstPersonFields: ['currentBullets'],
-            bulletFields: ['uid', 'angle', 'height', 'width', 'spdX', 'spdY', 'isKnife', 'isShrapnel', 'ownerId', 'silenced']
+            bulletFields: ['uid', 'angle', 'height', 'width', 'initSpdx', 'initSpdY', 'isKnife', 'isShrapnel', 'ownerId', 'silenced']
         });
     }
 

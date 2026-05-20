@@ -40,7 +40,6 @@ import Knife from '../../Upgrades/Secondary/Misc/Knife';
 import LandMine from '../../Upgrades/Secondary/Explosives/LandMine';
 import Turret from '../../Upgrades/Secondary/Misc/Turret';
 import Tunnel from '../../Upgrades/Secondary/Misc/Tunnel';
-import Ricochet from '../../Upgrades/Primary/Ricochet';
 
 type InputType = "LEFT" | "RIGHT" | "DOWN" | "UP" | "RELOADING" | "SPACE" | "MOUSEDOWN" | "CHAT" | "TURRET";
 
@@ -231,7 +230,7 @@ export default class NetworkManager {
             let upgrade: PrimaryUpgrade;
 
             switch(upgradeIndex) {
-                case 0: upgrade = new Ricochet(player); break;//new NoRecoil(player); break;
+                case 0: upgrade = new NoRecoil(player); break;
                 case 1: upgrade = new Binoculars(player); break;
                 case 2: upgrade = new Thermal(player); break;
                 case 3: upgrade = new Damage(player); break;

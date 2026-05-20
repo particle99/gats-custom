@@ -95,12 +95,9 @@ export default class BulletManager {
     }
 
     private bulletShieldCollision(bullet: Bullet, shield: RectangularMapObject): boolean {
-        const nextX = bullet.x + bullet.spdX;
-        const nextY = bullet.y + bullet.spdY;
-
         const bulletRect = {
-            x: nextX,
-            y: nextY,
+            x: bullet.x,
+            y: bullet.y,
             width: bullet.width,
             height: bullet.height
         };
@@ -210,19 +207,16 @@ export default class BulletManager {
         if(this.game.config?.bulletCollisionsEnabled) {
             if(this.game.config.bulletCollisionsEnabled !== true) return;
         }
-
-        const nextX = bullet.x + bullet.spdX;
-        const nextY = bullet.y + bullet.spdY;
         
         const bulletRect = {
-            x: nextX,
-            y: nextY,
+            x: bullet.x,
+            y: bullet.y,
             width: bullet.width,
             height: bullet.height
         };
 
-        const nearbyPlayers = this.spatialGrid.query(nextX, nextY, 250);
-        const nearbyCrates = this.getNearestCrates(bullet, 250, nextX, nextY);  //query from next position
+        const nearbyPlayers = this.spatialGrid.query(bullet.x, bullet.y, 250);
+        const nearbyCrates = this.getNearestCrates(bullet, 250, bullet.x, bullet.y);  //query from current position
         
         let bulletRemoved = false;
         for (const crate of nearbyCrates) {
@@ -280,27 +274,10 @@ export default class BulletManager {
             }
             
             if (collision) {
-                if(bullet.owner.bulletRicochet) {
-                    //reflect bullet velocity based on which side of the crate was hit
-                    const overlapLeft = (bulletRect.x + bulletRect.width) - (crate.x - crate.width / 2);
-                    const overlapRight = (crate.x + crate.width / 2) - bulletRect.x;
-                    const overlapTop = (bulletRect.y + bulletRect.height) - (crate.y - crate.height / 2);
-                    const overlapBottom = (crate.y + crate.height / 2) - bulletRect.y;
+                //remove bullet
+                this.unloadBullet(bullet);
+                bulletRemoved = true;
 
-                    const minOverlapX = Math.min(overlapLeft, overlapRight);
-                    const minOverlapY = Math.min(overlapTop, overlapBottom);
-
-                    if (minOverlapX < minOverlapY) {
-                        bullet.spdX = -bullet.spdX;
-                        bullet.angle = 180 - bullet.angle;
-                    } else {
-                        bullet.spdY = -bullet.spdY;
-                        bullet.angle = -bullet.angle;
-                    }
-                } else {
-                    this.unloadBullet(bullet);
-                    bulletRemoved = true;
-                }
                 break;
             }
         }
@@ -351,29 +328,25 @@ export default class BulletManager {
         }
     }
 
-    /**
-     * TODO: Fix bullet collision checks, the bullets go through the crates before unloading
-     */
     public updateBullets(): void {
         for (const bullet of this.bullets.values()) {
             //skip dead bullets
             if(!bullet.alive) continue;
 
-            //check collisions BEFORE updating bullet position
+            //check collisions
             if(this.game.config?.bulletCollisionsEnabled) {
                 if(this.game.config.bulletCollisionsEnabled) this.checkCollisions(bullet);
             } else {
-                //check collisions before updating position
                 this.checkCollisions(bullet);
             }
-
-            //update bullet
-            bullet.update(this.game);
 
             if (bullet.totalDistanceTraveled >= bullet.maxDistanceTraveled) {
                 //unload the bullet after it's traveled 
                 this.unloadBullet(bullet);
             }
+
+            //update bullet
+            bullet.update(this.game);
 
             //generate bullet update packets
             const bulletUpdatePacket = this.game.codec.buildBulletUpdatePacket(bullet);
